@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newpick | Kyeongseok Lee</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Drift Page Specific Styles */
+        /* Removed body background override to inherit global #111111 */
+
+        .drift-container {
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Layout Utilities */
+        .drift-content-wrapper {
+            padding-bottom: 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin: 30px auto;
+            font-size: 1rem;
+            color: #fff;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        /* 1. Header Block */
+        .drift-header-block {
+            margin-top: 50px;
+            margin-bottom: 50px;
+            text-align: left;
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .drift-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #fff;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .drift-subtitle {
+            font-size: 1rem;
+            font-weight: 300;
+            color: #ccc;
+        }
+
+        /* 2. Placeholders & Images */
+        .placeholder-gray {
+            background-color: #333;
+            width: 100%;
+            display: block;
+            border-radius: 4px;
+            object-fit: cover;
+        }
+
+        .img-fluid {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 30px;
+            border-radius: 2px;
+        }
+
+        /* 3. Section Styling */
+        .drift-section {
+            margin-top: 80px;
+            position: relative;
+            padding-left: 0;
+            padding-right: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .drift-section-title {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #fff;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 20px;
+            text-align: left;
+            width: 100%;
+        }
+
+        .drift-text-large {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #ddd;
+            line-height: 1.8;
+            width: 100%;
+            word-break: keep-all;
+            text-align: left;
+            margin-bottom: 40px;
+        }
+
+        /* 3-Column Grid (Papers) */
+        .three-col-grid {
+            display: flex;
+            justify-content: center;
+            /* Center the group */
+            align-items: center;
+            /* Align centers */
+            gap: 20px;
+            /* Consistent spacing */
+            width: 100%;
+            max-width: 400px;
+            /* Reduced to 400px for even smaller images */
+            margin: 40px auto 0;
+            /* Center the container horizontally */
+        }
+
+        .three-col-img {
+            flex: 1 1 0px;
+            /* Strictly equal width distribution */
+            width: 0;
+            /* Min width to force equality */
+            min-width: 0;
+            /* Allow shrinking below content size */
+            height: auto;
+            /* Natural height (no cropping) */
+            object-fit: contain;
+            /* Ensure full image is visible */
+            background-color: transparent;
+            /* Remove bg */
+        }
+
+        /* Tech Specs List Style (Matching Credit) */
+        .tech-specs-custom-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: fit-content;
+            margin: 0 auto;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .tech-specs-item {
+            display: flex;
+            align-items: flex-start;
+            width: 100%;
+            max-width: none;
+            gap: 60px;
+        }
+
+        .tech-label {
+            font-size: 0.85rem;
+            font-weight: 400;
+            font-style: italic;
+            width: 180px;
+            color: #999;
+            flex-shrink: 0;
+        }
+
+        .tech-content {
+            font-size: 1rem;
+            color: #ddd;
+            line-height: 1.6;
+            flex: 1;
+        }
+
+
+        /* 7. Credit */
+        .credit-custom-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: fit-content;
+            margin: 0 auto;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .credit-item {
+            display: flex;
+            align-items: flex-start;
+            width: 100%;
+            max-width: none;
+            gap: 60px;
+        }
+
+        .credit-role {
+            font-size: 0.85rem;
+            font-weight: 400;
+            font-style: italic;
+            width: 180px;
+            color: #999;
+            flex-shrink: 0;
+        }
+
+        .credit-names {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.6;
+            margin-right: 80px;
+            color: #fff;
+        }
+
+        /* 8. Gallery Grid (Non-Looping) */
+        .gallery-wrapper {
+            position: relative;
+            width: 100%;
+            margin-bottom: 50px;
+        }
+
+        .gallery-custom-grid {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            scroll-behavior: smooth;
+            /* Scroll Snap for stability */
+            scroll-snap-type: x mandatory;
+        }
+
+        .gallery-custom-grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        .gallery-box {
+            background: transparent !important;
+            min-width: 100%;
+            /* Force full width of container */
+            width: 100%;
+            height: auto;
+            /* Natural height, no crop */
+            flex-shrink: 0;
+            object-fit: contain;
+            /* Ensure full image is visible */
+            /* Snap alignment */
+            scroll-snap-align: start;
+        }
+
+        /* Video Styling */
+        .project-video {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 4px;
+            margin-bottom: 40px;
+        }
+
+        /* Responsive Tweaks */
+        @media (max-width: 1400px) {
+
+            .drift-header-block,
+            .drift-section {
+                padding-left: 100px;
+                margin-left: 0;
+            }
+
+            .drift-text-large {
+                width: 100%;
+                max-width: 900px;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .drift-header-block,
+            .drift-section {
+                padding-left: 20px;
+                padding-right: 20px;
+                margin-top: 60px;
+            }
+
+            .drift-title {
+                font-size: 2rem;
+            }
+
+            .drift-text-large {
+                font-size: 0.95rem;
+            }
+
+            .three-col-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .tech-specs-item,
+            .credit-item {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .tech-label,
+            .credit-role {
+                width: 100%;
+            }
+
+            .credit-custom-grid {
+                width: 100%;
+            }
+        }
+
+        /* Side Navigation (Right) */
+        .page-nav {
+            position: fixed;
+            top: 50%;
+            right: 40px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .page-nav a {
+            text-decoration: none;
+            color: #555;
+            font-size: 0.6rem;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            text-align: right;
+            cursor: pointer;
+        }
+
+        .page-nav a:hover {
+            color: #fff;
+            transform: translateX(-5px);
+        }
+
+        .page-nav a.active {
+            color: #aaa;
+            transform: translateX(-3px);
+        }
+
+        /* Project Info (Left) */
+        .project-info-left {
+            position: fixed;
+            top: 50%;
+            left: 40px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 1000;
+            text-align: left;
+        }
+
+        .info-group {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .info-label {
+            font-size: 0.6rem;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .info-value {
+            font-size: 0.7rem;
+            color: #aaa;
+            font-weight: 500;
+        }
+
+        @media (max-width: 1600px) {
+
+            .page-nav,
+            .project-info-left {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="logo">Kyeongseok Lee</a>
+        <nav>
+            <ul>
+                <li><a href="index.html" style="opacity: 1; border-bottom: 1px solid #fff;">Work</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Left Project Info -->
+    <div class="project-info-left">
+        <div class="info-group">
+            <span class="info-value" style="font-weight: 700; color: #ccc; margin-bottom: 5px;">Newpick</span>
+        </div>
+        <div class="info-group">
+            <span class="info-label">Category</span>
+            <span class="info-value">Political Bias Analysis Service</span>
+        </div>
+        <div class="info-group">
+            <span class="info-label">Date</span>
+            <span class="info-value">Spring 2025</span>
+        </div>
+        <div class="info-group">
+            <span class="info-label">Type</span>
+            <span class="info-value">Course Project</span>
+        </div>
+    </div>
+
+    <!-- Side Navigation -->
+    <nav class="page-nav">
+        <a onclick="document.getElementById('sec-overview').scrollIntoView({behavior: 'smooth'})">Project Overview</a>
+        <a onclick="document.getElementById('sec-problem').scrollIntoView({behavior: 'smooth'})">Research & Problem
+            Context</a>
+        <a onclick="document.getElementById('sec-user-research').scrollIntoView({behavior: 'smooth'})">User Research</a>
+        <a onclick="document.getElementById('sec-strategy').scrollIntoView({behavior: 'smooth'})">Design Strategy</a>
+        <a onclick="document.getElementById('sec-concept').scrollIntoView({behavior: 'smooth'})">Concept Ideation</a>
+        <a onclick="document.getElementById('sec-architecture').scrollIntoView({behavior: 'smooth'})">Architecture</a>
+        <a onclick="document.getElementById('sec-design-overview').scrollIntoView({behavior: 'smooth'})">Design
+            Overview</a>
+        <a onclick="document.getElementById('sec-reflection').scrollIntoView({behavior: 'smooth'})">Reflection</a>
+        <a onclick="document.getElementById('sec-specs').scrollIntoView({behavior: 'smooth'})">Technical
+            Specifications</a>
+        <a onclick="document.getElementById('sec-my-role').scrollIntoView({behavior: 'smooth'})">My Role</a>
+
+        <a onclick="document.getElementById('sec-credits').scrollIntoView({behavior: 'smooth'})">Credits</a>
+    </nav>
+    <div class="container" style="max-width: 100%; margin: 0; padding: 0;">
+        <main class="drift-container">
+            <div class="drift-content-wrapper">
+                <!-- Header Block -->
+                <div class="drift-header-block">
+                    <h1 class="drift-title">Newpick</h1>
+                    <p class="drift-subtitle">Political Bias Analysis Service | Spring 2025 | Course Project</p>
+                </div>
+
+                <!-- Main Hero -->
+                <img src="newpick/표지.png" class="drift-hero"
+                    style="height: 650px; margin-bottom: 120px; width: 100%; object-fit: cover; object-position: center; display: block;"
+                    alt="Newpick Main Cover"
+                    onerror="this.style.display='none'; document.getElementById('hero-placeholder').style.display='block';">
+                <div id="hero-placeholder" class="drift-hero placeholder-gray"
+                    style="height: 650px; margin-bottom: 120px; display: none;"></div>
+
+
+                <!-- Project Overview -->
+                <section class="drift-section" id="sec-overview">
+                    <div class="drift-section-title">Project Overview</div>
+                    <div class="drift-text-large">
+                        Newpick은 소셜미디어 알고리즘으로 인한 확증 편향(Filter Bubble)과 정치적 양극화 문제를 해결하기 위해 기획된 모바일 뉴스 플랫폼입니다.
+                        사용자의 뉴스 소비 패턴과 반응 데이터를 AI로 분석하여 12가지 유형의 정치적 성향 지표(B-E-O Model)로 시각화합니다.
+                        거대 언어 모델(LLM)을 활용해 편향된 뉴스를 중립적인 사실(Fact) 위주로 요약하여 제공하며, 사용자가 자신과 반대되는 성향의 오피니언을 읽을
+                        경우 리워드를 제공하여 확증 편향을 방지합니다. 우리는 기술이 사회적 갈등을 조장하는 것이 아니라, 사용자의 주체적인 해석 능력을 되찾아주는 도구가 되기를
+                        바랍니다.
+                    </div>
+                </section>
+
+                <!-- Research & Problem Context -->
+                <section class="drift-section" id="sec-problem">
+                    <div class="drift-section-title">Research & Problem Context</div>
+
+                    <!-- Main Image -->
+                    <img src="newpick/뉴픽1.png" class="img-fluid" alt="Problem Context">
+
+                    <div class="drift-text-large">
+                        현대의 뉴스 소비는 유튜브, 인스타그램 등 알고리즘 기반 플랫폼에서 주로 이루어집니다. 이는 사용자의 취향에 맞는 정보만 반복적으로 노출시켜 인지적 다양성을
+                        제한하고 사회적 갈등을 심화시킵니다. 20대 사용자를 대상으로 한 'Personal Algorithmic Audit'과 인터뷰 결과, 사용자들은 팩트보다 댓글이나
+                        썸네일의 '감정적 자극'에 반응하여 뉴스를 소비하는 경향을 보였습니다. 이를 통해 우리는 <strong>'감정 중심의 뉴스 소비'</strong>와 <strong>'해석
+                            주체성의 상실'</strong>을 핵심 문제로 정의했습니다.
+                    </div>
+                </section>
+
+                <!-- User Research -->
+                <section class="drift-section" id="sec-user-research">
+                    <div class="drift-section-title">User Research</div>
+                    <div class="drift-text-large">
+                        20대 뉴스 소비자의 행동 패턴을 분석하기 위해 설문조사와 심층 인터뷰를 진행했습니다. 사용자들은 알고리즘에 의해 편향된 정보에 노출되고 있었으며, '능동적인 뉴스 소비'에
+                        어려움을 겪고 있음을 확인했습니다.
+                    </div>
+                    <img src="newpick/뉴픽2.png" class="img-fluid" alt="User Research">
+                </section>
+
+                <!-- Design Strategy -->
+                <section class="drift-section" id="sec-strategy">
+                    <div class="drift-section-title">Design Strategy</div>
+                    <div class="drift-text-large">
+                        확증 편향을 중재하기 위해 '넛지(Nudge)'와 '게이미피케이션' 요소를 활용했습니다. 사용자가 자신의 편향성을 인지하고, 자연스럽게 균형 잡힌 시각을 가질 수 있도록
+                        유도하는 디자인 전략을 수립했습니다.
+                    </div>
+                    <img src="newpick/뉴픽3.png" class="img-fluid" alt="Design Strategy">
+                </section>
+
+                <!-- Concept Ideation -->
+                <section class="drift-section" id="sec-concept">
+                    <div class="drift-section-title">Concept Ideation</div>
+                    <div class="drift-text-large">
+                        다양한 아이데이션 과정을 통해 '정치 성향 날씨 비유', '뉴스 체중계' 등 추상적인 편향성을 직관적으로 시각화하는 메타포를 도출했습니다. 이를 바탕으로 모바일 환경에
+                        최적화된 인터페이스를 구체화했습니다.
+                    </div>
+                    <img src="newpick/뉴픽4.png" class="img-fluid" alt="Concept Ideation">
+                </section>
+
+                <!-- AI Architecture & Logic -->
+                <section class="drift-section" id="sec-architecture">
+                    <div class="drift-section-title">Architecture</div>
+                    <div class="drift-text-large">
+                        정치적 편향성을 정량적으로 분석하기 위해 Python 기반의 3단계 병렬 분석 파이프라인을 구축했습니다. 수집된 텍스트 데이터는 전처리를 거쳐 벡터화되며,
+                        세 가지 다른 분석 모델을 통과하여 최종 편향성 점수를 산출합니다.
+                    </div>
+
+                    <!-- Architecture Gallery -->
+                    <div class="gallery-wrapper">
+                        <button class="gallery-arrow arrow-left" onclick="scrollGallery('archGrid', -1)">
+                            <svg viewBox="0 0 50 50" fill="none">
+                                <path d="M30 10 L15 25 L30 40" stroke="white" stroke-width="1" />
+                            </svg>
+                        </button>
+
+                        <div class="gallery-custom-grid" id="archGrid">
+                            <img src="newpick/arch_1.png" class="gallery-box" alt="Data Flow"
+                                onerror="this.src='https://placehold.co/450x300/222/666?text=Data+Flow';">
+                            <img src="newpick/arch_2.png" class="gallery-box" alt="AI Algorithm"
+                                onerror="this.src='https://placehold.co/450x300/222/666?text=AI+Algorithm';">
+                            <img src="newpick/arch_3.png" class="gallery-box" alt="Bias Analysis System"
+                                onerror="this.src='https://placehold.co/450x300/222/666?text=Bias+System';">
+                        </div>
+
+                        <button class="gallery-arrow arrow-right" onclick="scrollGallery('archGrid', 1)">
+                            <svg viewBox="0 0 50 50" fill="none">
+                                <path d="M20 10 L35 25 L20 40" stroke="white" stroke-width="1" />
+                            </svg>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Design Overview (Gallery with Manual Scroll, No Loop) -->
+                <section class="drift-section" id="sec-design-overview">
+                    <div class="drift-section-title">Design Overview</div>
+                    <div class="drift-text-large">
+                        최종 디자인은 사용자의 편향성 분석 리포트와 중립 요약 뉴스 기능을 중심으로 구성됩니다. 직관적인 그래프와 리워드 시스템을 통해 뉴스를 '읽는 즐거움'과 '균형 잡힌
+                        시각'을 동시에 제공합니다.
+                    </div>
+
+                    <div class="gallery-wrapper">
+                        <!-- Reusing Gallery Arrows Styles -->
+                        <style>
+                            .gallery-arrow {
+                                position: absolute;
+                                top: 50%;
+                                transform: translateY(-50%);
+                                background: transparent;
+                                border: none;
+                                cursor: pointer;
+                                z-index: 10;
+                                opacity: 0.7;
+                                transition: opacity 0.3s;
+                                padding: 10px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                            }
+
+                            .gallery-arrow:hover {
+                                opacity: 1;
+                            }
+
+                            .gallery-arrow svg {
+                                width: 50px;
+                                height: 50px;
+                            }
+
+                            .arrow-left {
+                                left: -60px;
+                            }
+
+                            .arrow-right {
+                                right: -60px;
+                            }
+
+                            @media (max-width: 768px) {
+                                .gallery-arrow svg {
+                                    width: 30px;
+                                    height: 30px;
+                                }
+
+                                .gallery-arrow {
+                                    background: rgba(0, 0, 0, 0.3);
+                                    padding: 5px;
+                                }
+
+                                .arrow-left {
+                                    left: 0;
+                                }
+
+                                .arrow-right {
+                                    right: 0;
+                                }
+                            }
+                        </style>
+                        <button class="gallery-arrow arrow-left" onclick="scrollGallery('galleryGrid', -1)">
+                            <svg viewBox="0 0 50 50" fill="none">
+                                <path d="M30 10 L15 25 L30 40" stroke="white" stroke-width="1" />
+                            </svg>
+                        </button>
+
+                        <div class="gallery-custom-grid" id="galleryGrid">
+                            <img src="newpick/Overview1.png" class="gallery-box" alt="Design Overview 1"
+                                onerror="this.src='https://placehold.co/450x300/222/666?text=Design+1';">
+                            <img src="newpick/Overview2.png" class="gallery-box" alt="Design Overview 2"
+                                onerror="this.src='https://placehold.co/450x300/222/666?text=Design+2';">
+                            <img src="newpick/Overview3.png" class="gallery-box" alt="Design Overview 3"
+                                onerror="this.src='https://placehold.co/450x300/222/666?text=Design+3';">
+                            <img src="newpick/Overview4.png" class="gallery-box" alt="Design Overview 4"
+                                onerror="this.src='https://placehold.co/450x300/222/666?text=Design+4';">
+                        </div>
+
+                        <button class="gallery-arrow arrow-right" onclick="scrollGallery('galleryGrid', 1)">
+                            <svg viewBox="0 0 50 50" fill="none">
+                                <path d="M20 10 L35 25 L20 40" stroke="white" stroke-width="1" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Project Video -->
+                    <iframe class="project-video" style="aspect-ratio: 16/9;" src="https://www.youtube.com/embed/0TmkM2zlLSQ" title="Newpick Project Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </section>
+
+                <!-- Reflection -->
+                <section class="drift-section" id="sec-reflection">
+                    <div class="drift-section-title">Reflection</div>
+                    <div class="drift-text-large">
+                        본 프로젝트를 통해 AI 기술이 사회적 갈등 해결에 어떻게 기여할 수 있는지 고민했습니다. 특히 데이터 기반의 논리적 설계를 사용자 경험으로 풀어내는 과정에서 '설명 가능한
+                        AI(XAI)'와 '윤리적 디자인'의 중요성을 깊이 이해할 수 있었습니다.
+                    </div>
+                    <img src="newpick/뉴픽5.png" class="img-fluid" alt="Reflection"
+                        style="height: 600px; object-fit: cover; object-position: center;">
+                </section>
+
+                <!-- Technical Specifications (Updated Design - No Poster) -->
+                <section class="drift-section" id="sec-specs">
+                    <div class="drift-section-title">Technical Specifications</div>
+                    <div class="tech-specs-custom-grid">
+
+                        <div class="tech-specs-item">
+                            <div class="tech-label">Languages</div>
+                            <div class="tech-content">Python, Pandas, Selenium</div>
+                        </div>
+                        <div class="tech-specs-item">
+                            <div class="tech-label">AI/ML</div>
+                            <div class="tech-content">OpenAI API (GPT-4), KoBERT/SBERT (Sentence Embedding), XGBoost
+                                Classifier, K-Means Clustering</div>
+                        </div>
+                        <div class="tech-specs-item">
+                            <div class="tech-label">Data</div>
+                            <div class="tech-content">Korea Press Foundation (BigKinds) - News & Opinion Data
+                                (2022-2025)</div>
+                        </div>
+                    </div>
+                </section>
+
+
+
+                <!-- My Role -->
+                <section class="drift-section" id="sec-my-role">
+                    <div class="drift-section-title">My Role</div>
+                    <div class="drift-text-large">
+                        <strong>AI & Data Modeling.</strong> 뉴스 데이터 분석 알고리즘 및 AI 로직 설계를 담당했습니다.
+                    </div>
+                </section>
+
+                <!-- Credit Section -->
+                <section class="drift-section" id="sec-credits">
+                    <div class="drift-section-title">Credits</div>
+                    <div class="credit-custom-grid">
+                        <div class="credit-item">
+                            <div class="credit-role">Team Members</div>
+                            <div class="credit-names">Kyeongseok Lee, Junyoung Yang, Inhyuk Hwang</div>
+                        </div>
+                        <div class="credit-item">
+                            <div class="credit-role">Course</div>
+                            <div class="credit-names">Human-Centered AI and Design (2025 Spring Semester)</div>
+                        </div>
+                    </div>
+                </section>
+
+                <a href="index.html" class="back-link">← Back to Main</a>
+            </div>
+        </main>
+
+
+    </div>
+    <script>
+        function scrollGallery(elementId, direction) {
+            const gallery = document.getElementById(elementId);
+            if (gallery) {
+                // Scroll width + gap (20px) to ensure it jumps to the next item fully
+                const scrollAmount = gallery.clientWidth + 20;
+                gallery.scrollBy({
+                    left: direction * scrollAmount,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const galleries = document.querySelectorAll('.gallery-custom-grid');
+
+            galleries.forEach(gallery => {
+                const wrapper = gallery.closest('.gallery-wrapper');
+                if (!wrapper) return;
+
+                const leftArrow = wrapper.querySelector('.arrow-left');
+                const rightArrow = wrapper.querySelector('.arrow-right');
+
+                function updateArrows() {
+                    if (!leftArrow || !rightArrow) return;
+
+                    // Left Arrow
+                    if (gallery.scrollLeft <= 5) {
+                        leftArrow.style.opacity = '0.2';
+                        leftArrow.style.pointerEvents = 'none';
+                    } else {
+                        leftArrow.style.opacity = '1';
+                        leftArrow.style.pointerEvents = 'auto';
+                    }
+
+                    // Right Arrow
+                    // Allow a small tolerance (5px) for browser subpixel rendering differences
+                    if (gallery.scrollLeft + gallery.clientWidth >= gallery.scrollWidth - 5) {
+                        rightArrow.style.opacity = '0.2';
+                        rightArrow.style.pointerEvents = 'none';
+                    } else {
+                        rightArrow.style.opacity = '1';
+                        rightArrow.style.pointerEvents = 'auto';
+                    }
+                }
+
+                // Listen for scroll events
+                gallery.addEventListener('scroll', updateArrows);
+
+                // Update on load
+                updateArrows();
+
+                // Update on window resize (layout changes)
+                window.addEventListener('resize', updateArrows);
+            });
+
+            // Scroll Spy for Sidebar
+            const sections = document.querySelectorAll('.drift-section');
+            const navLinks = document.querySelectorAll('.page-nav a');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '-20% 0px -60% 0px', // Trigger when section is near top-center
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Remove active class from all links
+                        navLinks.forEach(link => link.classList.remove('active'));
+
+                        // Add active class to the corresponding link
+                        const id = entry.target.getAttribute('id');
+                        // Find link that has this id in its onclick attribute
+                        const activeLink = Array.from(navLinks).find(link =>
+                            link.getAttribute('onclick').includes(id)
+                        );
+
+                        if (activeLink) {
+                            activeLink.classList.add('active');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,319 @@
+:root {
+    --bg-color: #111111;
+    /* Dark background */
+    --text-color: #ffffff;
+    /* White text */
+    --accent-color: #999999;
+    /* Light gray accent */
+    --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --spacing-unit: 20px;
+    --grid-gap: 40px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.3s ease;
+}
+
+a:hover {
+    opacity: 0.6;
+}
+
+html {
+    overflow-y: scroll;
+    /* Always show scrollbar to prevent jump */
+}
+
+/* Layout Utilities */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-unit) var(--spacing-unit) var(--spacing-unit);
+    /* Remove top padding */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    height: 60px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--bg-color);
+    border-bottom: 1px solid #333;
+    width: 100%;
+}
+
+
+
+.logo {
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: -0.02em;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+}
+
+/* Accordion / Banner Layout */
+.work-grid {
+    flex-direction: column;
+    gap: 0;
+    /* No gap between banners */
+    margin-bottom: 120px;
+    max-width: 100%;
+    /* Full width */
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.work-item {
+    display: block;
+    cursor: pointer;
+    text-decoration: none;
+    height: 60px;
+    /* Thinner collapsed height */
+    position: relative;
+    overflow: hidden;
+    transition: height 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    border-radius: 0;
+    /* Sharp corners for full width */
+}
+
+/* Background Image Container */
+.work-thumbnail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    margin: 0;
+    /* Reset margin */
+    transition: all 0.5s ease;
+}
+
+.work-thumbnail::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    /* Dark overlay */
+    transition: background 0.5s ease;
+    z-index: 2;
+}
+
+.work-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: grayscale(100%);
+    /* Optional: Make it B&W initially for cleaner look */
+    transition: filter 0.5s ease, transform 0.6s ease;
+}
+
+/* Text Content */
+.work-info {
+    position: absolute;
+    /* Changed from relative to absolute */
+    bottom: 0;
+    /* Anchor to bottom */
+    left: 0;
+    width: 100%;
+    height: 60px;
+    /* Match collapsed height */
+    z-index: 3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Vertically center items within the 60px strip */
+    padding: 0 40px;
+    color: #ffffff;
+    pointer-events: none;
+    /* Allow clicks to pass through to the link/parent if needed, though parent is anchor */
+    transition: all 0.5s ease;
+}
+
+.work-info h3 {
+    font-size: 1.5rem;
+    /* Reduced from 1.8rem for better fit in 60px */
+    font-weight: 400;
+    margin: 0;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    line-height: 1;
+    /* Tighten line height */
+}
+
+.work-info p {
+    font-size: 0.9rem;
+    /* Reduced slighlty */
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+    font-weight: 300;
+}
+
+/* Hover Interaction */
+.work-item:hover {
+    height: 650px;
+    /* Increased height for better visibility */
+    opacity: 1 !important;
+    /* Prevent global a:hover opacity drop */
+}
+
+.work-item:hover .work-thumbnail::after {
+    opacity: 0 !important;
+    /* Force fade out */
+    background: transparent !important;
+}
+
+.work-item:hover .work-thumbnail img {
+    filter: none !important;
+    /* Force original colors */
+    transform: scale(1.02);
+}
+
+.work-item:hover .work-info h3 {
+    color: var(--hover-text-color) !important;
+    /* Use custom color on hover */
+    text-shadow: none;
+}
+
+.work-item:hover .work-info p {
+    color: var(--hover-text-color) !important;
+    /* Use custom color on hover */
+}
+
+/* Align text to top when expanding? Optional. 
+   Currently it stays centered or stretches. 
+   Let's keep it vertically centered for the banner feel, 
+   or move it to bottom left like a cover.*/
+
+
+/* Sections */
+section {
+    margin-bottom: 100px;
+    scroll-margin-top: 100px;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+    font-weight: 400;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #333;
+}
+
+/* About & CV - Refined */
+.about-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 80px;
+    align-items: start;
+    /* Ensure columns align at the top */
+}
+
+.about-image {
+    /* Removed sticky positioning */
+    height: fit-content;
+}
+
+.cv-section {
+    margin-bottom: 60px;
+    border-top: 1px solid #333;
+    padding-top: 40px;
+}
+
+.cv-section:first-child {
+    border-top: none;
+    padding-top: 0;
+}
+
+/* ... (cv-item, hover, etc can stay as is if they use vars) ... */
+.cv-item {
+    margin-bottom: 40px;
+    position: relative;
+    padding-left: 20px;
+    /* Space for a subtle indicator */
+    border-left: 2px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.cv-item:hover {
+    border-left-color: var(--text-color);
+}
+
+.cv-year {
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    margin-bottom: 8px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    font-family: var(--font-main);
+    /* Changed from monospace */
+}
+
+/* ... */
+
+
+
+@media (max-width: 768px) {
+    .work-grid {
+        grid-template-columns: 1fr;
+    }
+
+    header {
+        padding: 30px 0;
+    }
+
+    /* Mobile Interaction Tweaks */
+    .work-info p {
+        display: none;
+        /* Hide date/category on collapsed mobile */
+    }
+
+    .work-item:hover .work-info {
+        flex-direction: column;
+        /* Stack vertically on hover */
+        justify-content: center;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .work-item:hover .work-info p {
+        display: block;
+        font-size: 0.8rem;
+        opacity: 0.9;
+    }
+}

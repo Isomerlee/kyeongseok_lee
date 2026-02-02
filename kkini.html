@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KKINI | Kyeongseok Lee</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Reusing Drift/Hururuk Page Specific Styles */
+        .drift-container {
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .drift-content-wrapper {
+            padding-bottom: 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin: 30px auto;
+            font-size: 1rem;
+            color: #fff;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .drift-header-block {
+            margin-top: 50px;
+            margin-bottom: 50px;
+            text-align: left;
+        }
+
+        .drift-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #fff;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .drift-subtitle {
+            font-size: 1rem;
+            font-weight: 300;
+            color: #ccc;
+        }
+
+        .placeholder-gray {
+            background-color: #333;
+            width: 100%;
+            display: block;
+            border-radius: 4px;
+        }
+
+        .drift-section {
+            margin-top: 80px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .drift-section-title {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #fff;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 20px;
+            text-align: left;
+            width: 100%;
+        }
+
+        .drift-text-large {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #ddd;
+            line-height: 1.8;
+            width: 100%;
+            word-break: keep-all;
+            text-align: left;
+            margin-bottom: 40px;
+        }
+
+        .credit-custom-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: fit-content;
+            margin: 0 auto;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .credit-item {
+            display: flex;
+            align-items: flex-start;
+            width: 100%;
+            gap: 60px;
+        }
+
+        .credit-role {
+            font-size: 0.85rem;
+            font-weight: 400;
+            font-style: italic;
+            width: 180px;
+            color: #999;
+            flex-shrink: 0;
+        }
+
+        .credit-names {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.6;
+            margin-right: 80px;
+            color: #fff;
+        }
+
+        .gallery-wrapper {
+            position: relative;
+            width: 100%;
+            margin-bottom: 50px;
+        }
+
+        .gallery-custom-grid {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+        }
+
+        .gallery-custom-grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        .gallery-box {
+            background: transparent !important;
+            min-width: 100%;
+            width: 100%;
+            height: auto;
+            flex-shrink: 0;
+            object-fit: contain;
+            scroll-snap-align: start;
+        }
+
+        .gallery-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 10;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-arrow:hover {
+            opacity: 1;
+        }
+
+        .gallery-arrow svg {
+            width: 50px;
+            height: 50px;
+        }
+
+        .arrow-left {
+            left: -60px;
+        }
+
+        .arrow-right {
+            right: -60px;
+        }
+
+        @media (max-width: 1400px) {
+
+            .drift-header-block,
+            .drift-section {
+                padding-left: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .drift-header-block,
+            .drift-section {
+                padding-left: 20px;
+                padding-right: 20px;
+                margin-top: 60px;
+            }
+
+            .drift-title {
+                font-size: 2rem;
+            }
+
+            .drift-text-large {
+                font-size: 0.95rem;
+            }
+
+            .credit-item {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .credit-names {
+                margin-right: 0;
+            }
+
+            .credit-role {
+                width: 100%;
+            }
+
+            .credit-custom-grid {
+                width: 100%;
+            }
+
+            .gallery-arrow svg {
+                width: 30px;
+                height: 30px;
+            }
+
+            .gallery-arrow {
+                background: rgba(0, 0, 0, 0.3);
+                padding: 5px;
+            }
+
+            .arrow-left {
+                left: 0;
+            }
+
+            .arrow-right {
+                right: 0;
+            }
+        }
+
+        /* Side Navigation (Right) */
+        .page-nav {
+            position: fixed;
+            top: 50%;
+            right: 40px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .page-nav a {
+            text-decoration: none;
+            color: #555;
+            font-size: 0.6rem;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            text-align: right;
+            cursor: pointer;
+        }
+
+        .page-nav a:hover {
+            color: #fff;
+            transform: translateX(-5px);
+        }
+
+        .page-nav a.active {
+            color: #aaa;
+            transform: translateX(-3px);
+        }
+
+        /* Project Info (Left) */
+        .project-info-left {
+            position: fixed;
+            top: 50%;
+            left: 40px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 1000;
+            text-align: left;
+        }
+
+        .info-group {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .info-label {
+            font-size: 0.6rem;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .info-value {
+            font-size: 0.7rem;
+            color: #aaa;
+            font-weight: 500;
+        }
+
+        @media (max-width: 1600px) {
+
+            .page-nav,
+            .project-info-left {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="logo">Kyeongseok Lee</a>
+        <nav>
+            <ul>
+                <li><a href="index.html" style="opacity: 1; border-bottom: 1px solid #fff;">Work</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Left Project Info -->
+    <div class="project-info-left">
+        <div class="info-group">
+            <span class="info-value" style="font-weight: 700; color: #ccc; margin-bottom: 5px;">KKINI</span>
+        </div>
+        <div class="info-group">
+            <span class="info-label">Category</span>
+            <span class="info-value">UNIST Cafeteria Feedback System</span>
+        </div>
+        <div class="info-group">
+            <span class="info-label">Date</span>
+            <span class="info-value">Autumn 2025</span>
+        </div>
+        <div class="info-group">
+            <span class="info-label">Type</span>
+            <span class="info-value">Course Project</span>
+        </div>
+    </div>
+
+    <!-- Side Navigation -->
+    <nav class="page-nav">
+        <a onclick="document.getElementById('sec-overview').scrollIntoView({behavior: 'smooth'})">Project Overview</a>
+        <a onclick="document.getElementById('sec-problem').scrollIntoView({behavior: 'smooth'})">Research & Problem
+            Context</a>
+        <a onclick="document.getElementById('sec-user-research').scrollIntoView({behavior: 'smooth'})">User Research</a>
+        <a onclick="document.getElementById('sec-strategy').scrollIntoView({behavior: 'smooth'})">Design Strategy</a>
+        <a onclick="document.getElementById('sec-ideation').scrollIntoView({behavior: 'smooth'})">MVP Concept
+            Ideation</a>
+        <a onclick="document.getElementById('sec-user-research-2').scrollIntoView({behavior: 'smooth'})">User Study</a>
+        <a onclick="document.getElementById('sec-design-overview').scrollIntoView({behavior: 'smooth'})">Design
+            Overview</a>
+        <a onclick="document.getElementById('sec-reflection').scrollIntoView({behavior: 'smooth'})">Reflection</a>
+        <a onclick="document.getElementById('sec-my-role').scrollIntoView({behavior: 'smooth'})">My Role</a>
+
+        <a onclick="document.getElementById('sec-credits').scrollIntoView({behavior: 'smooth'})">Credits</a>
+    </nav>
+
+
+    <main class="drift-container">
+        <div class="drift-content-wrapper">
+            <!-- Header Block -->
+            <div class="drift-header-block">
+                <h1 class="drift-title">KKINI</h1>
+                <p class="drift-subtitle">UNIST Cafeteria Feedback System | Autumn 2025 | Course Project</p>
+            </div>
+
+            <!-- Main Hero -->
+            <img src="kkini/표지.png" class="drift-hero"
+                style="height: 650px; margin-bottom: 120px; width: 100%; object-fit: cover; object-position: center; display: block;"
+                alt="KKINI Main Cover"
+                onerror="this.style.display='none'; document.getElementById('hero-placeholder').style.display='block';">
+            <div id="hero-placeholder" class="drift-hero placeholder-gray"
+                style="height: 650px; margin-bottom: 120px; display: none;"></div>
+
+
+            <!-- Project Overview -->
+            <section class="drift-section" id="sec-overview">
+                <div class="drift-section-title">Project Overview</div>
+                <div class="drift-text-large">
+                    KKINI는 유니스트 학생식당의 소통 부재를 해결하기 위해 고안된 온-오프라인 통합 피드백 서비스입니다. '식사 후 물 마시는 20초'라는 틈새 시간을 활용한
+                    게이미피케이션(Tetris Block) 피드백 시스템과, 영양사의 피드백 반영 현황을 공유하는 'Weekly Reflection'을 통해, 학생과 식당 간의 단절된 관계를
+                    긍정적인 선순환 구조로 변화시킵니다.
+                </div>
+            </section>
+
+            <!-- Research & Problem Context (3 Images) -->
+            <section class="drift-section" id="sec-problem">
+                <div class="drift-section-title">Research & Problem Context</div>
+                <div class="drift-text-large">
+                    UNIST는 도심과 떨어진 지리적 특성상 학생들의 캠퍼스 내부 식당 의존도가 매우 높습니다. 일 평균 1,500명 이상의 학생이 이용하지만, 제한된 메뉴 선택권과 반복되는
+                    식단으로 인해 식당에 대한 불만은 지속적으로 누적되고 있었습니다. 기존의 소통 창구인 '고객의 소리함'은 접근성이 낮고 형식적으로 운영되어, 학생들의 실질적인 불만은
+                    해소되지 못한 채 식당에 대한 부정적 인식만 강화되는 악순환이 반복되고 있었습니다.
+                </div>
+                <!-- Gallery Placeholder for 3 Images -->
+                <div class="gallery-wrapper">
+                    <button class="gallery-arrow arrow-left" onclick="scrollGallery('problemGrid', -1)">
+                        <svg viewBox="0 0 50 50" fill="none">
+                            <path d="M30 10 L15 25 L30 40" stroke="white" stroke-width="1" />
+                        </svg>
+                    </button>
+                    <div class="gallery-custom-grid" id="problemGrid">
+                        <img src="kkini/Research1.png" class="gallery-box" alt="Research 1"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=Research+1'">
+                        <img src="kkini/Research2.png" class="gallery-box" alt="Research 2"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=Research+2'">
+                        <img src="kkini/Research3.png" class="gallery-box" alt="Research 3"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=Research+3'">
+                    </div>
+                    <button class="gallery-arrow arrow-right" onclick="scrollGallery('problemGrid', 1)">
+                        <svg viewBox="0 0 50 50" fill="none">
+                            <path d="M20 10 L35 25 L20 40" stroke="white" stroke-width="1" />
+                        </svg>
+                    </button>
+                </div>
+            </section>
+
+            <!-- User Research (5 Images) -->
+            <section class="drift-section" id="sec-user-research">
+                <div class="drift-section-title">User Research</div>
+                <div class="drift-text-large">
+                    우리는 영양사와 학생 양측을 대상으로 심층 인터뷰와 현장 관찰을 진행했습니다. 영양사들은 "구체적이지 않은 비난 위주의 피드백"에 피로감을 느끼고 있었고, 학생들은 "의견을
+                    내도 바뀌지 않는다"는 무력감을 가지고 있었습니다. 현장 관찰 결과, 학생들은 식사 직후 식판을 반납하고 물을 마시는 짧은 순간에만 여유를 가졌습니다. 이를 통해 우리는
+                    복잡한 절차 없이 즉각적으로 의견을 전달하고, 그 결과가 빠르게 시각화되는 '직관적이고 신속한 커뮤니케이션 채널'이 필요하다는 결론을 도출했습니다.
+                </div>
+                <!-- Gallery Placeholder for 5 Images -->
+                <div class="gallery-wrapper">
+                    <button class="gallery-arrow arrow-left" onclick="scrollGallery('userResearchGrid', -1)">
+                        <svg viewBox="0 0 50 50" fill="none">
+                            <path d="M30 10 L15 25 L30 40" stroke="white" stroke-width="1" />
+                        </svg>
+                    </button>
+                    <div class="gallery-custom-grid" id="userResearchGrid">
+                        <img src="kkini/user_research1.png" class="gallery-box" alt="User Research 1"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=UserResearch+1'">
+                        <img src="kkini/user_research2.png" class="gallery-box" alt="User Research 2"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=UserResearch+2'">
+                        <img src="kkini/user_research3.png" class="gallery-box" alt="User Research 3"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=UserResearch+3'">
+                        <img src="kkini/user_research4.png" class="gallery-box" alt="User Research 4"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=UserResearch+4'">
+                        <img src="kkini/user_research5.png" class="gallery-box" alt="User Research 5"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=UserResearch+5'">
+                    </div>
+                    <button class="gallery-arrow arrow-right" onclick="scrollGallery('userResearchGrid', 1)">
+                        <svg viewBox="0 0 50 50" fill="none">
+                            <path d="M20 10 L35 25 L20 40" stroke="white" stroke-width="1" />
+                        </svg>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Design Strategy (9 Images) -->
+            <section class="drift-section" id="sec-strategy">
+                <div class="drift-section-title">Design Strategy</div>
+                <div class="drift-text-large">
+                    우리는 발견된 페인포인트를 해결하기 위해 '식사의 흐름을 끊지 않는 자연스러운 개입'을 전략으로 세웠습니다. 식판 반납 동선에 피드백 접점을 배치하여 참여 장벽을
+                    낮추고(Seamless), 블록을 쌓는 행위로 피드백을 놀이처럼 유도하며(Gamification), 영양사의 답변을 게시하여 소통의 효능감을 제공하는(Feedback
+                    Loop) 솔루션을 설계했습니다.
+                </div>
+                <!-- Gallery Placeholder for 9 Images -->
+                <div class="gallery-wrapper">
+                    <button class="gallery-arrow arrow-left" onclick="scrollGallery('strategyGrid', -1)">
+                        <svg viewBox="0 0 50 50" fill="none">
+                            <path d="M30 10 L15 25 L30 40" stroke="white" stroke-width="1" />
+                        </svg>
+                    </button>
+                    <div class="gallery-custom-grid" id="strategyGrid">
+                        <img src="kkini/Strategy1.png" class="gallery-box" alt="Strategy 1"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=Strategy+1'">
+                        <img src="kkini/Strategy2.png" class="gallery-box" alt="Strategy 2"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=Strategy+2'">
+                        <img src="kkini/Strategy3.png" class="gallery-box" alt="Strategy 3"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=Strategy+3'">
+                        <img src="kkini/Strategy4.png" class="gallery-box" alt="Strategy 4"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=Strategy+4'">
+                        <img src="kkini/Strategy5.png" class="gallery-box" alt="Strategy 5"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=Strategy+5'">
+                        <img src="kkini/Strategy6.png" class="gallery-box" alt="Strategy 6"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=Strategy+6'">
+                        <img src="kkini/Strategy7.png" class="gallery-box" alt="Strategy 7"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=Strategy+7'">
+                        <img src="kkini/Strategy8.png" class="gallery-box" alt="Strategy 8"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=Strategy+8'">
+                        <img src="kkini/Strategy9.png" class="gallery-box" alt="Strategy 9"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=Strategy+9'">
+                    </div>
+                    <button class="gallery-arrow arrow-right" onclick="scrollGallery('strategyGrid', 1)">
+                        <svg viewBox="0 0 50 50" fill="none">
+                            <path d="M20 10 L35 25 L20 40" stroke="white" stroke-width="1" />
+                        </svg>
+                    </button>
+                </div>
+            </section>
+
+            <!-- MVP Concept Ideation (9 Images) -->
+            <section class="drift-section" id="sec-ideation">
+                <div class="drift-section-title">MVP Concept Ideation</div>
+                <div class="drift-text-large">
+                    초기 아이디어를 검증하기 위해 실제 식당 출구에 '스티커 투표 보드'를 설치하는 MVP(Minimum Viable Product) 테스트를 진행했습니다. 학생들이 식사 후
+                    지나가는 길목에 물리적인 피드백 보드를 배치하고, 그들의 반응을 관찰했습니다. 이 과정에서 우리는 학생들이 직관적인 시각적 도구에 높은 반응을 보인다는 점을 확인했으며,
+                    수집된 데이터를 바탕으로 디지털 키오스크와 모바일 앱이 연동되는 인터랙티브 피드백 시스템으로 아이디어를 고도화했습니다.
+                </div>
+                <!-- Gallery Placeholder for 9 Images -->
+                <div class="gallery-wrapper">
+                    <button class="gallery-arrow arrow-left" onclick="scrollGallery('ideationGrid', -1)">
+                        <svg viewBox="0 0 50 50" fill="none">
+                            <path d="M30 10 L15 25 L30 40" stroke="white" stroke-width="1" />
+                        </svg>
+                    </button>
+                    <div class="gallery-custom-grid" id="ideationGrid">
+                        <img src="kkini/Ideation1.png" class="gallery-box" alt="Ideation 1"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=Ideation+1'">
+                        <img src="kkini/Ideation2.png" class="gallery-box" alt="Ideation 2"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=Ideation+2'">
+                        <img src="kkini/Ideation3.png" class="gallery-box" alt="Ideation 3"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=Ideation+3'">
+                        <img src="kkini/Ideation4.png" class="gallery-box" alt="Ideation 4"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=Ideation+4'">
+                        <img src="kkini/Ideation5.png" class="gallery-box" alt="Ideation 5"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=Ideation+5'">
+                        <img src="kkini/Ideation6.png" class="gallery-box" alt="Ideation 6"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=Ideation+6'">
+                        <img src="kkini/Ideation7.png" class="gallery-box" alt="Ideation 7"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=Ideation+7'">
+                        <img src="kkini/Ideation8.png" class="gallery-box" alt="Ideation 8"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=Ideation+8'">
+                        <img src="kkini/Ideation9.png" class="gallery-box" alt="Ideation 9"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=Ideation+9'">
+                    </div>
+                    <button class="gallery-arrow arrow-right" onclick="scrollGallery('ideationGrid', 1)">
+                        <svg viewBox="0 0 50 50" fill="none">
+                            <path d="M20 10 L35 25 L20 40" stroke="white" stroke-width="1" />
+                        </svg>
+                    </button>
+                </div>
+            </section>
+
+            <!-- User Research 2 (5 Images) -->
+            <section class="drift-section" id="sec-user-research-2">
+                <div class="drift-section-title">User Study</div>
+                <div class="drift-text-large">
+                    4일간의 MVP 테스트 기간 동안 총 1,482명의 학생이 참여하여 일 평균 370건 이상의 피드백 데이터를 확보했습니다. 이는 기존 '고객의 소리함' 대비 20배 이상
+                    높은 참여율입니다. 정량적 데이터뿐만 아니라, "오늘 반찬이 짜다", "국물이 따뜻해서 좋았다" 등 구체적인 품질 개선을 위한 정성적 데이터가 다수 수집되어 시스템의
+                    실효성을 입증했습니다.
+                </div>
+                <!-- Gallery Placeholder for 5 Images -->
+                <div class="gallery-wrapper">
+                    <button class="gallery-arrow arrow-left" onclick="scrollGallery('research2Grid', -1)">
+                        <svg viewBox="0 0 50 50" fill="none">
+                            <path d="M30 10 L15 25 L30 40" stroke="white" stroke-width="1" />
+                        </svg>
+                    </button>
+                    <div class="gallery-custom-grid" id="research2Grid">
+                        <img src="kkini/user_study1.png" class="gallery-box" alt="User Study 1"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=UserStudy+1'">
+                        <img src="kkini/user_study2.png" class="gallery-box" alt="User Study 2"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=UserStudy+2'">
+                        <img src="kkini/user_study3.png" class="gallery-box" alt="User Study 3"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=UserStudy+3'">
+                        <img src="kkini/user_study4.png" class="gallery-box" alt="User Study 4"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=UserStudy+4'">
+                    </div>
+                    <button class="gallery-arrow arrow-right" onclick="scrollGallery('research2Grid', 1)">
+                        <svg viewBox="0 0 50 50" fill="none">
+                            <path d="M20 10 L35 25 L20 40" stroke="white" stroke-width="1" />
+                        </svg>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Design Overview (6 Images) -->
+            <section class="drift-section" id="sec-design-overview">
+                <div class="drift-section-title">Design Overview</div>
+                <div class="drift-text-large">
+                    최종 디자인은 오프라인 키오스크(Drop Your Block)와 모바일 애플리케이션으로 구성됩니다. 키오스크에서는 테트리스 블록을 활용해 직관적으로 만족도를 표시하고,
+                    모바일 앱에서는 주간 식단 확인 및 구체적인 코멘트를 남길 수 있습니다. 또한 'Weekly Reflection Board' 기능을 통해 영양사가 학생들의 피드백을 어떻게
+                    반영했는지 시각적으로 공유하여 신뢰 기반의 식문화 커뮤니티를 형성합니다.
+                </div>
+                <!-- Gallery Placeholder for 6 Images -->
+                <div class="gallery-wrapper">
+                    <button class="gallery-arrow arrow-left" onclick="scrollGallery('designOverviewGrid', -1)">
+                        <svg viewBox="0 0 50 50" fill="none">
+                            <path d="M30 10 L15 25 L30 40" stroke="white" stroke-width="1" />
+                        </svg>
+                    </button>
+                    <div class="gallery-custom-grid" id="designOverviewGrid">
+                        <img src="kkini/design1.png" class="gallery-box" alt="Design 1"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=Design+1'">
+                        <img src="kkini/design2.png" class="gallery-box" alt="Design 2"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=Design+2'">
+                        <img src="kkini/design3.png" class="gallery-box" alt="Design 3"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=Design+3'">
+                        <img src="kkini/design4.png" class="gallery-box" alt="Design 4"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=Design+4'">
+                        <img src="kkini/design5.png" class="gallery-box" alt="Design 5"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=Design+5'">
+                        <img src="kkini/design6.png" class="gallery-box" alt="Design 6"
+                            onerror="this.src='https://placehold.co/800x600/222/666?text=Design+6'">
+                    </div>
+                    <button class="gallery-arrow arrow-right" onclick="scrollGallery('designOverviewGrid', 1)">
+                        <svg viewBox="0 0 50 50" fill="none">
+                            <path d="M20 10 L35 25 L20 40" stroke="white" stroke-width="1" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Figma Button -->
+                <div style="width: 100%; display: flex; justify-content: flex-start; margin-top: 30px;">
+                    <a href="https://www.figma.com/proto/..." target="_blank" class="btn-figma">View Figma Prototype
+                        ↗</a>
+                </div>
+            </section>
+
+            <!-- Reflection (1 Image) -->
+            <section class="drift-section" id="sec-reflection">
+                <div class="drift-section-title">Reflection</div>
+                <img src="kkini/reflection.png" class="img-fluid" alt="Reflection"
+                    style="width: 100%; height: auto; object-fit: contain; display: block;"
+                    onerror="this.src='https://placehold.co/1200x600/222/666?text=Reflection';">
+            </section>
+
+
+
+
+
+            <!-- My Role -->
+            <section class="drift-section" id="sec-my-role">
+                <div class="drift-section-title">My Role</div>
+                <div class="drift-text-large">
+                    <strong>Team Leader & PM.</strong> 프로젝트의 팀 리더로서 서비스 기획부터 MVP 테스트, 최종 디자인까지 전 과정을 주도했습니다.
+                </div>
+            </section>
+
+            <!-- Team Credits -->
+            <section class="drift-section" id="sec-credits">
+                <div class="drift-section-title">Credits</div>
+                <div class="credit-custom-grid">
+                    <!-- Placeholders for Team Members, using generic roles or asking user later. 
+                              For now, I'll copy Newpick structure but blank out names or use '...' to prompt user edit. -->
+                    <div class="credit-item">
+                        <div class="credit-role">Team Members</div>
+                        <div class="credit-names">Kyeongseok Lee, Junyoung Yang, Suae Lee, Alina Alimova</div>
+                    </div>
+                    <div class="credit-item">
+                        <div class="credit-role">Course</div>
+                        <div class="credit-names">Service Design Fundamental (2025 Autumn Semester)</div>
+                    </div>
+                </div>
+            </section>
+
+            <a href="index.html" class="back-link">← Back to Main</a>
+        </div>
+    </main>
+
+    <script>
+        function scrollGallery(elementId, direction) {
+            const gallery = document.getElementById(elementId);
+            if (gallery) {
+                // Scroll width + gap (20px)
+                const scrollAmount = gallery.clientWidth + 20;
+                gallery.scrollBy({
+                    left: direction * scrollAmount,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Initialize Arrow States and Listeners for ALL galleries
+        document.addEventListener('DOMContentLoaded', () => {
+            const galleries = document.querySelectorAll('.gallery-custom-grid');
+
+            galleries.forEach(gallery => {
+                const wrapper = gallery.closest('.gallery-wrapper');
+                if (!wrapper) return;
+
+                const leftArrow = wrapper.querySelector('.arrow-left');
+                const rightArrow = wrapper.querySelector('.arrow-right');
+
+                function updateArrows() {
+                    if (!leftArrow || !rightArrow) return;
+                    // Left Arrow
+                    if (gallery.scrollLeft <= 5) {
+                        leftArrow.style.opacity = '0.2';
+                        leftArrow.style.pointerEvents = 'none';
+                    } else {
+                        leftArrow.style.opacity = '1';
+                        leftArrow.style.pointerEvents = 'auto';
+                    }
+                    // Right Arrow
+                    // Allow a small tolerance (5px)
+                    if (gallery.scrollLeft + gallery.clientWidth >= gallery.scrollWidth - 5) {
+                        rightArrow.style.opacity = '0.2';
+                        rightArrow.style.pointerEvents = 'none';
+                    } else {
+                        rightArrow.style.opacity = '1';
+                        rightArrow.style.pointerEvents = 'auto';
+                    }
+                }
+
+                gallery.addEventListener('scroll', updateArrows);
+                updateArrows();
+                window.addEventListener('resize', updateArrows);
+            });
+        });
+
+        // Scroll Spy for Sidebar
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.drift-section');
+            const navLinks = document.querySelectorAll('.page-nav a');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '-20% 0px -60% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => link.classList.remove('active'));
+                        const id = entry.target.getAttribute('id');
+                        const activeLink = Array.from(navLinks).find(link =>
+                            link.getAttribute('onclick').includes(id)
+                        );
+                        if (activeLink) activeLink.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oum | Kyeongseok Lee</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Reusing Drift Page Specific Styles */
+
+
+        .drift-container {
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .drift-content-wrapper {
+            padding-bottom: 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin: 30px auto;
+            font-size: 1rem;
+            color: #fff;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .drift-header-block {
+            margin-top: 50px;
+            margin-bottom: 50px;
+            text-align: left;
+        }
+
+        .drift-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #fff;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .drift-subtitle {
+            font-size: 1rem;
+            font-weight: 300;
+            color: #ccc;
+        }
+
+        .placeholder-gray {
+            background-color: #333;
+            width: 100%;
+            display: block;
+            border-radius: 4px;
+        }
+
+        .drift-section {
+            margin-top: 80px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .drift-section-title {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #fff;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 20px;
+            text-align: left;
+            width: 100%;
+        }
+
+        .drift-text-large {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #ddd;
+            line-height: 1.8;
+            width: 100%;
+            word-break: keep-all;
+            text-align: left;
+        }
+
+        .credit-custom-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            width: fit-content;
+            margin: 0 auto;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .credit-item {
+            display: flex;
+            align-items: flex-start;
+            width: 100%;
+            gap: 60px;
+        }
+
+        .credit-role {
+            font-size: 0.85rem;
+            font-weight: 400;
+            font-style: italic;
+            width: 150px;
+            color: #999;
+            flex-shrink: 0;
+        }
+
+        .credit-names {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.6;
+            margin-right: 80px;
+            color: #fff;
+        }
+
+        .credit-people {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #ddd;
+        }
+
+        .gallery-custom-grid {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .gallery-custom-grid {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+        }
+
+        .gallery-custom-grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        .gallery-box {
+            background: transparent;
+            min-width: 100%;
+            width: 100%;
+            height: auto;
+            flex-shrink: 0;
+            object-fit: contain;
+            scroll-snap-align: start;
+        }
+
+        @media (max-width: 1400px) {
+
+            .drift-header-block,
+            .drift-section {
+                padding-left: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .drift-header-block,
+            .drift-section {
+                padding-left: 20px;
+                padding-right: 20px;
+                margin-top: 60px;
+            }
+
+            .drift-title {
+                font-size: 2rem;
+            }
+
+            .credit-item {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .credit-names {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (max-width: 1600px) {
+
+            .page-nav,
+            .project-info-left {
+                display: none;
+            }
+        }
+
+        /* Side Navigation (Right) */
+        .page-nav {
+            position: fixed;
+            top: 50%;
+            right: 40px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .page-nav a {
+            text-decoration: none;
+            color: #555;
+            font-size: 0.6rem;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            text-align: right;
+            cursor: pointer;
+        }
+
+        .page-nav a:hover {
+            color: #fff;
+            transform: translateX(-5px);
+        }
+
+        .page-nav a.active {
+            color: #aaa;
+            transform: translateX(-3px);
+        }
+
+        /* Project Info (Left) */
+        .project-info-left {
+            position: fixed;
+            top: 50%;
+            left: 40px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 1000;
+            text-align: left;
+        }
+
+        .info-group {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .info-label {
+            font-size: 0.6rem;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .info-value {
+            font-size: 0.7rem;
+            color: #aaa;
+            font-weight: 500;
+        }
+
+        /* Gallery Arrow Styles (Restored) */
+        .gallery-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 10;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-arrow:hover {
+            opacity: 1;
+        }
+
+        .gallery-arrow svg {
+            width: 50px;
+            height: 50px;
+        }
+
+        .arrow-left {
+            left: -60px;
+        }
+
+        .arrow-right {
+            right: -60px;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-arrow svg {
+                width: 30px;
+                height: 30px;
+            }
+
+            .gallery-arrow {
+                background: rgba(0, 0, 0, 0.3);
+                padding: 5px;
+                opacity: 1;
+            }
+
+            .arrow-left {
+                left: 0;
+            }
+
+            .arrow-right {
+                right: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="logo">Kyeongseok Lee</a>
+        <nav>
+            <ul>
+                <li><a href="index.html" style="opacity: 1; border-bottom: 1px solid #fff;">Work</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    </header>
+
+    <!-- Left Project Info -->
+    <div class="project-info-left">
+        <div class="info-group">
+            <span class="info-value" style="font-weight: 700; color: #ccc; margin-bottom: 5px;">Oum</span>
+        </div>
+        <div class="info-group">
+            <span class="info-label">Category</span>
+            <span class="info-value">Modernization of Gayageum</span>
+        </div>
+        <div class="info-group">
+            <span class="info-label">Date</span>
+            <span class="info-value">Spring 2025</span>
+        </div>
+        <div class="info-group">
+            <span class="info-label">Type</span>
+            <span class="info-value">Product Design Studio</span>
+        </div>
+    </div>
+
+    <!-- Side Navigation -->
+    <nav class="page-nav">
+        <a onclick="document.getElementById('sec-overview').scrollIntoView({behavior: 'smooth'})">Project Overview</a>
+        <a onclick="document.getElementById('sec-desk-research').scrollIntoView({behavior: 'smooth'})">Desk Research</a>
+        <a onclick="document.getElementById('sec-user-research').scrollIntoView({behavior: 'smooth'})">User Research</a>
+        <a onclick="document.getElementById('sec-branding').scrollIntoView({behavior: 'smooth'})">Branding</a>
+        <a onclick="document.getElementById('sec-yeul').scrollIntoView({behavior: 'smooth'})">Yeul : Electronic
+            Gayageum</a>
+        <a onclick="document.getElementById('sec-zyn').scrollIntoView({behavior: 'smooth'})">ZYN : MIDI Controller</a>
+        <a onclick="document.getElementById('sec-my-role').scrollIntoView({behavior: 'smooth'})">My Role</a>
+
+        <a onclick="document.getElementById('sec-credits').scrollIntoView({behavior: 'smooth'})">Credits</a>
+    </nav>
+    <div class="container" style="max-width: 100%; margin: 0; padding: 0;">
+        <main class="drift-container">
+            <div class="drift-content-wrapper">
+                <!-- Header Block -->
+                <div class="drift-header-block">
+                    <h1 class="drift-title">Oum</h1>
+                    <p class="drift-subtitle">Modernization of Gayageum | Spring 2025 | Course Project</p>
+                </div>
+
+                <!-- Hero -->
+                <img src="oum/표지.png" class="drift-hero"
+                    style="height: 650px; margin-bottom: 120px; width: 100%; object-fit: cover; object-position: center; display: block;"
+                    alt="Oum Main" onerror="this.src='https://placehold.co/1200x650/333/666?text=Oum+Hero'">
+
+                <!-- Project Overview -->
+                <section class="drift-section" id="sec-overview">
+                    <div class="drift-section-title">Project Overview</div>
+                    <div class="drift-text-large">
+                        <strong>Oum(오음)</strong>은 한국 전통 악기의 미학을 디지털 기술로 번역하는 프로젝트입니다. 가야금의 고유한 연주 기법인 '농현(弄絃)'을 현대적인
+                        사운드 메이킹 환경으로 가져오기 위해, 전통의 원형을 계승한 전자 가야금 <strong>'Yeul(율)'</strong>과 이를 프로듀서를 위한 MIDI 컨트롤러로 재해석한
+                        <strong>'ZYN(진)'</strong>, 그리고 이 두 가지 라인업을 아우르는 통합 브랜드 <strong>'Oum(오음)'</strong>을 제안합니다.
+                    </div>
+                    <div class="gallery-wrapper" style="position: relative; width: 100%; margin-top: 50px;">
+                        <button class="gallery-arrow arrow-left" onclick="scrollGallery('overviewGrid', -1)">
+                            <svg viewBox="0 0 50 50" fill="none">
+                                <path d="M30 10 L15 25 L30 40" stroke="white" stroke-width="1" />
+                            </svg>
+                        </button>
+                        <div class="gallery-custom-grid" id="overviewGrid"
+                            style="width: 100%; overflow-x: auto; display: flex; gap: 20px; padding-bottom: 20px;">
+                            <img src="oum/overview.png" class="gallery-box" alt="Overview"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=Overview'">
+                        </div>
+                        <button class="gallery-arrow arrow-right" onclick="scrollGallery('overviewGrid', 1)">
+                            <svg viewBox="0 0 50 50" fill="none">
+                                <path d="M20 10 L35 25 L20 40" stroke="white" stroke-width="1" />
+                            </svg>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Desk Research & Problem Context -->
+                <section class="drift-section" id="sec-desk-research">
+                    <div class="drift-section-title">Desk Research & Problem Context</div>
+                    <div class="drift-text-large">
+                        가야금은 단순한 타현(Plucking)을 넘어, 줄을 누르고 흔드는 미세한 움직임(농현)을 통해 감정의 깊이를 표현하는 악기입니다. 하지만 기존의 디지털 악기 시장은
+                        건반이나 패드 같은 '직선적(Rectilinear)' 인터페이스가 주류를 이루고 있어, 국악 특유의 비선형적이고 유기적인 떨림을 담아내는 데 한계가 있었습니다. 우리는 이
+                        '잃어버린 뉘앙스(Lost Nuance)'를 디지털 신호로 변환하여 창작의 영역을 확장하고자 했습니다.
+                    </div>
+                    <div class="gallery-wrapper" style="position: relative; width: 100%; margin-top: 50px;">
+                        <button class="gallery-arrow arrow-left" onclick="scrollGallery('deskResearchGrid', -1)">
+                            <svg viewBox="0 0 50 50" fill="none">
+                                <path d="M30 10 L15 25 L30 40" stroke="white" stroke-width="1" />
+                            </svg>
+                        </button>
+                        <div class="gallery-custom-grid" id="deskResearchGrid"
+                            style="width: 100%; overflow-x: auto; display: flex; gap: 20px; padding-bottom: 20px;">
+                            <img src="oum/deskresearch1.png" class="gallery-box" alt="Desk Research 1"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=Desk+Research+1'">
+                            <img src="oum/deskresearch2.png" class="gallery-box" alt="Desk Research 2"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=Desk+Research+2'">
+                            <img src="oum/deskresearch3.png" class="gallery-box" alt="Desk Research 3"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=Desk+Research+3'">
+                            <img src="oum/deskresearch4.png" class="gallery-box" alt="Desk Research 4"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=Desk+Research+4'">
+                        </div>
+                        <button class="gallery-arrow arrow-right" onclick="scrollGallery('deskResearchGrid', 1)">
+                            <svg viewBox="0 0 50 50" fill="none">
+                                <path d="M20 10 L35 25 L20 40" stroke="white" stroke-width="1" />
+                            </svg>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- User Research -->
+                <section class="drift-section" id="sec-user-research">
+                    <div class="drift-section-title">User Research</div>
+                    <div class="drift-text-large">
+                        우리는 국악 연주자와 전자음악 프로듀서 두 그룹을 대상으로 심층 인터뷰를 진행했습니다. 연주자들은 "익숙한 연주 감각(Haptic)을 유지하면서도 전자음악의 확장성을
+                        원한다"고 했고, 프로듀서들은 "마우스 오토메이션이 아닌, 손끝의 감각으로 국악의 벤딩(Bending) 사운드를 직관적으로 제어하고 싶다"는 니즈를 보였습니다. 이를 통해
+                        우리는 <strong>'보존(Preservation)'</strong>과 <strong>'재해석(Reinterpretation)'</strong>이라는 두 가지 접근 방식이
+                        모두 필요함을 도출했습니다.
+                    </div>
+                    <div class="gallery-wrapper" style="position: relative; width: 100%; margin-top: 50px;">
+                        <button class="gallery-arrow arrow-left" onclick="scrollGallery('userResearchGrid', -1)">
+                            <svg viewBox="0 0 50 50" fill="none">
+                                <path d="M30 10 L15 25 L30 40" stroke="white" stroke-width="1" />
+                            </svg>
+                        </button>
+                        <div class="gallery-custom-grid" id="userResearchGrid"
+                            style="width: 100%; overflow-x: auto; display: flex; gap: 20px; padding-bottom: 20px;">
+                            <img src="oum/userresearch1.png" class="gallery-box" alt="User Research 1"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=User+Research+1'">
+                            <img src="oum/userresearch2.png" class="gallery-box" alt="User Research 2"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=User+Research+2'">
+                            <img src="oum/userresearch3.png" class="gallery-box" alt="User Research 3"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=User+Research+3'">
+                            <img src="oum/userresearch4.png" class="gallery-box" alt="User Research 4"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=User+Research+4'">
+                            <img src="oum/userresearch5.png" class="gallery-box" alt="User Research 5"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=User+Research+5'">
+                            <img src="oum/userresearch6.png" class="gallery-box" alt="User Research 6"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=User+Research+6'">
+                            <img src="oum/userresearch7.png" class="gallery-box" alt="User Research 7"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=User+Research+7'">
+                            <img src="oum/userresearch8.png" class="gallery-box" alt="User Research 8"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=User+Research+8'">
+                            <img src="oum/userresearch9.png" class="gallery-box" alt="User Research 9"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=User+Research+9'">
+                            <img src="oum/userresearch10.png" class="gallery-box" alt="User Research 10"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=User+Research+10'">
+                            <img src="oum/userresearch11.png" class="gallery-box" alt="User Research 11"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=User+Research+11'">
+                            <img src="oum/userresearch12.png" class="gallery-box" alt="User Research 12"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=User+Research+12'">
+                            <img src="oum/userresearch13.png" class="gallery-box" alt="User Research 13"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=User+Research+13'">
+                            <img src="oum/userresearch14.png" class="gallery-box" alt="User Research 14"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=User+Research+14'">
+                            <img src="oum/userresearch15.png" class="gallery-box" alt="User Research 15"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=User+Research+15'">
+                            <img src="oum/userresearch16.png" class="gallery-box" alt="User Research 16"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=User+Research+16'">
+                            <img src="oum/userresearch17.png" class="gallery-box" alt="User Research 17"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=User+Research+17'">
+                            <img src="oum/userresearch18.png" class="gallery-box" alt="User Research 18"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=User+Research+18'">
+                            <img src="oum/userresearch19.png" class="gallery-box" alt="User Research 19"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=User+Research+19'">
+                            <img src="oum/userresearch20.png" class="gallery-box" alt="User Research 20"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=User+Research+20'">
+                            <img src="oum/userresearch21.png" class="gallery-box" alt="User Research 21"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=User+Research+21'">
+                            <img src="oum/userresearch22.png" class="gallery-box" alt="User Research 22"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=User+Research+22'">
+                        </div>
+                        <button class="gallery-arrow arrow-right" onclick="scrollGallery('userResearchGrid', 1)">
+                            <svg viewBox="0 0 50 50" fill="none">
+                                <path d="M20 10 L35 25 L20 40" stroke="white" stroke-width="1" />
+                            </svg>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Branding -->
+                <section class="drift-section" id="sec-branding">
+                    <div class="drift-section-title">Branding</div>
+                    <div class="drift-text-large">
+                        Oum(오음)은 Yeul과 ZYN을 하나로 묶는 통합 브랜드이자 프로젝트명입니다. 로고와 비주얼 시스템은 팽팽한 명주실의 긴장감(Tension)과 가야금
+                        안족(Bridge)이 만드는 우아한 곡선 실루엣을 모티브로 하여, 미니멀하면서도 한국적인 현대미를 시각화했습니다.
+                    </div>
+                    <div class="gallery-wrapper" style="position: relative; width: 100%; margin-top: 50px;">
+                        <button class="gallery-arrow arrow-left" onclick="scrollGallery('brandingGrid', -1)">
+                            <svg viewBox="0 0 50 50" fill="none">
+                                <path d="M30 10 L15 25 L30 40" stroke="white" stroke-width="1" />
+                            </svg>
+                        </button>
+                        <div class="gallery-custom-grid" id="brandingGrid"
+                            style="width: 100%; overflow-x: auto; display: flex; gap: 20px; padding-bottom: 20px;">
+                            <img src="oum/branding1.png" class="gallery-box" alt="Branding 1"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=Branding+1'">
+                            <img src="oum/branding2.png" class="gallery-box" alt="Branding 2"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=Branding+2'">
+                            <img src="oum/branding3.png" class="gallery-box" alt="Branding 3"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=Branding+3'">
+                        </div>
+                        <button class="gallery-arrow arrow-right" onclick="scrollGallery('brandingGrid', 1)">
+                            <svg viewBox="0 0 50 50" fill="none">
+                                <path d="M20 10 L35 25 L20 40" stroke="white" stroke-width="1" />
+                            </svg>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Yeul -->
+                <section class="drift-section" id="sec-yeul">
+                    <div class="drift-section-title">Yeul : Electronic Gayageum</div>
+                    <div class="drift-text-large">
+                        Yeul(율)은 전통 가야금의 형상과 연주법을 계승하면서도, 그 내부를 첨단 전자 기술로 치환한 악기입니다. 명주실의 장력과 안족의 배치를 정밀하게 구현하여 연주자가 본연의
+                        감각 그대로 연주할 수 있도록 설계되었습니다. 울림통 대신 내장된 정밀 센서가 현의 미세한 진동과 압력(농현)을 감지하고, 이를 디지털 신호로 변환하여 어쿠스틱 사운드를
+                        넘어선 무한한 사운드 스펙트럼을 제시합니다.
+                    </div>
+                    <div class="gallery-wrapper" style="position: relative; width: 100%; margin-top: 50px;">
+                        <button class="gallery-arrow arrow-left" onclick="scrollGallery('yeulGrid', -1)">
+                            <svg viewBox="0 0 50 50" fill="none">
+                                <path d="M30 10 L15 25 L30 40" stroke="white" stroke-width="1" />
+                            </svg>
+                        </button>
+                        <div class="gallery-custom-grid" id="yeulGrid"
+                            style="width: 100%; overflow-x: auto; display: flex; gap: 20px; padding-bottom: 20px;">
+                            <img src="oum/yeul1.png" class="gallery-box" alt="Yeul 1"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=Yeul+1'">
+                            <img src="oum/yeul2.png" class="gallery-box" alt="Yeul 2"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=Yeul+2'">
+                            <img src="oum/yeul3.png" class="gallery-box" alt="Yeul 3"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=Yeul+3'">
+                            <img src="oum/yeul4.png" class="gallery-box" alt="Yeul 4"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=Yeul+4'">
+                            <img src="oum/yeul5.png" class="gallery-box" alt="Yeul 5"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=Yeul+5'">
+                            <img src="oum/yeul6.png" class="gallery-box" alt="Yeul 6"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=Yeul+6'">
+                            <img src="oum/yeul7.png" class="gallery-box" alt="Yeul 7"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=Yeul+7'">
+                            <img src="oum/yeul8.png" class="gallery-box" alt="Yeul 8"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=Yeul+8'">
+                            <img src="oum/yeul9.png" class="gallery-box" alt="Yeul 9"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=Yeul+9'">
+                            <img src="oum/yeul10.png" class="gallery-box" alt="Yeul 10"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=Yeul+10'">
+                            <img src="oum/yeul11.png" class="gallery-box" alt="Yeul 11"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=Yeul+11'">
+                            <img src="oum/yeul12.png" class="gallery-box" alt="Yeul 12"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=Yeul+12'">
+                            <img src="oum/yeul13.png" class="gallery-box" alt="Yeul 13"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=Yeul+13'">
+                            <img src="oum/yeul14.png" class="gallery-box" alt="Yeul 14"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=Yeul+14'">
+                            <img src="oum/yeul15.png" class="gallery-box" alt="Yeul 15"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=Yeul+15'">
+                            <img src="oum/yeul16.png" class="gallery-box" alt="Yeul 16"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=Yeul+16'">
+                            <img src="oum/yeul17.png" class="gallery-box" alt="Yeul 17"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=Yeul+17'">
+                            <img src="oum/yeul18.png" class="gallery-box" alt="Yeul 18"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=Yeul+18'">
+                            <img src="oum/yeul19.png" class="gallery-box" alt="Yeul 19"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=Yeul+19'">
+                        </div>
+                        <button class="gallery-arrow arrow-right" onclick="scrollGallery('yeulGrid', 1)">
+                            <svg viewBox="0 0 50 50" fill="none">
+                                <path d="M20 10 L35 25 L20 40" stroke="white" stroke-width="1" />
+                            </svg>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- ZYN -->
+                <section class="drift-section" id="sec-zyn">
+                    <div class="drift-section-title">ZYN : MIDI Controller</div>
+                    <div class="drift-text-large">
+                        ZYN(진)은 가야금의 '뜯기'와 '틩기기' 주법을 디지털 환경에서 구현하기 위해 명주실을 <strong>실리콘 블록(Silicone Block)</strong>으로 치환한
+                        MIDI 컨트롤러입니다. 줄을 당길 때 느껴지는 고유의 탄성감을 실리콘의 물성으로 재현하여, 연주자가 직관적인 피드백을 느끼며 연주할 수 있습니다. 형태적으로는 미니멀한
+                        <strong>직사각형(Rectilinear)</strong> 디자인을 채택하여 기존 프로듀싱 장비들과 이질감 없이 어우러지도록 설계되었습니다.
+                    </div>
+                    <div class="gallery-wrapper" style="position: relative; width: 100%; margin-top: 50px;">
+                        <button class="gallery-arrow arrow-left" onclick="scrollGallery('zynGrid', -1)">
+                            <svg viewBox="0 0 50 50" fill="none">
+                                <path d="M30 10 L15 25 L30 40" stroke="white" stroke-width="1" />
+                            </svg>
+                        </button>
+                        <div class="gallery-custom-grid" id="zynGrid"
+                            style="width: 100%; overflow-x: auto; display: flex; gap: 20px; padding-bottom: 20px;">
+                            <img src="oum/zyn1.png" class="gallery-box" alt="ZYN 1"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=ZYN+1'">
+                            <img src="oum/zyn2.png" class="gallery-box" alt="ZYN 2"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=ZYN+2'">
+                            <img src="oum/zyn3.png" class="gallery-box" alt="ZYN 3"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=ZYN+3'">
+                            <img src="oum/zyn4.png" class="gallery-box" alt="ZYN 4"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=ZYN+4'">
+                            <img src="oum/zyn5.png" class="gallery-box" alt="ZYN 5"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=ZYN+5'">
+                            <img src="oum/zyn6.png" class="gallery-box" alt="ZYN 6"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=ZYN+6'">
+                            <img src="oum/zyn7.png" class="gallery-box" alt="ZYN 7"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=ZYN+7'">
+                            <img src="oum/zyn8.png" class="gallery-box" alt="ZYN 8"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=ZYN+8'">
+                            <img src="oum/zyn9.png" class="gallery-box" alt="ZYN 9"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=ZYN+9'">
+                            <img src="oum/zyn10.png" class="gallery-box" alt="ZYN 10"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=ZYN+10'">
+                            <img src="oum/zyn11.png" class="gallery-box" alt="ZYN 11"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=ZYN+11'">
+                            <img src="oum/zyn12.png" class="gallery-box" alt="ZYN 12"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=ZYN+12'">
+                            <img src="oum/zyn13.png" class="gallery-box" alt="ZYN 13"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=ZYN+13'">
+                            <img src="oum/zyn14.png" class="gallery-box" alt="ZYN 14"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=ZYN+14'">
+                            <img src="oum/zyn15.png" class="gallery-box" alt="ZYN 15"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=ZYN+15'">
+                            <img src="oum/zyn16.png" class="gallery-box" alt="ZYN 16"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=ZYN+16'">
+                            <img src="oum/zyn17.png" class="gallery-box" alt="ZYN 17"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=ZYN+17'">
+                            <img src="oum/zyn18.png" class="gallery-box" alt="ZYN 18"
+                                onerror="this.src='https://placehold.co/800x600/333/666?text=ZYN+18'">
+                        </div>
+                        <button class="gallery-arrow arrow-right" onclick="scrollGallery('zynGrid', 1)">
+                            <svg viewBox="0 0 50 50" fill="none">
+                                <path d="M20 10 L35 25 L20 40" stroke="white" stroke-width="1" />
+                            </svg>
+                        </button>
+                    </div>
+                </section>
+
+
+
+
+
+                <!-- My Role -->
+                <section class="drift-section" id="sec-my-role">
+                    <div class="drift-section-title">My Role</div>
+                    <div class="drift-text-large">
+                        <strong>Product Designer.</strong> 전통 악기의 현대화를 위한 제품 디자인 및 프로토타이핑을 담당했습니다.
+                    </div>
+                </section>
+
+                <!-- Credit Section -->
+                <section class="drift-section" id="sec-credits">
+                    <div class="drift-section-title">Credits</div>
+                    <div class="credit-custom-grid">
+                        <div class="credit-item">
+                            <div class="credit-role">Team Members</div>
+                            <div class="credit-names">Ahyoung Choi, Kyeongseok Lee, Suae Lee, Hyodong Cho</div>
+                        </div>
+                        <div class="credit-item">
+                            <div class="credit-role">Course</div>
+                            <div class="credit-names">Product Design Studio (2025 Spring Semester)</div>
+                        </div>
+                    </div>
+                </section>
+
+
+
+                <a href="index.html" class="back-link">← Back to Main</a>
+            </div>
+        </main>
+    </div>
+    <script>
+        function scrollGallery(elementId, direction) {
+            const gallery = document.getElementById(elementId);
+            if (gallery) {
+                // Scroll width + gap (20px)
+                const scrollAmount = gallery.clientWidth + 20;
+                gallery.scrollBy({
+                    left: direction * scrollAmount,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Initialize Arrow States and Listeners for ALL galleries
+        document.addEventListener('DOMContentLoaded', () => {
+            const galleries = document.querySelectorAll('.gallery-custom-grid');
+
+            galleries.forEach(gallery => {
+                const wrapper = gallery.closest('.gallery-wrapper');
+                if (!wrapper) return;
+
+                const leftArrow = wrapper.querySelector('.arrow-left');
+                const rightArrow = wrapper.querySelector('.arrow-right');
+
+                function updateArrows() {
+                    if (!leftArrow || !rightArrow) return;
+                    // Left Arrow
+                    if (gallery.scrollLeft <= 5) {
+                        leftArrow.style.opacity = '0.2';
+                        leftArrow.style.pointerEvents = 'none';
+                    } else {
+                        leftArrow.style.opacity = '1';
+                        leftArrow.style.pointerEvents = 'auto';
+                    }
+                    // Right Arrow
+                    if (gallery.scrollLeft + gallery.clientWidth >= gallery.scrollWidth - 5) {
+                        rightArrow.style.opacity = '0.2';
+                        rightArrow.style.pointerEvents = 'none';
+                    } else {
+                        rightArrow.style.opacity = '1';
+                        rightArrow.style.pointerEvents = 'auto';
+                    }
+                }
+
+                gallery.addEventListener('scroll', updateArrows);
+                updateArrows();
+                window.addEventListener('resize', updateArrows);
+            });
+        });
+
+        // Scroll Spy for Sidebar
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.drift-section');
+            const navLinks = document.querySelectorAll('.page-nav a');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '-20% 0px -60% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => link.classList.remove('active'));
+                        const id = entry.target.getAttribute('id');
+                        const activeLink = Array.from(navLinks).find(link =>
+                            link.getAttribute('onclick').includes(id)
+                        );
+                        if (activeLink) activeLink.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+
+        // Update script to handle multiple galleries if needed, or just general clean up
+        function scrollGallery(elementId, direction) {
+            // Support both old call style (direction only, defaults to 'galleryGrid') and new style
+            let gallery;
+            if (typeof elementId === 'number') {
+                gallery = document.getElementById('galleryGrid');
+                direction = elementId;
+            } else {
+                gallery = document.getElementById(elementId);
+            }
+
+            if (gallery) {
+                const itemWidth = 470; // Or dynamic calc
+                gallery.scrollBy({
+                    left: direction * itemWidth,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>

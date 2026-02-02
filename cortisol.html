@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cortisol: Ulsan Coffee Rave | Kyeongseok Lee</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Reusing Drift Page Specific Styles */
+
+
+        .drift-container {
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .drift-content-wrapper {
+            padding-bottom: 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+
+
+        /* ... */
+
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin: 30px auto;
+            font-size: 1rem;
+            color: #fff;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .drift-header-block {
+            margin-top: 50px;
+            margin-bottom: 50px;
+            text-align: left;
+        }
+
+        .drift-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #fff;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .drift-subtitle {
+            font-size: 1rem;
+            font-weight: 300;
+            color: #ccc;
+        }
+
+        .placeholder-gray {
+            background-color: #333;
+            width: 100%;
+            display: block;
+            border-radius: 4px;
+        }
+
+        .drift-section {
+            margin-top: 80px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .drift-section-title {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #fff;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 20px;
+            text-align: left;
+            width: 100%;
+        }
+
+        .drift-text-large {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #ddd;
+            line-height: 1.8;
+            width: 100%;
+            word-break: keep-all;
+            text-align: left;
+        }
+
+        .credit-custom-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            width: fit-content;
+            margin: 0 auto;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .credit-item {
+            display: flex;
+            align-items: flex-start;
+            width: 100%;
+            gap: 60px;
+        }
+
+        .credit-role {
+            font-size: 0.85rem;
+            font-weight: 400;
+            font-style: italic;
+            width: 150px;
+            color: #999;
+            flex-shrink: 0;
+        }
+
+        .credit-names {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.6;
+            margin-right: 80px;
+            color: #fff;
+        }
+
+        .credit-people {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #ddd;
+        }
+
+        .gallery-custom-grid {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+        }
+
+        .gallery-custom-grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        .gallery-box {
+            background: transparent !important;
+            min-width: 100%;
+            width: 100%;
+            height: auto;
+            flex-shrink: 0;
+            object-fit: contain;
+            scroll-snap-align: start;
+        }
+
+        /* Side Navigation (Right) */
+        .page-nav {
+            position: fixed;
+            top: 50%;
+            right: 40px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .page-nav a {
+            text-decoration: none;
+            color: #555;
+            font-size: 0.6rem;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            text-align: right;
+            cursor: pointer;
+        }
+
+        .page-nav a:hover {
+            color: #fff;
+            transform: translateX(-5px);
+        }
+
+        .page-nav a.active {
+            color: #aaa;
+            transform: translateX(-3px);
+        }
+
+        /* Project Info (Left) */
+        .project-info-left {
+            position: fixed;
+            top: 50%;
+            left: 40px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 1000;
+            text-align: left;
+        }
+
+        .info-group {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .info-label {
+            font-size: 0.6rem;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .info-value {
+            font-size: 0.7rem;
+            color: #aaa;
+            font-weight: 500;
+        }
+
+        @media (max-width: 1600px) {
+
+            .page-nav,
+            .project-info-left {
+                display: none;
+            }
+        }
+
+        @media (max-width: 1400px) {
+
+            .drift-header-block,
+            .drift-section {
+                padding-left: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .drift-header-block,
+            .drift-section {
+                padding-left: 20px;
+                padding-right: 20px;
+                margin-top: 60px;
+            }
+
+            .drift-title {
+                font-size: 2rem;
+            }
+
+            .credit-item {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .credit-names {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            .schedule-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .poster-placeholder {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 3/4;
+            }
+        }
+
+        /* Schedule / Poster Layout */
+        .schedule-grid {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 60px;
+            justify-content: center;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .poster-placeholder {
+            width: 350px;
+            aspect-ratio: 629/888;
+            flex-shrink: 0;
+            object-fit: cover;
+        }
+
+        .schedule-details {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .schedule-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .schedule-label {
+            font-size: 0.85rem;
+            font-weight: 400;
+            font-style: italic;
+            color: #999;
+            letter-spacing: 0.05em;
+        }
+
+        .schedule-content {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #fff;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="logo">Kyeongseok Lee</a>
+        <nav>
+            <ul>
+                <li><a href="index.html" style="opacity: 1; border-bottom: 1px solid #fff;">Work</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Left Project Info -->
+    <div class="project-info-left">
+        <div class="info-group">
+            <span class="info-value" style="font-weight: 700; color: #ccc; margin-bottom: 5px;">Cortisol</span>
+        </div>
+        <div class="info-group">
+            <span class="info-label">Category</span>
+            <span class="info-value">Coffee Rave & Community Event</span>
+        </div>
+        <div class="info-group">
+            <span class="info-label">Date</span>
+            <span class="info-value">Sep 2025</span>
+        </div>
+        <div class="info-group">
+            <span class="info-label">Type</span>
+            <span class="info-value">Personal Project</span>
+        </div>
+    </div>
+
+    <!-- Side Navigation -->
+    <nav class="page-nav">
+        <a onclick="document.getElementById('sec-intro').scrollIntoView({behavior: 'smooth'})">Overview</a>
+        <a onclick="document.getElementById('sec-context').scrollIntoView({behavior: 'smooth'})">Context</a>
+        <a onclick="document.getElementById('sec-project-details').scrollIntoView({behavior: 'smooth'})">Details</a>
+        <a onclick="document.getElementById('sec-gallery').scrollIntoView({behavior: 'smooth'})">Gallery</a>
+
+        <a onclick="document.getElementById('sec-credits').scrollIntoView({behavior: 'smooth'})">Credits</a>
+    </nav>
+    <div class="container" style="max-width: 100%; margin: 0; padding: 0;">
+        <main class="drift-container">
+            <div class="drift-content-wrapper">
+                <!-- Header Block -->
+                <div class="drift-header-block">
+                    <h1 class="drift-title">CORTISOL: Ulsan Coffee Rave</h1>
+                    <p class="drift-subtitle">Coffee Rave & Community Event | Sep 2025 | Personal Project</p>
+                </div>
+
+                <!-- Hero -->
+                <div style="height: 650px; margin-bottom: 120px; width: 100%; overflow: hidden;">
+                    <img src="cortisol/표지.jpg" class="drift-hero"
+                        style="height: 100%; width: 100%; object-fit: cover; object-position: center; display: block; transform: scale(1.3);"
+                        alt="Cortisol Main">
+                </div>
+
+                <!-- Project Overview Section -->
+                <section class="drift-section" id="sec-intro">
+                    <div class="drift-section-title">Project Overview</div>
+                    <div class="drift-text-large"
+                        style="text-align: center; letter-spacing: -0.03em; word-break: keep-all; width: 100%;">
+                        커피 레이브는 아침 호르몬 '코르티솔'을 억제하는 대신, 긍정 에너지로 전환하는 주말 아침의 특별한 이벤트입니다.<br><br>
+                        평일 내내 우리의 아침 각성을 책임졌던 코르티솔은 스트레스나 불안감으로 이어지기 쉽습니다. 커피 레이브는 바로 이 흐름을 끊어내고, 주말 아침을 완전하게
+                        재설계합니다.<br><br>
+                        <strong>우리는 몸의 자연스러운 생체 리듬을 활용합니다.</strong><br><br>
+                        코르티솔 수치가 정점을 찍고 안정기에 접어드는 '골든 타임'인 오전 10시에 커피라는 '기폭제'를 투입하여 에너지 레벨을 다시 한번 최고조로 끌어올립니다.<br><br>
+                        이렇게 증폭된 에너지는 신나는 음악과 춤으로 승화되어, 완전히 새로운 방식으로 활기찬 주말을 열어줍니다.
+                    </div>
+                </section>
+
+                <!-- Planning Context Section -->
+                <section class="drift-section" id="sec-context">
+                    <div class="drift-section-title">Planning Context & Objective</div>
+                    <div class="drift-text-large"
+                        style="text-align: left; letter-spacing: -0.03em; word-break: keep-all; width: 100%;">
+                        최근 '웰니스(Wellness)'가 라이프스타일의 핵심 키워드로 떠오르며, 파티 문화 역시 건강과 즐거움을 동시에 추구하는 방향으로 변화하고 있습니다.<br>
+                        이러한 흐름 속에서 유럽을 중심으로 시작된 '커피 레이브(Coffee Rave)'는 이른 아침, 술 대신 커피를 마시며 음악과 춤을 즐기는 새로운 형태의 클러빙 문화입니다.
+                        우리는 이 건강하고 활기찬 에너지를 울산에도 전파하고자 합니다.
+                    </div>
+                </section>
+
+                <!-- Project Details -->
+                <section class="drift-section" id="sec-project-details">
+                    <div class="drift-section-title">Project Details</div>
+                    <div class="schedule-grid">
+                        <img src="cortisol/포스터.png" class="poster-placeholder" alt="Cortisol Poster">
+                        <div class="schedule-details">
+                            <div class="schedule-item">
+                                <div class="schedule-label">Date</div>
+                                <div class="schedule-content">2025.09.21 (Sun) 10:00 - 13:00</div>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="schedule-label">Location</div>
+                                <div class="schedule-content">BCD COFFEE (91-2, Hwajin 4-gil, Jung-gu, Ulsan)</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+
+                <!-- Gallery Section -->
+                <section class="drift-section" id="sec-gallery">
+                    <div class="drift-section-title">Gallery</div>
+
+                    <div class="gallery-wrapper" style="position: relative; width: 100%; margin-bottom: 50px;">
+                        <style>
+                            .gallery-arrow {
+                                position: absolute;
+                                top: 50%;
+                                transform: translateY(-50%);
+                                background: transparent;
+                                border: none;
+                                cursor: pointer;
+                                z-index: 10;
+                                opacity: 0.7;
+                                transition: opacity 0.3s;
+                                padding: 10px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                            }
+
+                            .gallery-arrow:hover {
+                                opacity: 1;
+                            }
+
+                            .gallery-arrow svg {
+                                width: 50px;
+                                height: 50px;
+                            }
+
+                            .arrow-left {
+                                left: -60px;
+                            }
+
+                            .arrow-right {
+                                right: -60px;
+                            }
+
+                            @media (max-width: 768px) {
+                                .gallery-arrow svg {
+                                    width: 30px;
+                                    height: 30px;
+                                }
+
+                                .gallery-arrow {
+                                    background: rgba(0, 0, 0, 0.3);
+                                    padding: 5px;
+                                }
+
+                                .arrow-left {
+                                    left: 0;
+                                }
+
+                                .arrow-right {
+                                    right: 0;
+                                }
+                            }
+                        </style>
+                        <button class="gallery-arrow arrow-left" onclick="scrollGallery(-1)">
+                            <svg viewBox="0 0 50 50" fill="none">
+                                <path d="M30 10 L15 25 L30 40" stroke="white" stroke-width="1" />
+                            </svg>
+                        </button>
+
+                        <div class="gallery-custom-grid" id="galleryGrid" style="width: 100%; overflow-x: scroll;">
+                            <!-- Placeholders for Gallery -->
+                            <div class="gallery-box placeholder-gray"></div>
+                            <div class="gallery-box placeholder-gray"></div>
+                            <div class="gallery-box placeholder-gray"></div>
+                            <div class="gallery-box placeholder-gray"></div>
+                            <div class="gallery-box placeholder-gray"></div>
+                        </div>
+
+                        <button class="gallery-arrow arrow-right" onclick="scrollGallery(1)">
+                            <svg viewBox="0 0 50 50" fill="none">
+                                <path d="M20 10 L35 25 L20 40" stroke="white" stroke-width="1" />
+                            </svg>
+                        </button>
+                    </div>
+                </section>
+
+
+
+                <!-- Credit Section -->
+                <section class="drift-section" id="sec-credits">
+                    <div class="drift-section-title">Credits</div>
+                    <div class="credit-custom-grid">
+                        <div class="credit-item">
+                            <div class="credit-role">General Director</div>
+                            <div class="credit-names">Kyeongseok Lee</div>
+                        </div>
+                        <div class="credit-item">
+                            <div class="credit-role">Co-Produced by</div>
+                            <div class="credit-names">RUDIMENT, BCD Coffee, Ulsan Creator Salon</div>
+                        </div>
+                    </div>
+                </section>
+
+                <a href="index.html" class="back-link">← Back to Main</a>
+            </div>
+        </main>
+
+
+    </div>
+    <script>
+        const gallery = document.getElementById('galleryGrid');
+
+        // Setup Infinite Scroll when images load (or assume sizes are fixed)
+        const setupInfiniteScroll = () => {
+            const originalItems = Array.from(gallery.children);
+            if (originalItems.length === 0) return;
+
+            // Clone for start and end
+            originalItems.forEach(item => {
+                const cloneStart = item.cloneNode(true);
+                const cloneEnd = item.cloneNode(true);
+                gallery.appendChild(cloneEnd);
+                gallery.insertBefore(cloneStart, gallery.firstChild);
+            });
+
+            // Calculate width of one set (450px width + 20px gap)
+            const itemWidth = 470;
+            const setWidth = itemWidth * originalItems.length;
+
+            // Set start position
+            gallery.scrollLeft = setWidth;
+
+            // Scroll Loop Check
+            gallery.addEventListener('scroll', () => {
+                if (gallery.scrollLeft < setWidth - itemWidth) {
+                    gallery.style.scrollBehavior = 'auto';
+                    gallery.scrollLeft += setWidth;
+                    gallery.style.scrollBehavior = 'smooth';
+                }
+                else if (gallery.scrollLeft >= setWidth * 2) {
+                    gallery.style.scrollBehavior = 'auto';
+                    gallery.scrollLeft -= setWidth;
+                    gallery.style.scrollBehavior = 'smooth';
+                }
+            });
+        };
+
+        setupInfiniteScroll();
+
+        // Scroll Spy for Sidebar
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.drift-section');
+            const navLinks = document.querySelectorAll('.page-nav a');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '-20% 0px -60% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => link.classList.remove('active'));
+                        const id = entry.target.getAttribute('id');
+                        const activeLink = Array.from(navLinks).find(link =>
+                            link.getAttribute('onclick').includes(id)
+                        );
+                        if (activeLink) activeLink.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+
+        function scrollGallery(direction) {
+            const itemWidth = 470;
+            gallery.style.scrollBehavior = 'smooth';
+            gallery.scrollBy({
+                left: direction * itemWidth,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+
+</html>

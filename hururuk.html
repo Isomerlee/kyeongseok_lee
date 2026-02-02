@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HURURUK Party | Kyeongseok Lee</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Reusing Drift Page Specific Styles */
+
+
+        .drift-container {
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .drift-content-wrapper {
+            padding-bottom: 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin: 30px auto;
+            font-size: 1rem;
+            color: #fff;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .drift-header-block {
+            margin-top: 50px;
+            margin-bottom: 50px;
+            text-align: left;
+        }
+
+        .drift-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #fff;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .drift-subtitle {
+            font-size: 1rem;
+            font-weight: 300;
+            color: #ccc;
+        }
+
+        .placeholder-gray {
+            background-color: #333;
+            width: 100%;
+            display: block;
+            border-radius: 4px;
+        }
+
+        .drift-section {
+            margin-top: 80px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .drift-section-title {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #fff;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 20px;
+            text-align: left;
+            width: 100%;
+        }
+
+        .drift-text-large {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #ddd;
+            line-height: 1.8;
+            width: 100%;
+            word-break: keep-all;
+            text-align: left;
+        }
+
+        .credit-custom-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            width: fit-content;
+            margin: 0 auto;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .credit-item {
+            display: flex;
+            align-items: flex-start;
+            width: 100%;
+            gap: 60px;
+        }
+
+        .credit-role {
+            font-size: 0.85rem;
+            font-weight: 400;
+            font-style: italic;
+            width: 150px;
+            color: #999;
+            flex-shrink: 0;
+        }
+
+        .credit-names {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.6;
+            margin-right: 80px;
+            color: #fff;
+        }
+
+        .credit-people {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #ddd;
+        }
+
+        .gallery-custom-grid {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .gallery-custom-grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        .gallery-box {
+            background: #222;
+            width: 450px !important;
+            height: 300px !important;
+            flex-shrink: 0;
+            aspect-ratio: 3 / 2;
+            object-fit: cover;
+        }
+
+        @media (max-width: 1400px) {
+
+            .drift-header-block,
+            .drift-section {
+                padding-left: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .drift-header-block,
+            .drift-section {
+                padding-left: 20px;
+                padding-right: 20px;
+                margin-top: 60px;
+            }
+
+            .drift-title {
+                font-size: 2rem;
+            }
+
+            .credit-item {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .credit-names {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            .schedule-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .poster-placeholder {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 3/4;
+            }
+        }
+
+        /* Schedule / Poster Layout */
+        .schedule-grid {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 60px;
+            justify-content: center;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .poster-placeholder {
+            width: 350px;
+            aspect-ratio: 629/888;
+            flex-shrink: 0;
+            object-fit: cover;
+        }
+
+        .schedule-details {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .schedule-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .schedule-label {
+            font-size: 0.85rem;
+            font-weight: 400;
+            font-style: italic;
+            color: #999;
+            letter-spacing: 0.05em;
+        }
+
+        .schedule-content {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 1600px) {
+
+            .page-nav,
+            .project-info-left {
+                display: none;
+            }
+        }
+
+        /* Side Navigation (Right) */
+        .page-nav {
+            position: fixed;
+            top: 50%;
+            right: 40px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .page-nav a {
+            text-decoration: none;
+            color: #555;
+            font-size: 0.6rem;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            text-align: right;
+            cursor: pointer;
+        }
+
+        .page-nav a:hover {
+            color: #fff;
+            transform: translateX(-5px);
+        }
+
+        .page-nav a.active {
+            color: #aaa;
+            transform: translateX(-3px);
+        }
+
+        /* Project Info (Left) */
+        .project-info-left {
+            position: fixed;
+            top: 50%;
+            left: 40px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 1000;
+            text-align: left;
+        }
+
+        .info-group {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .info-label {
+            font-size: 0.6rem;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .info-value {
+            font-size: 0.7rem;
+            color: #aaa;
+            font-weight: 500;
+        }
+
+        /* Lineup Table Styles */
+        .lineup-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+            font-size: 0.65rem;
+            color: #ddd;
+        }
+
+        .lineup-table th {
+            text-align: left;
+            border-bottom: 1px solid #555;
+            padding: 10px 10px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .lineup-table td {
+            border-bottom: 1px solid #333;
+            padding: 10px 10px;
+            vertical-align: middle;
+        }
+
+        .lineup-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .lineup-brand-en {
+            display: inline-block;
+            font-weight: 500;
+            color: #fff;
+            margin-right: 5px;
+        }
+
+        .lineup-brand-kr {
+            font-size: 0.65rem;
+            color: #999;
+            display: inline-block;
+        }
+
+        @media (max-width: 768px) {
+            .lineup-table th {
+                display: none;
+            }
+
+            .lineup-table td {
+                display: block;
+                padding: 5px 0;
+                border: none;
+            }
+
+            .lineup-table tr {
+                display: block;
+                border-bottom: 1px solid #333;
+                padding: 15px 0;
+            }
+
+            .lineup-col-category,
+            .lineup-col-insta {
+                font-size: 0.7rem;
+                color: #888;
+                display: inline-block;
+                margin-right: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="logo">Kyeongseok Lee</a>
+        <nav>
+            <ul>
+                <li><a href="index.html" style="opacity: 1; border-bottom: 1px solid #fff;">Work</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Left Project Info -->
+    <div class="project-info-left">
+        <div class="info-group">
+            <span class="info-value" style="font-weight: 700; color: #ccc; margin-bottom: 5px;">Hururuk Party</span>
+        </div>
+        <div class="info-group">
+            <span class="info-label">Category</span>
+            <span class="info-value">Local Brand Festival</span>
+        </div>
+        <div class="info-group">
+            <span class="info-label">Date</span>
+            <span class="info-value">May 2025</span>
+        </div>
+
+        <div class="info-group">
+            <span class="info-label">Type</span>
+            <span class="info-value">Personal Project</span>
+        </div>
+    </div>
+
+    <!-- Side Navigation -->
+    <nav class="page-nav">
+        <a onclick="document.getElementById('sec-intro').scrollIntoView({behavior: 'smooth'})">Overview</a>
+        <a onclick="document.getElementById('sec-context').scrollIntoView({behavior: 'smooth'})">Context</a>
+        <a onclick="document.getElementById('sec-strategy').scrollIntoView({behavior: 'smooth'})">Strategy</a>
+
+        <a onclick="document.getElementById('sec-program').scrollIntoView({behavior: 'smooth'})">Program</a>
+        <a onclick="document.getElementById('sec-gallery').scrollIntoView({behavior: 'smooth'})">Gallery</a>
+        <a onclick="document.getElementById('sec-credits').scrollIntoView({behavior: 'smooth'})">Credits</a>
+    </nav>
+    <div class="container" style="max-width: 100%; margin: 0; padding: 0;">
+        <main class="drift-container">
+            <div class="drift-content-wrapper">
+                <!-- Header Block -->
+                <div class="drift-header-block">
+                    <h1 class="drift-title">Hururuk Party</h1>
+                    <p class="drift-subtitle">Local Community Networking Festival | May 2025 | Personal Project</p>
+                </div>
+
+                <!-- Hero -->
+                <img src="hururuk/표지.png" class="drift-hero"
+                    style="height: 650px; margin-bottom: 120px; width: 100%; object-fit: cover; object-position: center; display: block;"
+                    alt="HURURUK Party Main">
+
+                <!-- Project Overview -->
+                <section class="drift-section" id="sec-intro">
+                    <div class="drift-section-title">Project Overview</div>
+                    <div class="drift-text-large">
+                        <strong>Hururuk Party(후루룩 파티)</strong>는 울산 지역의 로컬 브랜드, 아티스트, 그리고 시민들이 한자리에 모여 교류하는 로컬 커뮤니티 네트워킹
+                        페스티벌입니다. '루디먼트(Rudiment)'와 '페퍼커피'가 공동 주최하였으며, 단순한 마켓을 넘어 F&B, 패션, DJing 공연이 어우러진 복합 문화 행사를 기획하여
+                        지역 청년
+                        문화의 새로운 가능성을 제시했습니다.
+                    </div>
+                </section>
+
+                <!-- Planning Context -->
+                <section class="drift-section" id="sec-context">
+                    <div class="drift-section-title">Planning Context & Objective</div>
+                    <div class="drift-text-large">
+                        울산은 타 대도시에 비해 청년들이 즐길 수 있는 서브컬처 문화와 네트워킹 행사가 부족한 실정입니다. 우리는 "재미있는 일은 왜 항상 서울에서만 일어날까?"라는 질문에서
+                        시작하여, 지역 내 숨겨진 매력적인 브랜드와 아티스트들을 큐레이션하고 시민들과의 접점을 만드는 것을 목표로 했습니다. 단순한 소비를 넘어, 취향을 공유하고 새로운 커뮤니티가
+                        형성되는 <strong>'로컬 플레이그라운드'</strong>를 만들고자 했습니다.
+                    </div>
+                </section>
+
+                <!-- Event Strategy -->
+                <section class="drift-section" id="sec-strategy">
+                    <div class="drift-section-title">Event Strategy</div>
+                    <div class="drift-text-large">
+                        성공적인 행사를 위해 세 가지 핵심 전략을 수립했습니다.<br><br>
+                        <strong>Curation:</strong> 획일화된 프랜차이즈가 아닌, 개성 있는 로컬 식음료(The Garage, Chill Dick 등)와 패션 브랜드(Oort)를
+                        엄선하여
+                        퀄리티를 높였습니다.<br><br>
+                        <strong>Atmosphere:</strong> 로컬 DJ들의 릴레이 공연을 통해 행사 내내 활기찬 에너지를 유지하고, 방문객들이 자연스럽게 머물며 즐길 수 있는
+                        분위기를
+                        조성했습니다.<br><br>
+                        <strong>Networking:</strong> 브랜드 오너, 아티스트, 방문객이 경계 없이 어울릴 수 있는 공간 구성을 통해 지속 가능한 로컬 커뮤니티의 기반을
+                        마련했습니다.
+                    </div>
+                </section>
+
+                <!-- Project Details -->
+                <section class="drift-section" id="sec-project-details">
+                    <div class="drift-section-title">Project Details</div>
+                    <div class="schedule-grid">
+                        <img src="hururuk/포스터.png" class="poster-placeholder" alt="Hururuk Poster">
+                        <div class="schedule-details">
+                            <div class="schedule-item">
+                                <div class="schedule-label">Date</div>
+                                <div class="schedule-content">2025년 5월 11일 일요일 11:00 - 16:00</div>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="schedule-label">Location</div>
+                                <div class="schedule-content">페퍼커피 (울산 남구 월평로199번길 21 1층 페퍼커피)</div>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="schedule-label">Host</div>
+                                <div class="schedule-content">Rudiment x Pepper Coffee</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+
+
+                <section class="drift-section" id="sec-program">
+                    <div class="drift-section-title">Program & Lineup</div>
+                    <div class="drift-text-large">
+                        <strong>Taste & Vibe.</strong> 행사는 미각과 청각을 동시에 만족시키는 프로그램으로 구성되었습니다.<br><br>
+                        <strong>F&B & Market:</strong> 수제 버거(The Garage), 핫도그(Chill Dick), 스페셜티 커피(Pepper Coffee, Second
+                        Crack), 빈티지 의류 및 굿즈 등 10여 개 팀 참가.<br><br>
+                        <strong>Music:</strong> Disco, House, Hip-hop 등 다양한 장르를 아우르는 로컬 DJ 6인의 논스톱 디제잉 퍼포먼스.
+                    </div>
+
+                    <!-- Lineup Table -->
+                    <!-- Lineup Table -->
+                    <table class="lineup-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 40%;">Brand</th>
+                                <th style="width: 40%;">Description</th>
+                                <th style="width: 20%;">Instagram</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <span class="lineup-brand-en">ABCeramic</span>
+                                    <span class="lineup-brand-kr">애비씨 세라믹스</span>
+                                </td>
+                                <td>유니크 도자기</td>
+                                <td><span class="lineup-col-insta">@hi.aloc</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="lineup-brand-en">BBUNINI</span>
+                                    <span class="lineup-brand-kr">뻐니니</span>
+                                </td>
+                                <td>리빙, 악세사리</td>
+                                <td><span class="lineup-col-insta">@bbunini_______</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="lineup-brand-en">BEMORE</span>
+                                    <span class="lineup-brand-kr">비모어</span>
+                                </td>
+                                <td>아트워크 및 잡화</td>
+                                <td><span class="lineup-col-insta">@bemore_artstudio</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="lineup-brand-en">Gooteebagel</span>
+                                    <span class="lineup-brand-kr">구티베이글</span>
+                                </td>
+                                <td>크림치즈 베이글</td>
+                                <td><span class="lineup-col-insta">@gootee_bagel</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="lineup-brand-en">Handin</span>
+                                    <span class="lineup-brand-kr">핸드인</span>
+                                </td>
+                                <td>뜨개 키링, 뜨개 소품</td>
+                                <td><span class="lineup-col-insta">@hand_in_knitting1</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="lineup-brand-en">monami villa</span>
+                                    <span class="lineup-brand-kr">모나미 빌라</span>
+                                </td>
+                                <td>인센스, 키링, 문구류, 악세사리 등</td>
+                                <td><span class="lineup-col-insta">@monami.villa</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="lineup-brand-en">muhyefabrics</span>
+                                    <span class="lineup-brand-kr">무해패브릭스</span>
+                                </td>
+                                <td>수피마 타올</td>
+                                <td><span class="lineup-col-insta">@muhyefabrics</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="lineup-brand-en">Peppercoffee</span>
+                                    <span class="lineup-brand-kr">페퍼커피</span>
+                                </td>
+                                <td>후추라떼, 커피</td>
+                                <td><span class="lineup-col-insta">@peppercoffee.kr</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="lineup-brand-en">RUDIMENT</span>
+                                    <span class="lineup-brand-kr">루디먼트</span>
+                                </td>
+                                <td>티셔츠</td>
+                                <td><span class="lineup-col-insta">@rudiment052</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="lineup-brand-en">Siro</span>
+                                    <span class="lineup-brand-kr">시로</span>
+                                </td>
+                                <td>소형 식물, 생화 한 묶음, 화분 등</td>
+                                <td><span class="lineup-col-insta">@siro.flowerstudio</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="lineup-brand-en">Sunday Pizza Club</span>
+                                    <span class="lineup-brand-kr">선데이 피자 클럽</span>
+                                </td>
+                                <td>화덕피자</td>
+                                <td><span class="lineup-col-insta">@sundaypizzaclub_</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="lineup-brand-en">THE GARAGE CHERRY MOTEL CLUB</span>
+                                    <span class="lineup-brand-kr">더게러지 체리모텔</span>
+                                </td>
+                                <td>버거, 핫도그, 슬러쉬, 의류, 잡화</td>
+                                <td><span class="lineup-col-insta">@the_garage_drivein</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="lineup-brand-en">yakitori meisei</span>
+                                    <span class="lineup-brand-kr">야키토리 명성</span>
+                                </td>
+                                <td>나폴리탄&가라아게 세트</td>
+                                <td><span class="lineup-col-insta">@yakitori_meisei</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- Gallery Section -->
+                <section class="drift-section" id="sec-gallery">
+                    <div class="drift-section-title">Gallery</div>
+
+                    <!-- Youtube Video -->
+                    <div style="width: 100%; aspect-ratio: 16/9; margin-bottom: 40px;">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/sQ8xsh3y3vk"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                    </div>
+
+                    <div class="gallery-wrapper" style="position: relative; width: 100%; margin-bottom: 50px;">
+                        <style>
+                            .gallery-arrow {
+                                position: absolute;
+                                top: 50%;
+                                transform: translateY(-50%);
+                                background: transparent;
+                                border: none;
+                                cursor: pointer;
+                                z-index: 10;
+                                opacity: 0.7;
+                                transition: opacity 0.3s;
+                                padding: 10px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                            }
+
+                            .gallery-arrow:hover {
+                                opacity: 1;
+                            }
+
+                            .gallery-arrow svg {
+                                width: 50px;
+                                height: 50px;
+                            }
+
+                            .arrow-left {
+                                left: -60px;
+                            }
+
+                            .arrow-right {
+                                right: -60px;
+                            }
+
+                            @media (max-width: 768px) {
+                                .gallery-arrow svg {
+                                    width: 30px;
+                                    height: 30px;
+                                }
+
+                                .gallery-arrow {
+                                    background: rgba(0, 0, 0, 0.3);
+                                    padding: 5px;
+                                    opacity: 1;
+                                }
+
+                                .arrow-left {
+                                    left: 0;
+                                }
+
+                                .arrow-right {
+                                    right: 0;
+                                }
+                            }
+                        </style>
+                        <button class="gallery-arrow arrow-left" onclick="scrollGallery(-1)">
+                            <svg viewBox="0 0 50 50" fill="none">
+                                <path d="M30 10 L15 25 L30 40" stroke="white" stroke-width="1" />
+                            </svg>
+                        </button>
+
+                        <div class="gallery-custom-grid" id="galleryGrid" style="width: 100%; overflow-x: scroll;">
+                            <!-- Placeholders for Gallery -->
+                            <img src="hururuk/표지.png" class="gallery-box" alt="Main Cover"
+                                onerror="this.src='https://placehold.co/600x400/222/666?text=Hururuk+Image'">
+                            <!-- Add empty placeholders -->
+                            <div class="gallery-box placeholder-gray"
+                                style="display: flex; align-items: center; justify-content: center; color: #555;">Image
+                                1</div>
+                            <div class="gallery-box placeholder-gray"
+                                style="display: flex; align-items: center; justify-content: center; color: #555;">Image
+                                2</div>
+                            <div class="gallery-box placeholder-gray"
+                                style="display: flex; align-items: center; justify-content: center; color: #555;">Image
+                                3</div>
+                        </div>
+
+                        <button class="gallery-arrow arrow-right" onclick="scrollGallery(1)">
+                            <svg viewBox="0 0 50 50" fill="none">
+                                <path d="M20 10 L35 25 L20 40" stroke="white" stroke-width="1" />
+                            </svg>
+                        </button>
+                    </div>
+                </section>
+
+
+
+
+
+                <!-- Credit -->
+                <section class="drift-section" id="sec-credits">
+                    <div class="drift-section-title">Credits</div>
+                    <div class="credit-custom-grid">
+                        <div class="credit-item">
+                            <div class="credit-role">General Director</div>
+                            <div class="credit-names">Kyeongseok Lee, Jonghoon Byun</div>
+                        </div>
+                        <div class="credit-item">
+                            <div class="credit-role">Co-Produced by</div>
+                            <div class="credit-names">RUDIMENT, Pepper Coffee</div>
+                        </div>
+                    </div>
+                </section>
+
+                <a href="index.html" class="back-link">← Back to Main</a>
+            </div>
+        </main>
+
+
+    </div>
+    <script>
+        const gallery = document.getElementById('galleryGrid');
+
+        // Setup Infinite Scroll when images load (or assume sizes are fixed)
+        const setupInfiniteScroll = () => {
+            const originalItems = Array.from(gallery.children);
+            if (originalItems.length === 0) return;
+
+            // Clone for start and end
+            originalItems.forEach(item => {
+                const cloneStart = item.cloneNode(true);
+                const cloneEnd = item.cloneNode(true);
+                gallery.appendChild(cloneEnd);
+                gallery.insertBefore(cloneStart, gallery.firstChild);
+            });
+
+            // Calculate width of one set (450px width + 20px gap)
+            const itemWidth = 470;
+            const setWidth = itemWidth * originalItems.length;
+
+            // Set start position
+            gallery.scrollLeft = setWidth;
+
+            // Scroll Loop Check
+            gallery.addEventListener('scroll', () => {
+                if (gallery.scrollLeft < setWidth - itemWidth) {
+                    gallery.style.scrollBehavior = 'auto';
+                    gallery.scrollLeft += setWidth;
+                    gallery.style.scrollBehavior = 'smooth';
+                }
+                else if (gallery.scrollLeft >= setWidth * 2) {
+                    gallery.style.scrollBehavior = 'auto';
+                    gallery.scrollLeft -= setWidth;
+                    gallery.style.scrollBehavior = 'smooth';
+                }
+            });
+        };
+
+        setupInfiniteScroll();
+
+        // Scroll Spy for Sidebar
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.drift-section');
+            const navLinks = document.querySelectorAll('.page-nav a');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '-20% 0px -60% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => link.classList.remove('active'));
+                        const id = entry.target.getAttribute('id');
+                        const activeLink = Array.from(navLinks).find(link =>
+                            link.getAttribute('onclick').includes(id)
+                        );
+                        if (activeLink) activeLink.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+
+        function scrollGallery(direction) {
+            const itemWidth = 470;
+            gallery.style.scrollBehavior = 'smooth';
+            gallery.scrollBy({
+                left: direction * itemWidth,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Source Radio | Kyeongseok Lee</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Reusing Drift Page Specific Styles */
+
+
+        .drift-container {
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .drift-content-wrapper {
+            padding-bottom: 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin: 30px auto;
+            font-size: 1rem;
+            color: #fff;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .drift-header-block {
+            margin-top: 50px;
+            margin-bottom: 50px;
+            text-align: left;
+        }
+
+        .drift-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #fff;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .drift-subtitle {
+            font-size: 1rem;
+            font-weight: 300;
+            color: #ccc;
+        }
+
+        .placeholder-gray {
+            background-color: #333;
+            width: 100%;
+            display: block;
+            border-radius: 4px;
+        }
+
+        .drift-section {
+            margin-top: 80px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .drift-section-title {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #fff;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 20px;
+            text-align: left;
+            width: 100%;
+        }
+
+        .drift-text-large {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #ddd;
+            line-height: 1.8;
+            width: 100%;
+            word-break: keep-all;
+            text-align: left;
+        }
+
+        .credit-custom-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            width: fit-content;
+            margin: 0 auto;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .credit-item {
+            display: flex;
+            align-items: flex-start;
+            width: 100%;
+            gap: 60px;
+        }
+
+        .credit-role {
+            font-size: 0.85rem;
+            font-weight: 400;
+            font-style: italic;
+            width: 150px;
+            color: #999;
+            flex-shrink: 0;
+        }
+
+        .credit-names {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.6;
+            margin-right: 80px;
+            color: #fff;
+        }
+
+        .credit-people {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #ddd;
+        }
+
+        .gallery-custom-grid {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+        }
+
+        .gallery-custom-grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        .gallery-box {
+            background: transparent;
+            min-width: 100%;
+            width: 100%;
+            height: auto;
+            flex-shrink: 0;
+            object-fit: contain;
+            scroll-snap-align: start;
+        }
+
+        @media (max-width: 1400px) {
+
+            .drift-header-block,
+            .drift-section {
+                padding-left: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .drift-header-block,
+            .drift-section {
+                padding-left: 20px;
+                padding-right: 20px;
+                margin-top: 60px;
+            }
+
+            .drift-title {
+                font-size: 2rem;
+            }
+
+            .credit-item {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .credit-names {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (max-width: 1600px) {
+
+            .page-nav,
+            .project-info-left {
+                display: none;
+            }
+        }
+
+        /* Side Navigation (Right) */
+        .page-nav {
+            position: fixed;
+            top: 50%;
+            right: 40px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .page-nav a {
+            text-decoration: none;
+            color: #555;
+            font-size: 0.6rem;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            text-align: right;
+            cursor: pointer;
+        }
+
+        .page-nav a:hover {
+            color: #fff;
+            transform: translateX(-5px);
+        }
+
+        .page-nav a.active {
+            color: #aaa;
+            transform: translateX(-3px);
+        }
+
+        /* Project Info (Left) */
+        .project-info-left {
+            position: fixed;
+            top: 50%;
+            left: 40px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 1000;
+            text-align: left;
+        }
+
+        .info-group {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .info-label {
+            font-size: 0.6rem;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .info-value {
+            font-size: 0.7rem;
+            color: #aaa;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="logo">Kyeongseok Lee</a>
+        <nav>
+            <ul>
+                <li><a href="index.html" style="opacity: 1; border-bottom: 1px solid #fff;">Work</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <!-- Left Project Info -->
+    <div class="project-info-left">
+        <div class="info-group">
+            <span class="info-value" style="font-weight: 700; color: #ccc; margin-bottom: 5px;">Source Radio</span>
+        </div>
+        <div class="info-group">
+            <span class="info-label">Category</span>
+            <span class="info-value">Ulsan Location DJ Mix Video</span>
+        </div>
+        <div class="info-group">
+            <span class="info-label">Date</span>
+            <span class="info-value">2024 - 2025</span>
+        </div>
+        <div class="info-group">
+            <span class="info-label">Type</span>
+            <span class="info-value">Personal Project</span>
+        </div>
+    </div>
+
+    <!-- Side Navigation -->
+    <nav class="page-nav">
+        <a onclick="document.getElementById('sec-intro').scrollIntoView({behavior: 'smooth'})">Overview</a>
+        <a onclick="document.getElementById('sec-context').scrollIntoView({behavior: 'smooth'})">Episode Archive</a>
+        <a onclick="document.getElementById('sec-project-details').scrollIntoView({behavior: 'smooth'})">Details</a>
+
+        <a onclick="document.getElementById('sec-credits').scrollIntoView({behavior: 'smooth'})">Credits</a>
+    </nav>
+    <div class="container" style="max-width: 100%; margin: 0; padding: 0;">
+        <main class="drift-container">
+            <div class="drift-content-wrapper">
+                <!-- Header Block -->
+                <div class="drift-header-block">
+                    <h1 class="drift-title">Source Radio</h1>
+                    <p class="drift-subtitle">Ulsan Location DJ Mix Video | 2024-2025 | Personal Project</p>
+                </div>
+
+                <!-- Hero -->
+                <div style="height: 650px; margin-bottom: 120px; width: 100%; overflow: hidden;">
+                    <img src="source_radio/표지.png" class="drift-hero"
+                        style="height: 100%; width: 100%; object-fit: cover; object-position: center; display: block;"
+                        alt="Source Radio Main">
+                </div>
+
+                <!-- Project Overview -->
+                <section class="drift-section" id="sec-intro">
+                    <div class="drift-section-title">Project Overview</div>
+                    <div class="drift-text-large"
+                        style="text-align: center; letter-spacing: -0.03em; word-break: keep-all; width: 100%;">
+                        Sauce Radio는 울산 곳곳의 특색 있는 공간을 소개하고, 디제이들의 큐레이션을 통해 음악적 경험을 제공하는 디제이 믹스 비디오 시리즈입니다.<br>
+                        이를 통해 공간의 아름다움과 음악적 스펙트럼을 청취자들에게 선보입니다.
+                    </div>
+                </section>
+
+                <!-- Planning Context & Objective -->
+                <!-- Episode Archive -->
+                <section class="drift-section" id="sec-context">
+                    <div class="drift-section-title">Episode Archive</div>
+                    <div class="drift-text-large" style="margin-bottom: 60px; text-align: center; width: 100%;">
+                        울산의 서브컬처와 로컬 브랜드를 조명합니다. 바버샵, 수제버거 매장, LP바, 빈티지 펍 등 각 공간이 가진 고유한 무드와 이야기를 소스라디오만의 시선과 음악으로
+                        담아냅니다.
+                    </div>
+
+                    <!-- Episode List (2x2 Grid) -->
+                    <div class="episode-grid">
+
+                        <!-- Ep. Flame -->
+                        <div class="episode-card">
+                            <h3 class="ep-title">Flame Barbershop</h3>
+                            <div class="ep-content">
+                                <div class="ep-text">
+                                    <strong style="color: #fff; display: block; margin-bottom: 5px;">울산 바이커들의 아지트, 플레임
+                                        바버샵</strong>
+
+                                    <em style="font-size: 0.85rem; color: #777; display:block; margin-top: 10px;">Location:
+                                        울산 남구 왕생로 66번길 11</em>
+                                </div>
+                                <div class="episode-buttons">
+                                    <a href="#" class="btn-mixset">DJ HELI Mixset</a>
+                                    <a href="#" class="btn-mixset">DJ MIRA Mixset</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ep. Slofe -->
+                        <div class="episode-card">
+                            <h3 class="ep-title">Slofe</h3>
+                            <div class="ep-content">
+                                <div class="ep-text">
+                                    <strong style="color: #fff; display: block; margin-bottom: 5px;">음악 러버들의 아지트,
+                                        슬로프</strong>
+
+                                    <em style="font-size: 0.85rem; color: #777; display:block; margin-top: 10px;">Location:
+                                        울산 남구 왕생로 20번길 20 2층</em>
+                                </div>
+                                <div class="episode-buttons">
+                                    <a href="#" class="btn-mixset">DJ Isomer Lee Mixset</a>
+                                    <a href="#" class="btn-mixset">DJ KAKAHONG Mixset</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ep. Old Heritage -->
+                        <div class="episode-card">
+                            <h3 class="ep-title">Old Heritage</h3>
+                            <div class="ep-content">
+                                <div class="ep-text">
+                                    <strong style="color: #fff; display: block; margin-bottom: 5px;">빈티지 무드의 카페 & 펍,
+                                        올드헤리티지</strong>
+
+                                    <em style="font-size: 0.85rem; color: #777; display:block; margin-top: 10px;">Location:
+                                        울산 남구 돋질로 239</em>
+                                </div>
+                                <div class="episode-buttons">
+                                    <a href="#" class="btn-mixset">DJ New World Mixset</a>
+                                    <a href="#" class="btn-mixset">DJ TAFF Mixset</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ep. Cokafella -->
+                        <div class="episode-card">
+                            <h3 class="ep-title">Cokafella</h3>
+                            <div class="ep-content">
+                                <div class="ep-text">
+                                    <strong style="color: #fff; display: block; margin-bottom: 5px;">힙합 감성의 수제 스매쉬드 버거,
+                                        코카펠라</strong>
+
+                                    <em style="font-size: 0.85rem; color: #777; display:block; margin-top: 10px;">Location:
+                                        울산 남구 대공원로 97번길 3</em>
+                                </div>
+                                <div class="episode-buttons">
+                                    <a href="#" class="btn-mixset">DJ Isomer Lee Mixset</a>
+                                    <a href="#" class="btn-mixset">DJ MIRA Mixset</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <style>
+                        .episode-grid {
+                            display: grid;
+                            grid-template-columns: 1fr 1fr;
+                            gap: 40px;
+                            width: 100%;
+                            margin-top: 40px;
+                        }
+
+                        .episode-card {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 15px;
+                            text-align: left;
+                        }
+
+                        .ep-title {
+                            font-size: 1.5rem;
+                            font-weight: 500;
+                            color: #fff;
+                            border-bottom: 1px solid #333;
+                            padding-bottom: 15px;
+                            margin-bottom: 0;
+                        }
+
+                        .ep-content {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: flex-start;
+                            gap: 20px;
+                        }
+
+                        .ep-text {
+                            flex: 1;
+                            font-size: 0.95rem;
+                            font-weight: 300;
+                            color: #ccc;
+                            line-height: 1.6;
+                        }
+
+                        .ep-text strong {
+                            font-weight: 500;
+                        }
+
+                        .episode-buttons {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 8px;
+                            flex-shrink: 0;
+                        }
+
+                        .btn-mixset {
+                            display: inline-block;
+                            padding: 8px 16px;
+                            border: 1px solid #555;
+                            color: #ddd;
+                            text-decoration: none;
+                            font-size: 0.8rem;
+                            border-radius: 2px;
+                            transition: all 0.3s ease;
+                            text-align: center;
+                            white-space: nowrap;
+                            width: 180px;
+                        }
+
+                        .btn-mixset:hover {
+                            background: #fff;
+                            color: #000;
+                            border-color: #fff;
+                        }
+
+                        @media (max-width: 1000px) {
+                            .episode-grid {
+                                grid-template-columns: 1fr;
+                            }
+
+                            .ep-content {
+                                flex-direction: column;
+                            }
+
+                            .episode-buttons {
+                                flex-direction: row;
+                                width: 100%;
+                            }
+
+                            .btn-mixset {
+                                flex: 1;
+                            }
+                        }
+                    </style>
+
+                </section>
+
+                <!-- Project Details -->
+                <section class="drift-section" id="sec-project-details">
+                    <div class="drift-section-title">Project Details</div>
+                    <div class="credit-custom-grid">
+
+                        <div class="credit-item">
+                            <div class="credit-role">Date</div>
+                            <div class="credit-names">2024 - 2025</div>
+                        </div>
+                        <div class="credit-item">
+                            <div class="credit-role">Location</div>
+                            <div class="credit-names">4 Local Brands in Ulsan</div>
+                        </div>
+                    </div>
+                </section>
+
+
+
+
+
+
+
+                <!-- Credit Section (Bottom) -->
+                <section class="drift-section" id="sec-credits">
+                    <div class="drift-section-title">Credits</div>
+                    <div class="credit-custom-grid">
+                        <div class="credit-item">
+                            <div class="credit-role">Directed by</div>
+                            <div class="credit-names">RUDIMENT</div>
+                        </div>
+                        <div class="credit-item">
+                            <div class="credit-role">Team Sauce Radio</div>
+                            <div class="credit-names">
+                                MIRA (Jonghoon Byun), HELI (Minsung Bu), TAFF (Taejung Shin), Isomer Lee (Kyeongseok
+                                Lee)
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <a href="index.html" class="back-link">← Back to Main</a>
+            </div>
+        </main>
+    </div>
+    <script>
+        function scrollGallery(elementId, direction) {
+            const gallery = document.getElementById(elementId);
+            if (gallery) {
+                // Scroll width + gap (20px)
+                const scrollAmount = gallery.clientWidth + 20;
+                gallery.scrollBy({
+                    left: direction * scrollAmount,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Initialize Arrow States and Listeners for ALL galleries
+        document.addEventListener('DOMContentLoaded', () => {
+            const galleries = document.querySelectorAll('.gallery-custom-grid');
+
+            galleries.forEach(gallery => {
+                const wrapper = gallery.closest('.gallery-wrapper');
+                if (!wrapper) return;
+
+                const leftArrow = wrapper.querySelector('.arrow-left');
+                const rightArrow = wrapper.querySelector('.arrow-right');
+
+                function updateArrows() {
+                    if (!leftArrow || !rightArrow) return;
+                    // Left Arrow
+                    if (gallery.scrollLeft <= 5) {
+                        leftArrow.style.opacity = '0.2';
+                        leftArrow.style.pointerEvents = 'none';
+                    } else {
+                        leftArrow.style.opacity = '1';
+                        leftArrow.style.pointerEvents = 'auto';
+                    }
+                    // Right Arrow
+                    if (gallery.scrollLeft + gallery.clientWidth >= gallery.scrollWidth - 5) {
+                        rightArrow.style.opacity = '0.2';
+                        rightArrow.style.pointerEvents = 'none';
+                    } else {
+                        rightArrow.style.opacity = '1';
+                        rightArrow.style.pointerEvents = 'auto';
+                    }
+                }
+
+                gallery.addEventListener('scroll', updateArrows);
+                updateArrows();
+                window.addEventListener('resize', updateArrows);
+            });
+        });
+
+        // Scroll Spy for Sidebar
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.drift-section');
+            const navLinks = document.querySelectorAll('.page-nav a');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '-20% 0px -60% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => link.classList.remove('active'));
+                        const id = entry.target.getAttribute('id');
+                        const activeLink = Array.from(navLinks).find(link =>
+                            link.getAttribute('onclick').includes(id)
+                        );
+                        if (activeLink) activeLink.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+
+</html>

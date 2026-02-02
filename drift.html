@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drift (표류) | Kyeongseok Lee</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Drift Page Specific Styles */
+
+
+        .drift-container {
+            width: 100%;
+            /* Removed max-width */
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Layout Utilities */
+        .drift-content-wrapper {
+            padding-bottom: 80px;
+            /* Reduced from 200px */
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        /* ... skip ... */
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin: 30px auto;
+            /* Reduced */
+            font-size: 1rem;
+            color: #fff;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        /* 1. Header Block */
+        .drift-header-block {
+            margin-top: 50px;
+            /* Reduced from 80px */
+            margin-bottom: 50px;
+            /* Reduced from 80px */
+            text-align: left;
+            /* Left align text */
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .drift-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #fff;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .drift-subtitle {
+            font-size: 1rem;
+            font-weight: 300;
+            color: #ccc;
+        }
+
+        /* 2. Placeholders */
+        .placeholder-gray {
+            background-color: #333;
+            width: 100%;
+            display: block;
+            border-radius: 4px;
+        }
+
+        /* 3. Section Styling */
+        .drift-section {
+            margin-top: 80px;
+            /* Reduced from 150px */
+            position: relative;
+            padding-left: 0;
+            padding-right: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            /* Align content to left */
+        }
+
+        .drift-section-title {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #fff;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 20px;
+            text-align: left;
+            /* Left align title */
+            width: 100%;
+            /* Removed max-width */
+        }
+
+        .drift-text-large {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #ddd;
+            line-height: 1.8;
+            width: 100%;
+            /* Fill full width */
+            word-break: keep-all;
+            text-align: left;
+            /* Left align text */
+        }
+
+        /* 4. Intro Grid */
+        .intro-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between;
+            /* Spread to edges */
+            width: 100%;
+        }
+
+        .intro-left,
+        .intro-right {
+            width: 48%;
+            /* Use percentage to fill width */
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.8;
+            word-break: keep-all;
+            color: #ddd;
+            text-align: left;
+        }
+
+        .intro-right {
+            margin-top: 80px;
+        }
+
+        /* 5. Schedule */
+        .schedule-grid {
+            display: flex;
+            gap: 80px;
+            align-items: flex-start;
+            justify-content: center;
+            /* Center the block */
+            width: 100%;
+            max-width: 900px;
+            /* Constrain width to have "more gaps layout" */
+            margin: 0 auto;
+        }
+
+        .poster-placeholder {
+            width: 350px;
+            aspect-ratio: 629/888;
+            flex-shrink: 0;
+        }
+
+        .schedule-details {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .schedule-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .schedule-label {
+            font-size: 0.85rem;
+            font-weight: 400;
+            font-style: italic;
+            color: #999;
+            letter-spacing: 0.05em;
+        }
+
+        .schedule-content {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        /* 6. Diagram */
+        .diagram-container-custom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+
+        .diagram-col-left {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            flex-shrink: 0;
+        }
+
+        .diagram-node-wrapper {
+            position: relative;
+            height: 120px;
+            display: flex;
+            align-items: center;
+        }
+
+        .node-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 1px solid #666;
+            background: #111;
+            z-index: 2;
+            position: relative;
+        }
+
+        .node-label {
+            position: absolute;
+            width: 100px;
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 500;
+            z-index: 3;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            line-height: 1.2;
+            color: #fff;
+        }
+
+        .connector-label-right {
+            position: absolute;
+            left: 120px;
+            width: 120px;
+            text-align: left;
+            font-size: 0.8rem;
+            font-weight: 300;
+            color: #aaa;
+        }
+
+        /* Spacers / Connectors */
+        .diagram-connector-left {
+            flex: 1;
+            height: 400px;
+            /* span height of left col */
+            position: relative;
+            min-width: 100px;
+            /* Minimum separation */
+            margin-left: -50px;
+            /* Pull closer to compensate label overlap logic if needed, or just standard flex */
+        }
+
+        /* Adjust logic: Left col has labels sticking out 120+140=260px. 
+           We need the SVG connector to start AFTER the labels. */
+        .diagram-connector-left {
+            flex: 1;
+            height: 400px;
+            position: relative;
+            margin-left: 100px;
+            /* Make space for .connector-label-right */
+        }
+
+        .connector-label-top {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: #aaa;
+        }
+
+        .diagram-col-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0;
+            position: relative;
+            /* Remove margin-left */
+        }
+
+        .diagram-connector-right {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .arrow-line {
+            width: 100%;
+            height: 1px;
+            background: #666;
+        }
+
+        .diagram-col-right {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+            position: relative;
+            /* Remove margin-left */
+        }
+
+        /* 7. Credit */
+        .credit-custom-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            width: fit-content;
+            /* Wrap content tightly */
+            margin: 0 auto;
+            /* Center the block */
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .credit-item {
+            display: flex;
+            align-items: flex-start;
+            width: 100%;
+            /* Full width */
+            max-width: none;
+            gap: 60px;
+            /* Add gap between Role and Content */
+        }
+
+
+
+        .credit-role {
+            font-size: 0.85rem;
+            font-weight: 400;
+            font-style: italic;
+            width: 150px;
+            color: #999;
+            flex-shrink: 0;
+        }
+
+        .credit-names {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.6;
+            margin-right: 80px;
+            /* Increase spacing between sub-role and name */
+            color: #fff;
+        }
+
+        .credit-people {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #ddd;
+        }
+
+        /* 8. Gallery Grid */
+        .gallery-custom-grid {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            /* Space for potential scroll behavior touch */
+            scrollbar-width: none;
+            /* Firefox */
+            -ms-overflow-style: none;
+            /* IE/Edge */
+        }
+
+        .gallery-custom-grid::-webkit-scrollbar {
+            display: none;
+            /* Chrome, Safari, Opera */
+        }
+
+        .gallery-box {
+            background: #222;
+            width: 450px !important;
+            /* Wider landscape */
+            height: 300px !important;
+            /* 3:2 ratio */
+            flex-shrink: 0;
+            aspect-ratio: 3 / 2;
+            object-fit: cover;
+        }
+
+        /* Responsive Tweaks */
+        @media (max-width: 1400px) {
+
+            .drift-header-block,
+            .drift-section {
+                padding-left: 100px;
+                margin-left: 0;
+            }
+
+            .drift-text-large,
+            .intro-left,
+            .intro-right {
+                width: 100%;
+                max-width: 900px;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .drift-header-block,
+            .drift-section {
+                padding-left: 20px;
+                padding-right: 20px;
+                margin-top: 60px;
+                /* Reduced mobile spacing */
+            }
+
+            .drift-title {
+                font-size: 2rem;
+            }
+
+            .drift-text-large {
+                font-size: 0.95rem;
+            }
+
+            .schedule-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+
+
+            .poster-placeholder {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 3/4;
+            }
+
+            .intro-right {
+                margin-top: 40px;
+            }
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin: 40px auto;
+            font-size: 1rem;
+            color: #fff;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        /* Side Navigation */
+        .page-nav {
+            position: fixed;
+            top: 50%;
+            right: 40px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .page-nav a {
+            text-decoration: none;
+            color: #555;
+            font-size: 0.6rem;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            text-align: right;
+            cursor: pointer;
+        }
+
+        .page-nav a:hover {
+            color: #fff;
+            transform: translateX(-5px);
+        }
+
+        .page-nav a.active {
+            color: #aaa;
+            transform: translateX(-3px);
+        }
+
+        /* Project Info (Left) */
+        .project-info-left {
+            position: fixed;
+            top: 50%;
+            left: 40px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 1000;
+            text-align: left;
+        }
+
+        .info-group {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .info-label {
+            font-size: 0.6rem;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .info-value {
+            font-size: 0.7rem;
+            color: #aaa;
+            font-weight: 500;
+        }
+
+        @media (max-width: 1600px) {
+
+            .page-nav,
+            .project-info-left {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="logo">Kyeongseok Lee</a>
+        <nav>
+            <ul>
+                <li><a href="index.html" style="opacity: 1; border-bottom: 1px solid #fff;">Work</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Left Project Info -->
+    <div class="project-info-left">
+        <div class="info-group">
+            <span class="info-value" style="font-weight: 700; color: #ccc; margin-bottom: 5px;">표류(Drift)</span>
+        </div>
+        <div class="info-group">
+            <span class="info-label">Category</span>
+            <span class="info-value">Interactive Live Music Performance</span>
+        </div>
+        <div class="info-group">
+            <span class="info-label">Date</span>
+            <span class="info-value">Nov 2025</span>
+        </div>
+        <div class="info-group">
+            <span class="info-label">Type</span>
+            <span class="info-value">Personal Project</span>
+        </div>
+    </div>
+
+    <!-- Side Navigation -->
+    <nav class="page-nav">
+        <a onclick="document.getElementById('drift-intro').scrollIntoView({behavior: 'smooth'})">Overview</a>
+        <a onclick="document.getElementById('drift-about').scrollIntoView({behavior: 'smooth'})">About</a>
+        <a onclick="document.getElementById('drift-schedule').scrollIntoView({behavior: 'smooth'})">Schedule</a>
+        <a onclick="document.getElementById('drift-explanation').scrollIntoView({behavior: 'smooth'})">Explanation</a>
+        <a onclick="document.getElementById('drift-gallery').scrollIntoView({behavior: 'smooth'})">Gallery</a>
+
+        <a onclick="document.getElementById('drift-credit').scrollIntoView({behavior: 'smooth'})">Credits</a>
+    </nav>
+    <div class="container" style="max-width: 100%; margin: 0; padding: 0;">
+        <main class="drift-container">
+            <div class="drift-content-wrapper">
+                <!-- Header Block -->
+                <div class="drift-header-block">
+                    <h1 class="drift-title">표류(Drift)</h1>
+                    <p class="drift-subtitle">Interactive Live Music Performance | Nov 2025 | Personal Project</p>
+                </div>
+
+                <!-- First Hero -->
+                <img src="drift/표류1.JPG" class="drift-hero"
+                    style="height: 650px; margin-bottom: 120px; width: 100%; object-fit: cover; display: block;"
+                    alt="Drift Main">
+
+                <!-- Intro Section -->
+                <section class="drift-section" id="drift-intro">
+                    <div class="drift-section-title">Performance Overview</div>
+                    <div class="drift-text-large" style="text-align: center; width: 100%;">
+                        우연한 만남에 낯설고. 흔들리고. 스며들고<br>
+                        너와 나의 다름에 소리가 물결친다<br><br>
+                        우연하게 만나고픈 마음 꼭 쥘 수 없는 울림에<br>
+                        흔적마저 떠밀려가도, 그것이 바라는 표류이다.
+                    </div>
+                </section>
+
+                <!-- Second Hero -->
+                <img src="drift/표류2.JPG" class="drift-hero"
+                    style="height: 650px; margin-bottom: 120px; width: 100%; object-fit: cover; display: block;"
+                    alt="Drift Hero 2">
+
+                <!-- About Section -->
+                <section class="drift-section" id="drift-about">
+                    <div class="drift-section-title">About the Performance</div>
+                    <div class="drift-text-large">
+                        [표류]는 전자음악가 HELI의 라이브 퍼포먼스와 비주얼 그래픽 아티스트 IsomerLee의 실시간 영상이 AI 이미지 생성 기술 Stream Diffusion을 통해 서로
+                        반응하며 만들어지는 인터랙티브 사운드 비주얼 공연입니다.<br><br>
+                        리듬과 빛이 즉흥적으로 얽히고, 변화하는 데이터와 감정의 파장이 실시간으로 시각화됩니다. 관객은 그 안에서 소리와 이미지가 함께 흐르는 표류의 순간을 느낄 수 있습니다.
+                    </div>
+                </section>
+
+
+
+                <!-- Schedule Section -->
+                <section class="drift-section" id="drift-schedule">
+                    <div class="drift-section-title">Performance Schedule</div>
+                    <div class="schedule-grid">
+                        <img src="drift/표류포스터.png" class="poster-placeholder" alt="Drift Poster">
+                        <div class="schedule-details">
+                            <div class="schedule-item">
+                                <div class="schedule-label">Date</div>
+                                <div class="schedule-content">2025.11.01 19:00-21:00</div>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="schedule-label">Gallery location</div>
+                                <div class="schedule-content">
+                                    Bemore Artstudio<br>
+                                    울산광역시 남구 삼산동 203-3번지,<br>
+                                    1층 비모어, Ulsan, Korea 44712
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Explanation Section -->
+                <section class="drift-section" id="drift-explanation">
+                    <div class="drift-section-title">Performance Explanation</div>
+                    <div class="drift-text-large" style="margin-bottom: 150px;">
+                        비주얼 디렉터의 사전 제작 비주얼 패턴 위에 두 가지 실시간 데이터가 적용됩니다. AI 추출 단어는 이미지 생성을 위한 Stream Diffusion 모델의 프롬프트로,
+                        연주자의 미디/오디오 신호는 생성 변수를 조절하는 제어 파라미터로 사용되어 TouchDesigner를 통해 시각화됩니다.
+                    </div>
+
+                    <!-- Diagram -->
+                    <div class="diagram-container-custom">
+                        <!-- Left Column -->
+                        <div class="diagram-col-left">
+                            <div class="diagram-node-wrapper">
+                                <div class="node-circle"></div>
+                                <div class="node-label">Extracted Words<br>by AI</div>
+                                <div class="connector-label-right">Prompt of<br>Stream Diffusion</div>
+                            </div>
+                            <div class="diagram-node-wrapper">
+                                <div class="node-circle"></div>
+                                <div class="node-label">Performancer</div>
+                                <div class="connector-label-right">MIDI&Audio Signal</div>
+                            </div>
+                            <div class="diagram-node-wrapper">
+                                <div class="node-circle"></div>
+                                <div class="node-label">Performancer</div>
+                                <div class="connector-label-right">Pre-made<br>Visual Patterns</div>
+                            </div>
+                        </div>
+
+                        <!-- Connector Left -->
+                        <div class="diagram-connector-left">
+                            <svg width="100%" height="100%" viewBox="0 0 300 400" preserveAspectRatio="none"
+                                style="overflow: visible;">
+                                <!-- Top to Center -->
+                                <path d="M0 60 C 150 60, 150 200, 300 200" stroke="#666" stroke-width="1.5" fill="none"
+                                    vector-effect="non-scaling-stroke" />
+                                <!-- Middle to Center -->
+                                <path d="M0 200 L 300 200" stroke="#666" stroke-width="1.5" fill="none"
+                                    vector-effect="non-scaling-stroke" />
+                                <!-- Bottom to Center -->
+                                <path d="M0 340 C 150 340, 150 200, 300 200" stroke="#666" stroke-width="1.5"
+                                    fill="none" vector-effect="non-scaling-stroke" />
+                            </svg>
+                            <div class="connector-label-top">Visualization</div>
+                        </div>
+
+                        <!-- Center Column -->
+                        <div class="diagram-col-center">
+                            <div class="node-circle"></div>
+                            <div class="node-label">Touch Designer</div>
+                        </div>
+
+                        <!-- Connector Right -->
+                        <div class="diagram-connector-right">
+                            <div class="arrow-line"></div>
+                        </div>
+
+                        <!-- Right Column -->
+                        <div class="diagram-col-right">
+                            <div class="node-circle"></div>
+                            <div class="node-label">Spectator</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Gallery Section -->
+                <section class="drift-section" id="drift-gallery">
+                    <div class="drift-section-title">Gallery</div>
+
+                    <div class="gallery-wrapper" style="position: relative; width: 100%; margin-bottom: 50px;">
+                        <style>
+                            .gallery-arrow {
+                                position: absolute;
+                                top: 50%;
+                                transform: translateY(-50%);
+                                background: transparent;
+                                border: none;
+                                cursor: pointer;
+                                z-index: 10;
+                                opacity: 0.7;
+                                transition: opacity 0.3s;
+                                padding: 10px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                            }
+
+                            .gallery-arrow:hover {
+                                opacity: 1;
+                            }
+
+                            .gallery-arrow svg {
+                                width: 50px;
+                                height: 50px;
+                            }
+
+                            .arrow-left {
+                                left: -60px;
+                            }
+
+                            .arrow-right {
+                                right: -60px;
+                            }
+
+                            @media (max-width: 768px) {
+                                .gallery-arrow svg {
+                                    width: 30px;
+                                    height: 30px;
+                                }
+
+                                .gallery-arrow {
+                                    background: rgba(0, 0, 0, 0.3);
+                                    padding: 5px;
+                                }
+
+                                .arrow-left {
+                                    left: 0;
+                                }
+
+                                .arrow-right {
+                                    right: 0;
+                                }
+                            }
+                        </style>
+                        <button class="gallery-arrow arrow-left" onclick="scrollGallery(-1)">
+                            <svg viewBox="0 0 50 50" fill="none">
+                                <path d="M30 10 L15 25 L30 40" stroke="white" stroke-width="1" />
+                            </svg>
+                        </button>
+
+                        <div class="gallery-custom-grid" id="galleryGrid" style="width: 100%; overflow-x: scroll;">
+                            <!-- Images from 표류3 to IMG... -->
+                            <img src="drift/표류3.JPG" class="gallery-box" alt="Drift 3">
+                            <img src="drift/표류4.JPG" class="gallery-box" alt="Drift 4">
+                            <img src="drift/표류5.JPG" class="gallery-box" alt="Drift 5">
+                            <img src="drift/표류6.JPG" class="gallery-box" alt="Drift 6">
+                            <img src="drift/표류7.JPG" class="gallery-box" alt="Drift 7">
+                            <img src="drift/IMG_8609.JPG" class="gallery-box" alt="Drift 8">
+                            <img src="drift/표류9.png" class="gallery-box" alt="Drift 9">
+                            <img src="drift/IMG_8610.JPG" class="gallery-box" alt="Drift 10">
+                        </div>
+
+                        <button class="gallery-arrow arrow-right" onclick="scrollGallery(1)">
+                            <svg viewBox="0 0 50 50" fill="none">
+                                <path d="M20 10 L35 25 L20 40" stroke="white" stroke-width="1" />
+                            </svg>
+                        </button>
+                    </div>
+                </section>
+
+
+
+                <!-- Credit Section -->
+                <section class="drift-section" id="drift-credit">
+                    <div class="drift-section-title">Credits</div>
+                    <div class="credit-custom-grid">
+
+                        <div class="credit-item">
+                            <div class="credit-role">Live Performance</div>
+                            <div class="credit-names">HELI (Minsung Bu)</div>
+                        </div>
+                        <div class="credit-item">
+                            <div class="credit-role">Visual Graphic</div>
+                            <div class="credit-names">Isomer Lee (Kyeongseok Lee)</div>
+                        </div>
+
+                        <div class="credit-item">
+                            <div class="credit-role">Curator & Host</div>
+                            <div class="credit-names">예술단체 비모어 & 독립대안문화공간 비모어</div>
+                        </div>
+                    </div>
+                </section>
+
+
+
+                <a href="index.html" class="back-link">← Back to Main</a>
+            </div>
+        </main>
+
+
+    </div>
+    <script>
+        const gallery = document.getElementById('galleryGrid');
+
+        // Setup Infinite Scroll when images load (or assume sizes are fixed)
+        const setupInfiniteScroll = () => {
+            const originalItems = Array.from(gallery.children);
+            if (originalItems.length === 0) return;
+
+            // Clone for start and end
+            originalItems.forEach(item => {
+                const cloneStart = item.cloneNode(true);
+                const cloneEnd = item.cloneNode(true);
+                gallery.appendChild(cloneEnd);
+                gallery.insertBefore(cloneStart, gallery.firstChild);
+            });
+
+            // Calculate width of one set (450px width + 20px gap)
+            const itemWidth = 470;
+            const setWidth = itemWidth * originalItems.length;
+
+            // Set start position
+            gallery.scrollLeft = setWidth;
+
+            // Scroll Loop Check
+            gallery.addEventListener('scroll', () => {
+                // If we scroll into the prepended set (too far left)
+                if (gallery.scrollLeft < setWidth - itemWidth) {
+                    // Jump forward to original set
+                    // We try to trigger this smoothly? Instant jump is best for loop illusion.
+                    // But if scroll-behavior: smooth is on for button, native scroll check might fight it?
+                    // Usually we set manual position without smooth behavior.
+                    gallery.style.scrollBehavior = 'auto';
+                    gallery.scrollLeft += setWidth;
+                    gallery.style.scrollBehavior = 'smooth';
+                }
+                // If we scroll past the original set (too far right)
+                else if (gallery.scrollLeft >= setWidth * 2) {
+                    gallery.style.scrollBehavior = 'auto';
+                    gallery.scrollLeft -= setWidth;
+                    gallery.style.scrollBehavior = 'smooth';
+                }
+            });
+        };
+
+        // Run setup
+        setupInfiniteScroll();
+
+        function scrollGallery(direction) {
+            const gallery = document.getElementById('galleryGrid');
+            if (gallery) {
+                const scrollAmount = gallery.clientWidth;
+                gallery.style.scrollBehavior = 'smooth';
+                gallery.scrollBy({
+                    left: direction * scrollAmount,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+
+        // Scroll Spy for Sidebar
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.drift-section');
+            const navLinks = document.querySelectorAll('.page-nav a');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '-20% 0px -60% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => link.classList.remove('active'));
+                        const id = entry.target.getAttribute('id');
+                        const activeLink = Array.from(navLinks).find(link =>
+                            link.getAttribute('onclick').includes(id)
+                        );
+                        if (activeLink) activeLink.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+
+</html>
