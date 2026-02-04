@@ -238,10 +238,14 @@ section {
 /* About & CV - Refined */
 .about-grid {
     display: grid;
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 300px 700px;
     gap: 80px;
     align-items: start;
-    /* Ensure columns align at the top */
+    justify-content: center;
+    /* Center the grid items within the container */
+    max-width: 1100px;
+    margin: 0 auto;
+    /* Center the grid itself */
 }
 
 .about-image {

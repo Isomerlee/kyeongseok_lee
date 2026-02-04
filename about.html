@@ -10,8 +10,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Hide work grid specifically on this page if JS tries to load it, 
-           or simply don't include the target div */
+        .cv-button:hover {
+            background: #fff !important;
+            color: #111 !important;
+            opacity: 1 !important;
+        }
     </style>
 </head>
 
@@ -33,17 +36,24 @@
                 <!-- <h2 class="section-title">About</h2> -->
                 <div class="about-grid">
                     <div class="about-image">
-                        <!-- Placeholder for profile image -->
-                        <div
-                            style="width: 100%; aspect-ratio: 1; background: #222; display: flex; align-items: center; justify-content: center; color: #666;">
-                            Profile Image
+                        <!-- Actual profile image replaced placeholder -->
+                        <div style="width: 100%; aspect-ratio: 1; background: #222; overflow: hidden;">
+                            <img src="about/profile.png" alt="Kyeongseok Lee"
+                                style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
                         <div style="margin-top: 20px; font-size: 0.9rem;">
-                            <strong>Kyeongseok Lee</strong><br>
-                            <span style="color: var(--accent-color);">lks020305@unist.ac.kr</span><br>
-                            <span style="color: var(--accent-color);">+82 10-7259-3050</span>
+                            <strong style="font-size: 1.1rem;">Kyeongseok Lee</strong><br>
+                            <span style="display: block; margin-top: 4px; color: var(--accent-color);">Undergraduate
+                                Student, UNIST</span>
+                            <span style="display: block; color: var(--accent-color); font-size: 0.85rem;">(Ulsan
+                                National Institute of Science and Technology)</span>
 
-                            <div style="margin-top: 15px; display: flex; flex-direction: column; gap: 8px;">
+                            <div style="margin-top: 15px; font-size: 0.85rem;">
+                                <span style="color: var(--accent-color);">lks020305@unist.ac.kr</span><br>
+                                <span style="color: var(--accent-color);">+82 10-7259-3050</span>
+                            </div>
+
+                            <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 8px;">
                                 <a href="https://github.com/Isomerlee" target="_blank"
                                     style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: var(--text-color); opacity: 0.8;">
                                     <svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor">
@@ -63,6 +73,11 @@
                                     LinkedIn
                                 </a>
                             </div>
+
+                            <a href="about/KyeongseokLee_CV_Feb 2026.pdf" class="cv-button" download
+                                style="display: inline-block; margin-top: 30px; padding: 10px 20px; border: 1px solid #fff; color: #fff; font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; transition: all 0.3s ease;">
+                                Download CV
+                            </a>
                         </div>
                     </div>
 
@@ -70,12 +85,24 @@
                         <div class="cv-section">
                             <h3
                                 style="margin-bottom: 20px; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em;">
+                                Research Topics</h3>
+                            <div class="cv-item">
+                                <div class="cv-desc">
+                                    Computational Interactive Art, Data Visualization, HCI in Creative Expression
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cv-section">
+                            <h3
+                                style="margin-bottom: 20px; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; margin-top: 40px;">
                                 Education</h3>
                             <div class="cv-item">
-                                <div class="cv-year">2021 - Present</div>
+                                <div class="cv-year">Mar 2021 - Feb 2027 (Expected)</div>
                                 <div class="cv-desc">
                                     <strong>UNIST</strong> (Ulsan National Institute of Science and Technology)<br>
-                                    B.S. in Design (Expected Graduation: 2027)
+                                    B.S. in Design<br>
+                                    Major GPA: 4.07 / 4.3 | Total GPA: 3.58 / 4.3
                                 </div>
                             </div>
                         </div>
@@ -85,13 +112,17 @@
                                 style="margin-bottom: 20px; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; margin-top: 40px;">
                                 Work Experience</h3>
                             <div class="cv-item">
-                                <div class="cv-year">
-                                    July 2025 - Present<br>
-                                    Dec 2022 - Apr 2023
-                                </div>
+                                <div class="cv-year">Jul 2025 - Present<br>Dec 2022 - Apr 2023</div>
                                 <div class="cv-desc">
                                     <strong>Expressive Computing Lab, UNIST</strong><br>
                                     Undergraduate Intern
+                                </div>
+                            </div>
+                            <div class="cv-item" style="margin-top: 30px;">
+                                <div class="cv-year">Mar 2022 - Nov 2022</div>
+                                <div class="cv-desc">
+                                    <strong>OND Lab, UNIST</strong><br>
+                                    Part-time Designer
                                 </div>
                             </div>
                         </div>
@@ -103,15 +134,35 @@
                             <div class="cv-item">
                                 <div class="cv-year">2024</div>
                                 <div class="cv-desc">
-                                    <strong>2024 국방 공공데이터 활용 경진대회</strong><br>
-                                    아이디어기획 최우수상
+                                    <strong>Defense Open Data Application Competition</strong><br>
+                                    Excellence Award in Idea Planning (2nd Place)
                                 </div>
                             </div>
-                            <div class="cv-item">
-                                <div class="cv-year">2023</div>
+                            <div class="cv-item" style="margin-top: 30px;">
+                                <div class="cv-year">2024</div>
                                 <div class="cv-desc">
-                                    <strong>10th ROK Army Startup Competition</strong><br>
-                                    Creativity Award (창의상)
+                                    <strong>The 10th ROK Army Startup Competition</strong><br>
+                                    Creativity Awards
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cv-section">
+                            <h3
+                                style="margin-bottom: 20px; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; margin-top: 40px;">
+                                Leadership</h3>
+                            <div class="cv-item">
+                                <div class="cv-year">Jan 2026 - Present</div>
+                                <div class="cv-desc">
+                                    <strong>UNIST Design Department</strong><br>
+                                    Student President
+                                </div>
+                            </div>
+                            <div class="cv-item" style="margin-top: 30px;">
+                                <div class="cv-year">2022</div>
+                                <div class="cv-desc">
+                                    <strong>UNIST Student Council</strong><br>
+                                    Design-Information Team
                                 </div>
                             </div>
                         </div>
