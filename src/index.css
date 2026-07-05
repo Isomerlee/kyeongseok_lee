@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-color: #ffffff;
+  --text-color: #111111;
+  --border-color: #eaeaea;
+  --hover-bg: #fafafa;
+  --accent-color: #000000;
+  --secondary-text: #888888;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+/* Layout */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+h1 { font-size: 1.8rem; font-weight: 500; letter-spacing: -0.02em; }
+h2 { font-size: 1.1rem; font-weight: 500; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-top: 2rem;}
+h3 { font-size: 0.95rem; font-weight: 500; margin-top: 1.5rem;}
+p { margin-bottom: 1rem; color: var(--secondary-text); font-size: 0.85rem; font-weight: 300; }
+ul, ol { margin-bottom: 1rem; padding-left: 1.5rem; color: var(--secondary-text); font-size: 0.85rem; font-weight: 300; }
+li { margin-bottom: 0.5rem; }
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  background-color: var(--bg-color);
+  z-index: 100;
+}
+
+.nav-brand {
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: var(--secondary-text);
+  padding: 0.5rem;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--text-color);
+}
+
+/* Footer */
+.footer {
+  padding: 2rem;
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+  color: var(--secondary-text);
+  font-size: 0.75rem;
+  font-weight: 300;
+}
+
+/* Projects Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Project Card */
+.project-card {
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05);
+}
+
+  .project-card:hover {
+    box-shadow: none;
+    background-color: var(--hover-bg);
+  }
+
+.project-card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.project-card-title {
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 0;
+  color: var(--text-color);
+}
+
+.project-card-category {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--secondary-text);
+  margin-bottom: 1rem;
+}
+
+.project-card-summary {
+  font-size: 0.9rem;
+  flex-grow: 1;
+}
+
+/* Project Details */
+.project-header {
+  margin-bottom: 3rem;
+}
+
+.project-meta {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--secondary-text);
+}
+
+.meta-item strong {
+  color: var(--text-color);
+  margin-right: 0.5rem;
+}
+
+.project-content section {
+  margin-bottom: 2.5rem;
+}
+
+/* CV */
+.cv-section {
+  margin-bottom: 2rem;
+}
+
+.cv-item {
+  margin-bottom: 1rem;
+}
+
+.cv-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.25rem;
+}
+
+.cv-item-title {
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.cv-item-date {
+  font-size: 0.85rem;
+  color: var(--secondary-text);
+}
+
+/* Placeholders */
+.placeholder-box {
+  background-color: var(--hover-bg);
+  border: 1px dashed var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--secondary-text);
+  font-size: 0.85rem;
+  width: 100%;
+}
+
+.placeholder-card {
+  aspect-ratio: 16/9;
+}
+
+.placeholder-hero {
+  aspect-ratio: 21/9;
+  margin-bottom: 2rem;
+}
+
+.placeholder-inline {
+  aspect-ratio: 4/3;
+  margin-bottom: 1.5rem;
+}
