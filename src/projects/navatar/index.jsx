@@ -5,10 +5,11 @@ const ProjectNavatar = () => {
   return (
     <div className="project-detail">
       <div className="project-header">
-        <h1>NAVATAR: News Consumption Persona for Korean Twenties</h1>
+        <h1>NAVATAR</h1>
+        <p className="project-subtitle">News Consumption Persona for Korean Twenties</p>
       </div>
 
-      <Placeholder type="hero" text="Main Project Image / Prototype Demo" />
+      <Placeholder type="hero" text="Main Project Image / Prototype Demo" filename="hero.png" />
 
       <div className="project-content">
         <section>
@@ -18,7 +19,7 @@ const ProjectNavatar = () => {
 
         <section>
           <h2>User Study (2-Axis Matrix)</h2>
-          <Placeholder type="inline" text="2-Axis Matrix Diagram" />
+          <Placeholder type="inline" text="2-Axis Matrix Diagram" filename="matrix.png" />
           <p>Mapped users based on 'Opinion Acceptance' and 'Exploration Motivation' to derive 4 Personas:</p>
           <ul>
             <li><strong>Explorer (탐구자형)</strong></li>
@@ -30,7 +31,7 @@ const ProjectNavatar = () => {
 
         <section>
           <h2>Design Strategy</h2>
-          <Placeholder type="inline" text="Design Strategy Visuals" />
+          <Placeholder type="inline" text="Design Strategy Visuals" filename="strategy.png" />
           <p>Instead of forcing ideology, provide "Customized News Navigation Tools" tailored to each persona's defense mechanism.</p>
           <ul>
             <li>Explorer ➔ Issue Mind-map</li>
@@ -43,7 +44,7 @@ const ProjectNavatar = () => {
         <section>
           <h2>Validation & Iteration</h2>
           <p>Prototype testing showed quantitative effectiveness but revealed that 'forced exposure' undermines user agency. Pivoted to "User-Driven Intervention Systems" (Persona Swipe, Folded Card, Modular Stack) to restore user control and mitigate resistance.</p>
-          <Placeholder type="inline" text="User-Driven Intervention Systems Prototype" />
+          <Placeholder type="inline" text="User-Driven Intervention Systems Prototype" filename="prototype.png" />
         </section>
       </div>
     </div>
