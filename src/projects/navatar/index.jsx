@@ -1,5 +1,5 @@
 import React from 'react';
-import Placeholder from '../components/Placeholder';
+import Placeholder from '../../components/Placeholder';
 
 const ProjectNavatar = () => {
   return (

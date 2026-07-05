@@ -4,9 +4,9 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
-import ProjectNavatar from './pages/ProjectNavatar';
-import ProjectDrift from './pages/ProjectDrift';
-import ProjectLGOven from './pages/ProjectLGOven';
+import ProjectNavatar from './projects/navatar';
+import ProjectDrift from './projects/drift';
+import ProjectLGOven from './projects/lg-oven';
 
 function App() {
   return (
