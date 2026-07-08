@@ -6,32 +6,55 @@ const Home = () => {
     {
       id: 'navatar',
       title: 'NAVATAR',
-      subtitle: 'News Consumption Persona for Korean Twenties',
+      year: '2026',
+    },
+    {
+      id: 'lg-oven',
+      title: 'Lightwave Oven Redesign',
+      year: '2026',
+    },
+    {
+      id: 'why-design',
+      title: 'Why Design',
+      year: '2026',
     },
     {
       id: 'drift',
       title: '표류 (drift)',
-      subtitle: 'Interactive Audiovisual Electronic Music Performance',
+      year: '2025',
     },
     {
-      id: 'lg-oven',
-      title: 'LG Objet Collection',
-      subtitle: 'Lightwave Oven Redesign',
+      id: 'sauce-radio',
+      title: 'Sauce Radio',
+      year: '2025',
+    },
+    {
+      id: 'hururuk-party',
+      title: 'HURURUK Party',
+      year: '2025',
+    },
+    {
+      id: 'oeum',
+      title: 'Oum (오음)',
+      year: '2025',
+    },
+    {
+      id: 'industrial-city',
+      title: 'Industrial City',
+      year: '2024',
     }
   ];
 
   return (
     <div>
       <section className="projects-section">
-        <h2>Projects</h2>
         <div className="projects-grid">
           {projects.map((proj) => (
             <ProjectCard 
               key={proj.id}
               id={proj.id}
               title={proj.title}
-              subtitle={proj.subtitle}
-              thumbnailFilename={`${proj.id}_thumbnail.png`}
+              year={proj.year}
             />
           ))}
         </div>

@@ -1,42 +1,58 @@
 import React from 'react';
+import HeroImage from '../../components/HeroImage';
 import Placeholder from '../../components/Placeholder';
+import paperPdf from './Finalterm_Paper_Team_Alpha_revised.pdf';
 
 const ProjectLGOven = () => {
+  const buttonStyle = {
+    display: 'inline-block',
+    padding: '0.75rem 1.5rem',
+    backgroundColor: 'var(--text-color)',
+    color: 'var(--bg-color)',
+    borderRadius: '4px',
+    textDecoration: 'none',
+    fontWeight: '500',
+    fontSize: '0.9rem',
+    marginTop: '1rem',
+    marginRight: '1rem',
+    cursor: 'pointer'
+  };
+
   return (
     <div className="project-detail">
       <div className="project-header">
-        <h1>LG Objet Collection</h1>
-        <p className="project-subtitle">Lightwave Oven Redesign</p>
+        <h1>Lightwave Oven Redesign</h1>
+        <p className="project-subtitle">LG Objet Collection Lightwave Oven Redesign</p>
       </div>
 
-      <Placeholder type="hero" text="Final Design / Render of the Oven" filename="hero.png" />
+      <HeroImage id="lg-oven" text="Main Project Image" />
 
       <div className="project-content">
         <section>
-          <h2>Problem</h2>
-          <p>Automation in premium ovens hides the cooking process, causing a critical loss of user agency and trust. Users don't fully understand, trust, or make use of the device due to "invisible food status" and "complex physical controls."</p>
+          <h2>Overview</h2>
+          <div className="project-metadata" style={{ marginBottom: '1.5rem', fontSize: '0.85rem', color: 'var(--secondary-text)' }}>
+            <p style={{ marginBottom: '0.2rem' }}><strong>Type:</strong> LG Electronics X UNIST (Team Project)</p>
+            <p style={{ marginBottom: '0.2rem' }}><strong>Period:</strong> 26.03.04 - 26.06.26</p>
+            <p style={{ marginBottom: '0.2rem' }}><strong>Tools:</strong> Figma, Solidworks, Keyshots, Premiere Pro</p>
+          </div>
+          <p>
+            The Lightwave Oven aims to provide a premium cooking experience for "Cooking Newbies". However, opaque cooking status and complicated controls diminished the user's sense of control. Through In-Depth Interviews and Hybrid Affinity Diagrams, we found that users struggle with invisible food status and untrusted auto-cook features. To solve this, we evolved the oven into an <strong>'Intelligent Cooking Platform'</strong> featuring a Panorama Display, ThinQ AI Assistant, and Handle Indicators to guide the user seamlessly through the cooking process.
+          </p>
         </section>
 
         <section>
-          <h2>Design Strategy</h2>
-          <Placeholder type="inline" text="Concept Sktech / Strategy Visual" filename="concept.png" />
-          <p>Restore process legibility to deliver a confident cooking experience. Translate hidden machine state data into a highly visible, intuitive dashboard.</p>
+          <h2>Gallery</h2>
+          <Placeholder type="full" text="In-Depth Interview & Hybrid Affinity Diagram" filename="lg_user_study" />
+          <Placeholder type="full" text="Intelligent Cooking Platform Strategy & UI Flow" filename="lg_strategy" />
+          <Placeholder type="full" text="Panorama Display & Physical Controls" filename="lg_solutions" />
         </section>
 
-        <section>
-          <h2>Final Design (Panorama Display & UI System)</h2>
-          
-          <h3>Panorama Display</h3>
-          <p>Displays settings, progress, and guidance across the entire oven glass.</p>
-          <Placeholder type="inline" text="Panorama Display UI" filename="panorama.png" />
-
-          <h3>Chef Agent AI & ThinQ AI</h3>
-          <p>Chef Agent AI curates perfect recipes for every moment, while ThinQ AI provides real-time advice on the transparent glass.</p>
-          <Placeholder type="inline" text="AI Features Visual" filename="ai-features.png" />
-
-          <h3>Handle Indicator & Voice Assistance</h3>
-          <p>Elegant controls that guide the next step without interrupting the cooking flow.</p>
-          <Placeholder type="inline" text="Handle Indicator Interaction" filename="handle.png" />
+        <section style={{ marginTop: '4rem', paddingTop: '2rem', borderTop: '1px solid var(--border-color)' }}>
+          <h2>Project Resources</h2>
+          <div>
+            <a href="#" className="button" style={buttonStyle}>Watch Video</a>
+            <a href={paperPdf} download="Finalterm_Paper_Team_Alpha_revised.pdf" className="button" style={buttonStyle}>Download Thesis Paper</a>
+          </div>
         </section>
       </div>
     </div>

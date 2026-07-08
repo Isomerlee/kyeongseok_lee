@@ -1,4 +1,5 @@
 import React from 'react';
+import HeroImage from '../../components/HeroImage';
 import Placeholder from '../../components/Placeholder';
 
 const ProjectNavatar = () => {
@@ -9,42 +10,26 @@ const ProjectNavatar = () => {
         <p className="project-subtitle">News Consumption Persona for Korean Twenties</p>
       </div>
 
-      <Placeholder type="hero" text="Main Project Image / Prototype Demo" filename="hero.png" />
+      <HeroImage id="navatar" text="Main Project Image / Prototype Demo" />
 
       <div className="project-content">
         <section>
-          <h2>Problem</h2>
-          <p>20s intentionally avoid news due to "cognitive fatigue" and "psychological resistance against extreme opinions." One-size-fits-all platforms force views, causing churn.</p>
+          <h2>Overview</h2>
+          <div className="project-metadata" style={{ marginBottom: '1.5rem', fontSize: '0.85rem', color: 'var(--secondary-text)' }}>
+            <p style={{ marginBottom: '0.2rem' }}><strong>Role:</strong> Lead UX/UI Designer & Full-stack Developer</p>
+            <p style={{ marginBottom: '0.2rem' }}><strong>Period:</strong> Oct 2024 - Dec 2024</p>
+            <p style={{ marginBottom: '0.2rem' }}><strong>Tools:</strong> React, Antigravity, Gemini API, Claude API</p>
+          </div>
+          <p>
+            NAVATAR is a personalized news consumption platform designed for Korean Twenties. Traditional news platforms often overwhelm young readers with dense text and polarized content. To bridge this gap, NAVATAR utilizes advanced LLMs (Gemini, Claude) to re-write, simplify, and personalize news articles. By organizing information into intuitive formats—like debate chats, timeline summaries, and jargon explanations—it lowers the barrier to entry and encourages critical thinking.
+          </p>
         </section>
 
         <section>
-          <h2>User Study (2-Axis Matrix)</h2>
-          <Placeholder type="inline" text="2-Axis Matrix Diagram" filename="matrix.png" />
-          <p>Mapped users based on 'Opinion Acceptance' and 'Exploration Motivation' to derive 4 Personas:</p>
-          <ul>
-            <li><strong>Explorer (탐구자형)</strong></li>
-            <li><strong>Observer (관찰자형)</strong></li>
-            <li><strong>Strategist (전략가형)</strong></li>
-            <li><strong>Efficiencyist (효율주의자형)</strong></li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>Design Strategy</h2>
-          <Placeholder type="inline" text="Design Strategy Visuals" filename="strategy.png" />
-          <p>Instead of forcing ideology, provide "Customized News Navigation Tools" tailored to each persona's defense mechanism.</p>
-          <ul>
-            <li>Explorer ➔ Issue Mind-map</li>
-            <li>Observer ➔ Issue Context-tree</li>
-            <li>Strategist ➔ Issue Dashboard</li>
-            <li>Efficiencyist ➔ Issue Briefing</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>Validation & Iteration</h2>
-          <p>Prototype testing showed quantitative effectiveness but revealed that 'forced exposure' undermines user agency. Pivoted to "User-Driven Intervention Systems" (Persona Swipe, Folded Card, Modular Stack) to restore user control and mitigate resistance.</p>
-          <Placeholder type="inline" text="User-Driven Intervention Systems Prototype" filename="prototype.png" />
+          <h2>Gallery</h2>
+          <Placeholder type="full" text="Target User Persona & Pain Points" filename="navatar_persona" />
+          <Placeholder type="full" text="LLM Architecture & User Flow" filename="navatar_flow" />
+          <Placeholder type="full" text="Final UI & Debate Chat Interface" filename="navatar_ui" />
         </section>
       </div>
     </div>
