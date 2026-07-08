@@ -2,6 +2,25 @@ import React from 'react';
 import HeroImage from '../../components/HeroImage';
 import ImageGallery from '../../components/ImageGallery';
 
+const getImages = (modules, prefix) => {
+  return Object.keys(modules)
+    .sort((a, b) => {
+      const numA = parseInt(a.match(new RegExp(`${prefix}(\\d+)`))?.[1] || 0);
+      const numB = parseInt(b.match(new RegExp(`${prefix}(\\d+)`))?.[1] || 0);
+      return numA - numB;
+    })
+    .map(path => ({
+      src: modules[path].default,
+      alt: path.split('/').pop().split('.')[0]
+    }));
+};
+
+const finalModules = import.meta.glob('./images/final*.{jpg,jpeg,png,JPG,PNG}', { eager: true });
+const processModules = import.meta.glob('./images/process*.{jpg,jpeg,png,JPG,PNG}', { eager: true });
+
+const finalImages = getImages(finalModules, 'final');
+const processImages = getImages(processModules, 'process');
+
 const ProjectNavatar = () => {
   return (
     <div className="project-detail">
@@ -15,9 +34,10 @@ const ProjectNavatar = () => {
       <div className="project-content">
         <section>
           <div className="project-metadata" style={{ marginBottom: '1.5rem', fontSize: '0.85rem', color: 'var(--secondary-text)' }}>
+            <p style={{ marginBottom: '0.2rem' }}><strong>Type:</strong> Personal Project</p>
             <p style={{ marginBottom: '0.2rem' }}><strong>Role:</strong> Lead UX/UI Designer & Full-stack Developer</p>
             <p style={{ marginBottom: '0.2rem' }}><strong>Period:</strong> Oct 2024 - Dec 2024</p>
-            <p style={{ marginBottom: '0.2rem' }}><strong>Tools:</strong> React, Antigravity, Gemini API, Claude API</p>
+            <p style={{ marginBottom: '0.2rem' }}><strong>Tools:</strong> Antigravity, Figma, Gemini, Claude Code</p>
           </div>
           <p>
             NAVATAR is a personalized news consumption platform designed for Korean Twenties. Traditional news platforms often overwhelm young readers with dense text and polarized content. To bridge this gap, NAVATAR utilizes advanced LLMs (Gemini, Claude) to re-write, simplify, and personalize news articles. By organizing information into intuitive formats—like debate chats, timeline summaries, and jargon explanations—it lowers the barrier to entry and encourages critical thinking.
@@ -25,13 +45,23 @@ const ProjectNavatar = () => {
         </section>
 
         <section>
-          <ImageGallery images={[
-            { alt: "Target User Persona & Pain Points", filename: "navatar_persona" },
-            { alt: "LLM Architecture & User Flow", filename: "navatar_flow" },
-            { alt: "Final UI & Debate Chat Interface", filename: "navatar_ui" },
-            { alt: "Timeline Feature", filename: "navatar_timeline" },
-            { alt: "Jargon Explanation Feature", filename: "navatar_jargon" }
-          ]} />
+          {finalImages.length > 0 ? (
+            <ImageGallery images={finalImages} />
+          ) : (
+            <div className="placeholder-box placeholder-hero" style={{ height: '300px' }}>
+              'navatar/images/' 폴더에 final1.jpg ~ final10.jpg 파일을 넣어주시면 결과물 갤러리가 나타납니다!
+            </div>
+          )}
+        </section>
+
+        <section style={{ marginTop: '4rem' }}>
+          {processImages.length > 0 ? (
+            <ImageGallery images={processImages} />
+          ) : (
+            <div className="placeholder-box placeholder-hero" style={{ height: '300px' }}>
+              'navatar/images/' 폴더에 process1.jpg ~ process10.jpg 파일을 넣어주시면 과정 갤러리가 나타납니다!
+            </div>
+          )}
         </section>
       </div>
     </div>

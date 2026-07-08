@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
 :root {
   --bg-color: #ffffff;
@@ -16,7 +17,7 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Inter', 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
   line-height: 1.5rem; /* 24px */
@@ -57,8 +58,8 @@ h1, h2, h3, h4 {
 h1 { font-size: 1.75rem; line-height: 2.25rem; font-weight: 500; letter-spacing: -0.02em; }
 h2 { font-size: 1.25rem; line-height: 1.75rem; font-weight: 500; margin-top: 1rem; }
 h3 { font-size: 1rem; line-height: 1.5rem; font-weight: 500; margin-top: 1.5rem; }
-p { margin-bottom: 1rem; color: var(--text-color); font-size: 0.875rem; font-weight: 300; }
-ul, ol { margin-bottom: 1rem; padding-left: 1.5rem; color: var(--text-color); font-size: 0.875rem; font-weight: 300; }
+p { margin-bottom: 1rem; color: var(--text-color); font-size: 0.875rem; font-weight: 400; }
+ul, ol { margin-bottom: 1rem; padding-left: 1.5rem; color: var(--text-color); font-size: 0.875rem; font-weight: 400; }
 li { margin-bottom: 0.5rem; }
 
 /* Navbar */
@@ -202,6 +203,23 @@ li { margin-bottom: 0.5rem; }
   margin-bottom: 2.5rem;
 }
 
+/* Credit Block */
+.credit-block {
+  margin-top: 2.5rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--secondary-text);
+  line-height: 1.6;
+}
+
+.credit-segment {
+  display: inline;
+}
+
+.credit-separator {
+  margin: 0 0.4rem;
+}
+
 /* Profile Page Layout */
 .profile-page {
   display: flex;
@@ -210,7 +228,7 @@ li { margin-bottom: 0.5rem; }
 }
 
 .profile-header {
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
 }
 
 .profile-name {
@@ -229,7 +247,7 @@ li { margin-bottom: 0.5rem; }
 
 /* CV */
 .cv-section {
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .cv-section h2 {
@@ -237,11 +255,11 @@ li { margin-bottom: 0.5rem; }
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .cv-item {
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .cv-item-header {
@@ -382,4 +400,73 @@ li { margin-bottom: 0.5rem; }
   font-size: 1rem;
   font-weight: 600;
   color: var(--secondary-text);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.75rem 1rem;
+  }
+
+  main {
+    padding: 1rem;
+  }
+
+  .profile-name {
+    font-size: 1.15rem;
+  }
+
+  .profile-contact {
+    font-size: 0.8rem;
+  }
+
+  .cv-section h2 {
+    font-size: 0.8rem;
+  }
+
+  .cv-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cv-item-header {
+    display: contents;
+  }
+
+  .cv-item-title {
+    order: 1;
+    font-size: 0.85rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .cv-item-role, .cv-item p {
+    order: 2;
+    font-size: 0.8rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .cv-item-date {
+    order: 3;
+    font-size: 0.75rem;
+    margin-top: 0.1rem;
+    margin-bottom: 0.25rem;
+    color: var(--secondary-text);
+  }
+
+  .cv-section > p {
+    font-size: 0.8rem;
+  }
+
+  .credit-segment {
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .credit-separator {
+    display: none;
+  }
+
+  .desktop-only-br {
+    display: none;
+  }
 }

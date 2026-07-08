@@ -31,7 +31,9 @@ const ProjectWhyDesign = () => {
         <section>
           <div className="project-metadata" style={{ marginBottom: '1.5rem', fontSize: '0.85rem', color: 'var(--secondary-text)' }}>
             <p style={{ marginBottom: '0.2rem' }}><strong>Type:</strong> Exhibition & Seminar</p>
+            <p style={{ marginBottom: '0.2rem' }}><strong>Role:</strong> Project Leader & Lead Designer</p>
             <p style={{ marginBottom: '0.2rem' }}><strong>Period:</strong> 2026</p>
+            <p style={{ marginBottom: '0.2rem' }}><strong>Tools:</strong> Illustrator, Photoshop, Figma, InDesign</p>
           </div>
           <p>
             As a design department within an institute of science and technology (UNIST), many people are unaware of why we exist and what we do. To address this and promote our department, we organized "Why Design" in the format of a major explanation session. The event featured exhibitions of major class results, insightful seminars, and various interactive participation activities to help visitors understand the unique value of our science-integrated design education.

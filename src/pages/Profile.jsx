@@ -5,7 +5,45 @@ const Profile = () => {
     <div className="profile-page">
       <div className="profile-header">
         <h1 className="profile-name">KYEONGSEOK LEE</h1>
-        <div className="profile-contact">lks020305@gmail.com | 82+ 1072593050</div>
+        <div className="profile-contact">
+          lks020305@gmail.com | 82+ 1072593050 <span style={{ margin: '0 0.4rem' }}>|</span>
+          <a href="https://www.instagram.com/isomerlee/" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', display: 'inline-flex', alignItems: 'center', verticalAlign: 'middle', transition: 'opacity 0.2s ease' }} onMouseEnter={(e) => e.currentTarget.style.opacity = '0.6'} onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}>
+            <svg viewBox="0 0 24 24" width="1.1em" height="1.1em" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+        </div>
+        <div style={{ marginTop: '1.2rem' }}>
+          <a href={`${import.meta.env.BASE_URL}portfolio.pdf`} download="Kyeongseok_Lee_Portfolio.pdf" style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.4rem',
+            padding: '0.4rem 0.8rem',
+            border: '1px solid var(--border-color)',
+            borderRadius: '4px',
+            fontSize: '0.8rem',
+            fontWeight: '500',
+            color: 'var(--text-color)',
+            backgroundColor: 'var(--bg-color)',
+            transition: 'background-color 0.2s ease, border-color 0.2s ease',
+            textDecoration: 'none'
+          }} onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = 'var(--hover-bg)';
+            e.currentTarget.style.borderColor = '#ccc';
+          }} onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = 'var(--bg-color)';
+            e.currentTarget.style.borderColor = 'var(--border-color)';
+          }}>
+            <svg viewBox="0 0 24 24" width="1em" height="1em" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Portfolio
+          </a>
+        </div>
       </div>
 
       <div className="profile-content">
