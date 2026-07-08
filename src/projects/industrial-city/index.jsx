@@ -1,6 +1,6 @@
 import React from 'react';
 import HeroImage from '../../components/HeroImage';
-import Placeholder from '../../components/Placeholder';
+import ImageGallery from '../../components/ImageGallery';
 
 const ProjectIndustrialCity = () => {
   return (
@@ -14,7 +14,6 @@ const ProjectIndustrialCity = () => {
 
       <div className="project-content">
         <section>
-          <h2>Overview</h2>
           <div className="project-metadata" style={{ marginBottom: '1.5rem', fontSize: '0.85rem', color: 'var(--secondary-text)' }}>
             <p style={{ marginBottom: '0.2rem' }}><strong>Type:</strong> Performance</p>
             <p style={{ marginBottom: '0.2rem' }}><strong>Period:</strong> Nov 2024, Jan 2025</p>
@@ -26,9 +25,13 @@ const ProjectIndustrialCity = () => {
         </section>
 
         <section>
-          <h2>Gallery</h2>
-          <Placeholder type="full" text="Industrial City Performance 1" filename="industrial_city_1" />
-          <Placeholder type="full" text="Industrial City Performance 2" filename="industrial_city_2" />
+          <ImageGallery images={[
+            { alt: "City Model Rendering", filename: "industrial_render" },
+            { alt: "Architectural Plans", filename: "industrial_plans" },
+            { alt: "Concept Sketches", filename: "industrial_sketches" },
+            { alt: "Additional View 1", filename: "industrial_extra1" },
+            { alt: "Additional View 2", filename: "industrial_extra2" }
+          ]} />
         </section>
       </div>
     </div>

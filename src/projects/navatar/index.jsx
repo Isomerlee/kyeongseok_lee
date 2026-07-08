@@ -1,6 +1,6 @@
 import React from 'react';
 import HeroImage from '../../components/HeroImage';
-import Placeholder from '../../components/Placeholder';
+import ImageGallery from '../../components/ImageGallery';
 
 const ProjectNavatar = () => {
   return (
@@ -14,7 +14,6 @@ const ProjectNavatar = () => {
 
       <div className="project-content">
         <section>
-          <h2>Overview</h2>
           <div className="project-metadata" style={{ marginBottom: '1.5rem', fontSize: '0.85rem', color: 'var(--secondary-text)' }}>
             <p style={{ marginBottom: '0.2rem' }}><strong>Role:</strong> Lead UX/UI Designer & Full-stack Developer</p>
             <p style={{ marginBottom: '0.2rem' }}><strong>Period:</strong> Oct 2024 - Dec 2024</p>
@@ -26,10 +25,13 @@ const ProjectNavatar = () => {
         </section>
 
         <section>
-          <h2>Gallery</h2>
-          <Placeholder type="full" text="Target User Persona & Pain Points" filename="navatar_persona" />
-          <Placeholder type="full" text="LLM Architecture & User Flow" filename="navatar_flow" />
-          <Placeholder type="full" text="Final UI & Debate Chat Interface" filename="navatar_ui" />
+          <ImageGallery images={[
+            { alt: "Target User Persona & Pain Points", filename: "navatar_persona" },
+            { alt: "LLM Architecture & User Flow", filename: "navatar_flow" },
+            { alt: "Final UI & Debate Chat Interface", filename: "navatar_ui" },
+            { alt: "Timeline Feature", filename: "navatar_timeline" },
+            { alt: "Jargon Explanation Feature", filename: "navatar_jargon" }
+          ]} />
         </section>
       </div>
     </div>

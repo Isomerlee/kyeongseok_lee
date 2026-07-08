@@ -4,6 +4,7 @@ import perf1 from './images/drift_performance1.jpg';
 import perf2 from './images/drift_performance2.jpg';
 import perf3 from './images/drift_performance3.jpg';
 import architecture from './images/drift_architecture.png';
+import ImageGallery from '../../components/ImageGallery';
 
 const ProjectDrift = () => {
   return (
@@ -17,7 +18,6 @@ const ProjectDrift = () => {
 
       <div className="project-content">
         <section>
-          <h2>Overview</h2>
           <div className="project-metadata" style={{ marginBottom: '1.5rem', fontSize: '0.85rem', color: 'var(--secondary-text)' }}>
             <p style={{ marginBottom: '0.2rem' }}><strong>Type:</strong> Performance</p>
             <p style={{ marginBottom: '0.2rem' }}><strong>Period:</strong> Nov 2025</p>
@@ -29,15 +29,13 @@ const ProjectDrift = () => {
         </section>
 
         <section>
-          <h2>Gallery</h2>
-          <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
-            <img src={perf1} alt="Performance Scene 1" style={{ width: '100%', flex: 1, objectFit: 'cover' }} />
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', flex: 1 }}>
-              <img src={perf2} alt="Performance Scene 2" style={{ width: '100%', flex: 1, objectFit: 'cover' }} />
-              <img src={perf3} alt="Performance Scene 3" style={{ width: '100%', flex: 1, objectFit: 'cover' }} />
-            </div>
-          </div>
-          <img src={architecture} alt="System Architecture Flowchart" style={{ width: '100%', marginBottom: '2rem' }} />
+          <ImageGallery images={[
+            { src: perf1, alt: "Performance Scene 1" },
+            { src: perf2, alt: "Performance Scene 2" },
+            { src: perf3, alt: "Performance Scene 3" },
+            { src: architecture, alt: "System Architecture Flowchart" },
+            { alt: "Additional Scene", filename: "drift_extra" }
+          ]} />
         </section>
       </div>
     </div>

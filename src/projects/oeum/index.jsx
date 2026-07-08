@@ -1,6 +1,6 @@
 import React from 'react';
 import HeroImage from '../../components/HeroImage';
-import Placeholder from '../../components/Placeholder';
+import ImageGallery from '../../components/ImageGallery';
 
 const ProjectOeum = () => {
   return (
@@ -14,7 +14,6 @@ const ProjectOeum = () => {
 
       <div className="project-content">
         <section>
-          <h2>Overview</h2>
           <div className="project-metadata" style={{ marginBottom: '1.5rem', fontSize: '0.85rem', color: 'var(--secondary-text)' }}>
             <p style={{ marginBottom: '0.2rem' }}><strong>Period:</strong> 2025</p>
           </div>
@@ -24,9 +23,13 @@ const ProjectOeum = () => {
         </section>
 
         <section>
-          <h2>Gallery</h2>
-          <Placeholder type="full" text="Oum Project Detail 1" filename="oeum_detail_1" />
-          <Placeholder type="full" text="Oum Project Detail 2" filename="oeum_detail_2" />
+          <ImageGallery images={[
+            { alt: "Brand Identity Concept", filename: "oeum_branding" },
+            { alt: "Packaging Design", filename: "oeum_packaging" },
+            { alt: "Marketing Materials", filename: "oeum_marketing" },
+            { alt: "Additional View 1", filename: "oeum_extra1" },
+            { alt: "Additional View 2", filename: "oeum_extra2" }
+          ]} />
         </section>
       </div>
     </div>

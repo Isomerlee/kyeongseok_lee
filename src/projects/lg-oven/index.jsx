@@ -1,6 +1,6 @@
 import React from 'react';
 import HeroImage from '../../components/HeroImage';
-import Placeholder from '../../components/Placeholder';
+import ImageGallery from '../../components/ImageGallery';
 import paperPdf from './Finalterm_Paper_Team_Alpha_revised.pdf';
 
 const ProjectLGOven = () => {
@@ -29,7 +29,6 @@ const ProjectLGOven = () => {
 
       <div className="project-content">
         <section>
-          <h2>Overview</h2>
           <div className="project-metadata" style={{ marginBottom: '1.5rem', fontSize: '0.85rem', color: 'var(--secondary-text)' }}>
             <p style={{ marginBottom: '0.2rem' }}><strong>Type:</strong> LG Electronics X UNIST (Team Project)</p>
             <p style={{ marginBottom: '0.2rem' }}><strong>Period:</strong> 26.03.04 - 26.06.26</p>
@@ -41,10 +40,13 @@ const ProjectLGOven = () => {
         </section>
 
         <section>
-          <h2>Gallery</h2>
-          <Placeholder type="full" text="In-Depth Interview & Hybrid Affinity Diagram" filename="lg_user_study" />
-          <Placeholder type="full" text="Intelligent Cooking Platform Strategy & UI Flow" filename="lg_strategy" />
-          <Placeholder type="full" text="Panorama Display & Physical Controls" filename="lg_solutions" />
+          <ImageGallery images={[
+            { alt: "In-Depth Interview & Hybrid Affinity Diagram", filename: "lg_user_study" },
+            { alt: "Intelligent Cooking Platform Strategy & UI Flow", filename: "lg_strategy" },
+            { alt: "Panorama Display & Physical Controls", filename: "lg_solutions" },
+            { alt: "Additional View 1", filename: "lg_extra1" },
+            { alt: "Additional View 2", filename: "lg_extra2" }
+          ]} />
         </section>
 
         <section style={{ marginTop: '4rem', paddingTop: '2rem', borderTop: '1px solid var(--border-color)' }}>
