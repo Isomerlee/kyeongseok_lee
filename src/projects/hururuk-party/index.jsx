@@ -39,13 +39,17 @@ const ProjectHururukParty = () => {
         </section>
 
         <section>
-          {galleryImages.length > 0 ? (
-            <ImageGallery images={galleryImages} />
-          ) : (
-            <div className="placeholder-box placeholder-hero">
-              'hururuk-party/images/' 폴더 안에 photo1.jpg ~ photo10.jpg 파일을 넣어주시면 갤러리가 자동으로 완성됩니다!
-            </div>
-          )}
+          <div className="hero-image" style={{ borderRadius: '4px', overflow: 'hidden', backgroundColor: 'var(--border-color)', aspectRatio: '16/9', marginBottom: '2rem' }}>
+            <iframe 
+              width="100%" 
+              height="100%" 
+              src="https://www.youtube.com/embed/sQ8xsh3y3vk" 
+              title="Hururuk Party Main Video"
+              frameBorder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowFullScreen
+            ></iframe>
+          </div>
         </section>
       </div>
     </div>
