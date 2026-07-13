@@ -34,10 +34,10 @@ const ProjectOeum = () => {
       <div className="project-content">
         <section>
           <div className="project-metadata" style={{ marginBottom: '1.5rem', fontSize: '0.85rem', color: 'var(--secondary-text)' }}>
-            <p style={{ marginBottom: '0.2rem' }}><strong>Type:</strong> Brand Identity & Packaging Design</p>
-            <p style={{ marginBottom: '0.2rem' }}><strong>Role:</strong> Lead Designer</p>
+            <p style={{ marginBottom: '0.2rem' }}><strong>Type:</strong> Product Design</p>
+            <p style={{ marginBottom: '0.2rem' }}><strong>Role:</strong> Lead Designer, Interaction Designer</p>
             <p style={{ marginBottom: '0.2rem' }}><strong>Period:</strong> 2025</p>
-            <p style={{ marginBottom: '0.2rem' }}><strong>Tools:</strong> -</p>
+            <p style={{ marginBottom: '0.2rem' }}><strong>Tools:</strong> SolidWorks, KeyShot, Premiere Pro, After Effects, Figma</p>
           </div>
           <p>
             Details and background about the Oum (오음) project will be updated here. This overview provides a concise summary of the project goals, target audience, and final deliverables.
