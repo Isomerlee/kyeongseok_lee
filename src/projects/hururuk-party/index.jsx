@@ -34,12 +34,15 @@ const ProjectHururukParty = () => {
             <p style={{ marginBottom: '0.2rem' }}><strong>Tools:</strong> -</p>
           </div>
           <p>
-            Details and background about the HURURUK Party will be updated here. This overview provides a concise summary of the event planning, design direction, and musical curation.
+            <strong>RUDIMENT X Pepper Coffee Presents: HURURUK Party</strong><br/><br/>
+            Ulsan's trendiest cafe, Pepper Coffee, and the coolest crew, RUDIMENT, have teamed up. Join us for a Sunday filled with delicious food, lifestyle curation, and great music.<br/><br/>
+            Local DJs from Seoul and Busan's underground scenes set the vibe, transforming the space with music that makes your body move.<br/><br/>
+            On May 11th at Pepper Coffee, we enjoyed the tastiest Sunday where sunshine, people, sound, food, and objects all came together!
           </p>
         </section>
 
         <section>
-          <div className="hero-image" style={{ borderRadius: '4px', overflow: 'hidden', backgroundColor: 'var(--border-color)', aspectRatio: '16/9', marginBottom: '2rem' }}>
+          <div className="hero-image" style={{ borderRadius: '4px', overflow: 'hidden', backgroundColor: 'var(--border-color)', aspectRatio: '16/9', marginBottom: '4rem' }}>
             <iframe 
               width="100%" 
               height="100%" 
@@ -50,6 +53,16 @@ const ProjectHururukParty = () => {
               allowFullScreen
             ></iframe>
           </div>
+        </section>
+
+        <section>
+          {galleryImages.length > 0 ? (
+            <ImageGallery images={galleryImages} />
+          ) : (
+            <div className="placeholder-box placeholder-hero">
+              'hururuk-party/images/' 폴더 안에 photo1.jpg ~ photo10.jpg 파일을 넣어주시면 갤러리가 자동으로 완성됩니다!
+            </div>
+          )}
         </section>
       </div>
     </div>

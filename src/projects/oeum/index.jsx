@@ -39,9 +39,6 @@ const ProjectOeum = () => {
             <p style={{ marginBottom: '0.2rem' }}><strong>Period:</strong> 2025</p>
             <p style={{ marginBottom: '0.2rem' }}><strong>Tools:</strong> SolidWorks, KeyShot, Premiere Pro, After Effects, Figma</p>
           </div>
-          <p>
-            Details and background about the Oum (오음) project will be updated here. This overview provides a concise summary of the project goals, target audience, and final deliverables.
-          </p>
         </section>
 
         <section>
