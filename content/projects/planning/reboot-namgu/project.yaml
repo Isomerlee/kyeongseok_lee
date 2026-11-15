@@ -1,0 +1,35 @@
+title: Reboot Nam-gu
+subtitle: Civic Participation Project with NEWWAYS
+year: 2026
+date: '2026-12'      # 정렬용 (끝난 달, 진행 중이면 예정 종료월)
+start: '2026-09'
+ongoing: true      # 진행 중 → 끝 날짜 대신 Present / 현재
+tags: [Work Project, NEWWAYS]
+order: 1
+hero_text: Main Project Image
+
+meta:
+  Type: Civic Participation Project (NEWWAYS)
+  Role: Partner PM (Event)
+  Period: Sep 2026 - Dec 2026
+
+description: |
+  Reboot Nam-gu is NEWWAYS' project to make Nam-gu, Ulsan a neighborhood young people want to stay in. It flips the usual direction of local politics: instead of politicians making promises to voters, residents define the problems of their neighborhood and propose solutions that district council members turn into ordinances — a **"reverse ordinance."**
+
+  As Event PM, I plan and run the offline events where resident supporters ("Super Chamgyeon-dan") meet the six members of the Nam-gu Council, from the orientation to the final conference at the Nam-gu Office auditorium. The stage itself is designed to show the reversal: residents propose, council members take notes.
+
+blocks:
+  - gallery: photo
+
+ko:
+  tags: [실무 프로젝트, 뉴웨이즈]
+  title: 리부트 남구
+  subtitle: 뉴웨이즈 울산 남구 청년 정치 참여 프로젝트
+  meta:
+    유형: 시민 참여 프로젝트 (뉴웨이즈)
+    역할: 파트너 PM (이벤트)
+    기간: 2026.09 - 2026.12
+  description: |
+    리부트 남구는 울산 남구를 청년이 계속 살고 싶은 동네로 만들기 위한 뉴웨이즈의 프로젝트입니다. 정치인이 공약하고 유권자가 고르는 익숙한 구도를 뒤집어, 주민이 동네의 문제를 정의하고 해법을 제안하면 구의원이 이를 조례로 만드는 **'역조례'** 방식으로 진행합니다.
+
+    이벤트 PM으로서 주민 서포터즈 '슈퍼참견단'과 남구의회 의원 6명이 만나는 오프라인 행사를 OT부터 남구청 대강당 최종 컨퍼런스까지 기획하고 운영합니다. 무대 구성부터 '주민이 제안하고 의원이 받아 적는' 역전된 구도가 보이도록 설계했습니다.

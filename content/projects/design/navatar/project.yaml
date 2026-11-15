@@ -1,0 +1,33 @@
+title: NAVATAR
+subtitle: News Consumption Persona for Korean Twenties
+year: 2026
+date: '2026-06'
+start: '2026-04'
+tags: [Course Project]
+order: 2
+hero_text: Main Project Image / Prototype Demo
+
+meta:
+  Type: Course Project
+  Role: Lead UX/UI Designer & Full-stack Developer
+  Period: Apr 2026 - Jun 2026
+  Tools: Antigravity, Figma, Gemini, Claude Code
+
+description: |
+  NAVATAR is a personalized news consumption platform designed for Korean Twenties. Traditional news platforms often overwhelm young readers with dense text and polarized content. To bridge this gap, NAVATAR utilizes advanced LLMs (Gemini, Claude) to re-write, simplify, and personalize news articles. By organizing information into intuitive formats—like debate chats, timeline summaries, and jargon explanations—it lowers the barrier to entry and encourages critical thinking.
+
+blocks:
+  - gallery: final
+  - gallery: process
+
+ko:
+  tags: [수업 프로젝트]
+  title: NAVATAR
+  subtitle: 20대를 위한 뉴스 소비 퍼소나
+  meta:
+    유형: 수업 프로젝트
+    역할: UX/UI 디자인 · 풀스택 개발
+    기간: 2026.04 - 2026.06
+    도구: Antigravity, Figma, Gemini, Claude Code
+  description: |
+    NAVATAR는 한국 20대를 위한 맞춤형 뉴스 소비 플랫폼입니다. 기존 뉴스 플랫폼은 빽빽한 글과 양극화된 콘텐츠로 젊은 독자를 지치게 합니다. NAVATAR는 LLM(Gemini, Claude)으로 기사를 다시 쓰고 쉽게 풀어 개인에게 맞춥니다. 토론 채팅, 타임라인 요약, 용어 풀이처럼 직관적인 형식으로 정보를 정리해 진입 장벽을 낮추고 비판적 사고를 돕습니다.

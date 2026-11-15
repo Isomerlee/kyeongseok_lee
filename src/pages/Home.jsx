@@ -1,61 +1,37 @@
 import React from 'react';
+import { useSearchParams } from 'react-router-dom';
 import ProjectCard from '../components/ProjectCard';
+import { getCategories, getTimeline } from '../content';
+import { useLang } from '../i18n';
 
+// 상단 바 메뉴가 정한다: #/projects (All Work) · #/projects?filter=design · #/projects?filter=planning
+// All Work = 디자인 · 기획 섞어서 최신순, 작은 카드 6열
+// 카테고리 = 그 카테고리만, 큰 카드 3열
 const Home = () => {
-  const projects = [
-    {
-      id: 'navatar',
-      title: 'NAVATAR',
-      year: '2026',
-    },
-    {
-      id: 'lg-oven',
-      title: 'Lightwave Oven Redesign',
-      year: '2026',
-    },
-    {
-      id: 'why-design',
-      title: 'Why Design',
-      year: '2026',
-    },
-    {
-      id: 'drift',
-      title: '표류 (drift)',
-      year: '2025',
-    },
-    {
-      id: 'sauce-radio',
-      title: 'Sauce Radio',
-      year: '2025',
-    },
-    {
-      id: 'hururuk-party',
-      title: 'HURURUK Party',
-      year: '2025',
-    },
-    {
-      id: 'oeum',
-      title: 'Oum (오음)',
-      year: '2025',
-    },
-    {
-      id: 'industrial-city',
-      title: 'Industrial City',
-      year: '2024',
-    }
-  ];
+  const { lang } = useLang();
+  const [params] = useSearchParams();
+  const categories = getCategories(lang);
+  const category = categories.find((c) => c.key === params.get('filter'));
+
+  if (!category) {
+    return (
+      <div className="projects-page">
+        <div className="projects-grid projects-grid--dense">
+          {getTimeline(lang).map((project) => (
+            <ProjectCard key={project.id} project={project} dense />
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div>
+    <div className="projects-page">
       <section className="projects-section">
+        <h2 className="projects-section-title">{category.title}</h2>
         <div className="projects-grid">
-          {projects.map((proj) => (
-            <ProjectCard 
-              key={proj.id}
-              id={proj.id}
-              title={proj.title}
-              year={proj.year}
-            />
+          {category.projects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
           ))}
         </div>
       </section>

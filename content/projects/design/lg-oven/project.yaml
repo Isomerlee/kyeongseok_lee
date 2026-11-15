@@ -1,0 +1,40 @@
+title: Lightwave Oven Redesign
+subtitle: LG Objet Collection Lightwave Oven Redesign
+year: 2026
+date: '2026-06'
+start: '2026-03'
+tags: [Course Project, LG Electronics Collaboration]
+order: 3
+hero_text: Main Project Image
+
+meta:
+  Type: LG Electronics X UNIST (Team Project)
+  Role: UX/UI Designer
+  Period: 26.03.04 - 26.06.26
+  Tools: Figma, Solidworks, Keyshots, Premiere Pro
+
+description: |
+  The Lightwave Oven aims to provide a premium cooking experience for "Cooking Newbies". However, opaque cooking status and complicated controls diminished the user's sense of control. Through In-Depth Interviews and Hybrid Affinity Diagrams, we found that users struggle with invisible food status and untrusted auto-cook features. To solve this, we evolved the oven into an **'Intelligent Cooking Platform'** featuring a Panorama Display, ThinQ AI Assistant, and Handle Indicators to guide the user seamlessly through the cooking process.
+
+blocks:
+  - gallery: final
+  - media:
+      - video: sZC6roWM2tI
+        label: Video
+      - file: Finalterm_Paper_Team_Alpha_revised.pdf
+        thumbnail: paper_thumb
+        label: Paper
+  - gallery: process
+    divider: true
+
+ko:
+  tags: [수업 프로젝트, LG전자 산학]
+  title: 광파오븐 리디자인
+  subtitle: LG 오브제컬렉션 광파오븐 리디자인
+  meta:
+    유형: LG전자 X UNIST 산학 (팀 프로젝트)
+    역할: UX/UI 디자인
+    기간: 2026.03.04 - 2026.06.26
+    도구: Figma, Solidworks, Keyshot, Premiere Pro
+  description: |
+    광파오븐은 '요리 초보'에게 프리미엄 요리 경험을 주는 것을 목표로 합니다. 하지만 조리 상태가 보이지 않고 조작이 복잡해 사용자는 통제감을 잃었습니다. 심층 인터뷰와 하이브리드 어피니티 다이어그램으로 사용자가 음식 상태를 볼 수 없고 자동 조리를 믿지 못한다는 점을 찾았습니다. 이를 해결하기 위해 오븐을 파노라마 디스플레이, ThinQ AI 어시스턴트, 핸들 인디케이터를 갖춘 **'지능형 요리 플랫폼'**으로 발전시켜, 조리 과정 내내 사용자를 자연스럽게 안내하도록 했습니다.

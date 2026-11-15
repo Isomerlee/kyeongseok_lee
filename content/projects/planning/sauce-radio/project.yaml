@@ -1,0 +1,60 @@
+title: Sauce Radio
+subtitle: Ulsan Location DJ Mix Video
+year: 2025
+date: '2025-03'      # 추정 — 실제 마지막 달 확인 필요
+start: '2024'
+tags: [Performance, DJ Mix Series]
+order: 6
+hero_text: Sauce Radio Thumbnail or Video
+
+meta:
+  Type: Performance
+  Role: DJ, Visual Director
+  Period: 2024 - 2025
+  Tools: rekordbox, Premiere Pro, After Effects
+
+description: |
+  Sauce Radio is a DJ mix series that introduces unique spaces across Ulsan, Korea and provides a curated musical experience through the selections of various DJs. Through this series, listeners can enjoy both the beauty of these spaces and a broad musical spectrum.
+
+  Directed by RUDIMENT(@rudiment052) based in Ulsan
+
+  **Team Sauce Radio**
+  MIRA @plzsmi1e
+  HELI @helibeat
+  TAFF @taff_yo
+  Somerlee @isomerlee
+
+blocks:
+  - video_groups:
+      - name: Flame Barbershop
+        address: 11, Wangsaeng-ro 66beon-gil, Nam-gu, Ulsan (@flame_barbershop_us)
+        videos: [tUp7ikJdOZI, M7GpGHb95Cg]
+      - name: Slofe
+        address: 2F, 20, Wangsaeng-ro 20beon-gil, Nam-gu, Ulsan (@slofe___)
+        videos: [4-mk4dD-Jq0, ybdmWZY27JQ]
+      - name: Old Heritage
+        address: 239, Dotjil-ro, Nam-gu, Ulsan (@old_heritage_usn)
+        videos: [W5A2C_RDRSw, eaJ-rEQwwmA]
+      - name: Cokafella
+        address: 3, Daegongwon-ro 97beon-gil, Nam-gu, Ulsan (@cokafella)
+        videos: [marrOxSQbY4, JlYFxs3L2fE]
+
+ko:
+  tags: [공연, DJ 믹스 시리즈]
+  title: Sauce Radio
+  subtitle: 울산 공간 DJ 믹스 영상 시리즈
+  meta:
+    유형: 공연
+    역할: DJ · 비주얼 디렉터
+    기간: 2024 - 2025
+    도구: rekordbox, Premiere Pro, After Effects
+  description: |
+    Sauce Radio는 울산 곳곳의 개성 있는 공간을 소개하고, 여러 DJ의 선곡으로 큐레이션한 음악 경험을 전하는 DJ 믹스 시리즈입니다. 공간의 아름다움과 폭넓은 음악을 함께 즐길 수 있습니다.
+
+    울산 기반 RUDIMENT(@rudiment052) 연출
+
+    **Team Sauce Radio**
+    MIRA @plzsmi1e
+    HELI @helibeat
+    TAFF @taff_yo
+    Somerlee @isomerlee

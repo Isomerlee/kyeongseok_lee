@@ -1,0 +1,46 @@
+title: U-BUS
+subtitle: Proactive Nudge-based Transit Assistant Agent for Small/Mid-sized Cities
+year: 2026
+date: '2026-11'
+start: '2026-06'
+tags: [Research, Publication]
+order: 1
+thumbnail_position: top
+hero_text: Main Project Image
+
+meta:
+  Type: Research Project (2026 KSDS Undergraduate Design Conference, Poster)
+  Role: Researcher, UX Designer & Developer
+  Period: Jun 2026 - Nov 2026
+  Tools: Figma, React, Node.js, Python, Claude Code
+  Advisor: Prof. Kyungho Lee, Expressive Computing Lab, UNIST
+
+description: |
+  In Ulsan, a city with no urban rail where the median bus headway is 41 minutes, missing a single transfer can mean a 30-minute wait or a taxi ride. Yet existing map apps fix the route at the moment of search, leaving riders to re-check and re-plan on their own whenever a bus is late or missed.
+
+  U-BUS is a transit assistant agent that follows the trip in real time and steps in before the plan breaks — suggesting an earlier stop, a detour route, or a nearby café to wait in. Through interviews with 7 riders and a field pilot in which 3 participants used the deployed web app on their real trips, we derived design directions for **when and how a transit agent should intervene**.
+
+blocks:
+  - gallery: final
+    fit: contain      # 세로로 긴 휴대폰 화면 → 잘리지 않게
+  - media:
+      - file: U-BUS_KSDS2026_Poster.pdf
+        label: Poster
+  - gallery: process
+    fit: contain
+    divider: true
+
+ko:
+  tags: [연구, 논문 발표]
+  title: U-BUS
+  subtitle: 지방도시 대중교통 환승 부담 완화를 위한 선제적 넛지 기반 교통 비서 에이전트
+  meta:
+    유형: 연구 프로젝트 (2026 한국디자인학회 대학생 디자인 학술발표대회, 포스터)
+    역할: 연구 · UX 디자인 · 개발
+    기간: 2026.06 - 2026.11
+    도구: Figma, React, Node.js, Python, Claude Code
+    지도: 이경호 교수, UNIST Expressive Computing Lab
+  description: |
+    울산은 도시철도가 없고 시내버스 배차간격 중앙값이 41분이라, 환승 하나를 놓치면 30분 넘게 기다리거나 택시를 타야 합니다. 그런데 기존 지도 앱은 처음 검색한 시점의 경로를 고정해 보여 주기 때문에, 버스가 늦거나 놓쳤을 때 계획을 다시 확인하고 경로를 다시 찾는 일이 모두 이용자에게 남습니다.
+
+    U-BUS는 이동을 실시간으로 따라가다 계획이 틀어지기 전에 먼저 개입하는 교통 비서 에이전트입니다. 조기 하차, 우회 경로, 근처 카페에서 기다리기 같은 대안을 먼저 제안합니다. 이용자 7명 인터뷰와, 배포한 웹앱을 참여자 3명이 실제 이동에 사용한 현장 파일럿을 통해 **교통 에이전트가 언제, 어떻게 개입해야 하는지** 설계 방향을 도출했습니다.

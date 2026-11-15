@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Placeholder from './Placeholder';
 
-const ImageGallery = ({ images }) => {
+// fit: 'cover'(기본, 16:9로 꽉 채움) | 'contain'(세로로 긴 이미지도 잘리지 않게 전체 표시)
+const ImageGallery = ({ images, fit = 'cover' }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   if (!images || images.length === 0) return null;
@@ -12,7 +13,7 @@ const ImageGallery = ({ images }) => {
     <div className="image-gallery">
       <div className="gallery-main">
         {currentImage.src ? (
-          <img src={currentImage.src} alt={currentImage.alt || 'Gallery image'} className="gallery-main-img" />
+          <img src={currentImage.src} alt={currentImage.alt || 'Gallery image'} className="gallery-main-img" style={fit === 'contain' ? { objectFit: 'contain' } : undefined} />
         ) : (
           <Placeholder type="full" text={currentImage.alt} filename={currentImage.filename} />
         )}
@@ -30,7 +31,7 @@ const ImageGallery = ({ images }) => {
                 onClick={() => setSelectedIndex(idx)}
               >
                 {img.src ? (
-                  <img src={img.src} alt={img.alt || `Thumbnail ${idx + 1}`} />
+                  <img src={img.src} alt={img.alt || `Thumbnail ${idx + 1}`} loading="lazy" decoding="async" />
                 ) : (
                   <div className="thumb-placeholder-mini">
                     <span>{idx + 1}</span>
