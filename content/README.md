@@ -44,7 +44,7 @@ content/
 1. `projects/design/` 또는 `projects/planning/` 안에 새 폴더 (영문 소문자 · 하이픈, 예: `u-bus`)
 2. `images/`에 썸네일 `<폴더이름>_thumbnail.jpg` 와 갤러리 이미지 (`final1.jpg`, `final2.jpg` …)
 3. 다른 프로젝트의 `project.yaml`을 복사해서 고치기
-4. **`npm run images`** — 새 사진을 긴 변 2400px · WebP로 줄인다 (원본은 `PROJ_Archive/98_Source/Website_Originals/`로 옮겨짐). 고화질 원본을 그대로 두면 사이트 로딩이 느려진다. 이미 줄인 사진은 건너뛴다
+4. **`npm run images`** — 새 사진을 긴 변 2400px · WebP로 줄인다 (원본은 `PROJ_Career/98_Source/Website_Originals/`로 옮겨짐). 고화질 원본을 그대로 두면 사이트 로딩이 느려진다. 이미 줄인 사진은 건너뛴다
 
 ## project.yaml 항목
 
@@ -99,4 +99,4 @@ YouTube 영상 ID = 주소 `youtube.com/watch?v=` 뒤의 11자리.
 
 ## 기타
 
-- 사이트에 안 쓰는 사진은 여기 두지 말고 `PROJ_Archive/98_Source/Website_Originals/`에 둔다 (git 저장소가 공개라 커밋되면 누구나 볼 수 있음). 예: Why Design 안 쓰는 전시 사진 → `98_Source/Website_Originals/planning/why-design/unused/`
+- 사이트에 안 쓰는 사진은 여기 두지 말고 `PROJ_Career/98_Source/Website_Originals/`에 둔다 (git 저장소가 공개라 커밋되면 누구나 볼 수 있음). 예: Why Design 안 쓰는 전시 사진 → `98_Source/Website_Originals/planning/why-design/unused/`

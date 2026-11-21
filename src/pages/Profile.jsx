@@ -2,101 +2,75 @@ import React from 'react';
 import { getCv } from '../content';
 import { useLang } from '../i18n';
 
-const iconLinkStyle = { color: 'inherit', display: 'inline-flex', alignItems: 'center', verticalAlign: 'middle', transition: 'opacity 0.2s ease' };
-const dim = (e) => { e.currentTarget.style.opacity = '0.6'; };
-const undim = (e) => { e.currentTarget.style.opacity = '1'; };
-
-const InstagramIcon = () => (
-  <svg viewBox="0 0 24 24" width="1.1em" height="1.1em" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-  </svg>
-);
-
-const LinkedInIcon = () => (
-  <svg viewBox="0 0 24 24" width="1.1em" height="1.1em" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path>
-    <rect x="2" y="9" width="4" height="12"></rect>
-    <circle cx="4" cy="4" r="2"></circle>
+const DownloadIcon = () => (
+  <svg viewBox="0 0 24 24" width="1em" height="1em" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+    <polyline points="7 10 12 15 17 10"></polyline>
+    <line x1="12" y1="15" x2="12" y2="3"></line>
   </svg>
 );
 
 // 내용은 content/cv/cv.yaml 에서 고친다.
+// 레이아웃 (index.css "Profile"):
+//   데스크톱 — 맨 위 Contact 줄(메일 · 전화 · 링크 · 포트폴리오 PDF), 아래 섹션마다 [섹션 이름 | 기간 | 이름 · 역할 · 설명] 3단
+//   태블릿 — 섹션 이름이 위로 올라가고 [기간 | 내용] 2단 / 모바일 — 한 줄로 쌓임
+// 항목 값: title(필수) · date · role · desc(선택, 한 줄 설명)
 const Profile = () => {
   const { lang, t } = useLang();
   const cv = getCv(lang);
-  const socials = [
-    cv.instagram && { href: cv.instagram, label: 'Instagram', Icon: InstagramIcon },
-    cv.linkedin && { href: cv.linkedin, label: 'LinkedIn', Icon: LinkedInIcon },
+  const links = [
+    cv.instagram && { href: cv.instagram, label: 'Instagram' },
+    cv.linkedin && { href: cv.linkedin, label: 'LinkedIn' },
   ].filter(Boolean);
+
   return (
     <div className="profile-page">
-      <div className="profile-header">
-        <h1 className="profile-name">{cv.name}</h1>
+      {/* 이름은 상단 바 왼쪽에 이미 있어서 화면에는 안 보이게 (읽기 프로그램용으로만 남김, 11/22) */}
+      <h1 className="visually-hidden">{cv.name}</h1>
+      <section className="cv-section profile-contact-section">
+        <h2 className="cv-section-title">{t('contact')}</h2>
         <div className="profile-contact">
-          {[cv.email, cv.phone].filter(Boolean).join(' | ')}
-          {socials.length > 0 && (
-            <>
-              {' '}
-              <span style={{ margin: '0 0.4rem' }}>|</span>
-              <span style={{ display: 'inline-flex', gap: '0.6rem', verticalAlign: 'middle' }}>
-                {socials.map(({ href, label, Icon }) => (
-                  <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} title={label} style={iconLinkStyle} onMouseEnter={dim} onMouseLeave={undim}>
-                    <Icon />
-                  </a>
-                ))}
-              </span>
-            </>
+          {cv.email && <a href={`mailto:${cv.email}`}>{cv.email}</a>}
+          {cv.phone && <span>{cv.phone}</span>}
+          {links.length > 0 && (
+            <span className="profile-links">
+              {links.map(({ href, label }) => (
+                <a key={label} href={href} target="_blank" rel="noopener noreferrer">
+                  {label} ↗
+                </a>
+              ))}
+            </span>
           )}
-        </div>
-        {cv.portfolio_pdf && (
-          <div style={{ marginTop: '1.2rem' }}>
-            <a href={`${import.meta.env.BASE_URL}${cv.portfolio_pdf}`} download="Kyeongseok_Lee_Portfolio.pdf" style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.4rem',
-              padding: '0.4rem 0.8rem',
-              border: '1px solid var(--border-color)',
-              borderRadius: '4px',
-              fontSize: '0.8rem',
-              fontWeight: '400',
-              color: 'var(--text-color)',
-              backgroundColor: 'var(--bg-color)',
-              transition: 'background-color 0.2s ease, border-color 0.2s ease',
-              textDecoration: 'none'
-            }} onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = 'var(--hover-bg)';
-              e.currentTarget.style.borderColor = 'var(--secondary-text)';
-            }} onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'var(--bg-color)';
-              e.currentTarget.style.borderColor = 'var(--border-color)';
-            }}>
-              <svg viewBox="0 0 24 24" width="1em" height="1em" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <polyline points="7 10 12 15 17 10"></polyline>
-                <line x1="12" y1="15" x2="12" y2="3"></line>
-              </svg>
+          {cv.portfolio_pdf && (
+            <a
+              className="profile-download"
+              href={`${import.meta.env.BASE_URL}${cv.portfolio_pdf}`}
+              download="Kyeongseok_Lee_Portfolio.pdf"
+            >
+              <DownloadIcon />
               {t('portfolio')}
             </a>
-          </div>
-        )}
-      </div>
+          )}
+        </div>
+      </section>
 
       <div className="profile-content">
         {(cv.sections || []).map((section) => (
           <section className="cv-section" key={section.title}>
-            <h2>{section.title}</h2>
-            {section.text && <p>{section.text}</p>}
-            {(section.items || []).map((item, i) => (
-              <div className="cv-item" key={i}>
-                <div className="cv-item-header">
-                  <span className="cv-item-title">{item.title}</span>
-                  {item.date && <span className="cv-item-date">{String(item.date)}</span>}
+            <h2 className="cv-section-title">{section.title}</h2>
+            <div className="cv-section-body">
+              {section.text && <p className="cv-section-text">{section.text}</p>}
+              {(section.items || []).map((item, i) => (
+                <div className="cv-item" key={i}>
+                  <span className="cv-item-date">{item.date ? String(item.date) : ''}</span>
+                  <div className="cv-item-main">
+                    <span className="cv-item-title">{item.title}</span>
+                    {item.role && <p className="cv-item-role">{item.role}</p>}
+                    {item.desc && <p className="cv-item-desc">{item.desc}</p>}
+                  </div>
                 </div>
-                {item.role && <p className="cv-item-role">{item.role}</p>}
-              </div>
-            ))}
+              ))}
+            </div>
           </section>
         ))}
       </div>

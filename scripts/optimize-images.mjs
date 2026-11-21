@@ -3,7 +3,7 @@
 // content/projects/<카테고리>/<id>/images/ 안의 사진을
 //   - 긴 변 최대 2400px (화면 최대 1200px × 레티나 2배)
 //   - WebP (품질 82) 로 바꾼다. 파일 이름(확장자 뺀 부분)은 그대로라 yaml · 코드는 안 고쳐도 된다.
-// 원본은 지우지 않고 PROJ_Archive/98_Source/Website_Originals/<카테고리>/<id>/ 로 옮긴다.
+// 원본은 지우지 않고 PROJ_Career/98_Source/Website_Originals/<카테고리>/<id>/ 로 옮긴다.
 // 이미 가벼운 파일(WebP, 2400px 이하, 800KB 이하)은 건너뛴다. 새 사진을 넣은 뒤 다시 돌리면 새 것만 바뀐다.
 import sharp from 'sharp';
 import fs from 'node:fs/promises';

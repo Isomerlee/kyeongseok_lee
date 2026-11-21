@@ -8,21 +8,32 @@ hero_text: Main Project Image
 
 meta:
   Type: Local Event
-  Role: Main Director
+  Role: Main Director, DJ
   Period: Nov 2026
+  Venue: Awesome Q Skatepark (Ulsan), Clubnasub · Panoroom (Busan)
 
+# 사실 근거: PROJ_With215/5차 (1026-1031)/Plan_상세기록.md, 정리 1109~/공식_게시물_캡션.md (11/22 정리)
 description: |
-  USB brought 215-SST (KIM HAN & BOJVCK) to Ulsan and Busan for a one-day street culture project.
+  USB was a one-day street culture project that brought the Seoul-based performance duo 215-SST (KIM HAN & BOJVCK) to Ulsan and Busan. The daytime and nighttime events were named so that both share the initials USB.
 
-  In the afternoon, **Ulsan Skateboard Basement** took over Awesome Q Skatepark in Ulsan with a flea market, a "Cash for Anything" trick battle, and DJ sets. At night, **Underground Scene Burrowing** continued the party at Club Nasub in Busan.
+  Ulsan has only one indoor skatepark, and the underground DJ scenes in Busan and Ulsan have been shrinking. Using the duo's visit as the occasion, I set out to bring local skaters and DJs from both cities together in one place.
+
+  In the afternoon, **Ulsan Skateboard Basement** took over both basement floors of Awesome Q Skatepark. On B2, free skating and DJ sets ran alongside "Cash for Anything," where anyone could step up, show a trick, and win a prize on the spot, followed by a live set from 215-SST. B1 became a chill zone for drinks, T-shirt and deck tagging, and sticker bombing, and a flea market ran through the afternoon. Local skaters built a new box for the day.
+
+  At night, **Underground Scene Burrowing** continued at Clubnasub in Busan, where 215-SST and six local DJs from Ulsan, Busan, and Gyeongnam played until 4 a.m., with two more DJs at Panoroom, the bar on the first floor of the same building.
+
+  As Main Director, I handled planning, artist booking, venue rental, poster direction, promotion, on-site operations, and settlement, and played DJ sets in both cities.
 
   November 7, 2026 · Ulsan 13:00–17:00 / Busan 22:00–04:00
 
 blocks:
   - gallery: photo
   - credit:
-      - ["USB, Main Director: SOMERLEE", "Inviting 215-SST (KIM HAN, BOJVCK)"]
-      - ["Awesome Q Skatepark, Ulsan", "Club Nasub, Busan"]
+      - ["Main Director: SOMERLEE", "Inviting: 215-SST (KIM HAN, BOJVCK)"]
+      - ["Skate MC & Co-Director: JUNGSUNGTAXI", "Photo: Neo Joseon"]
+      - ["Ulsan DJ: YVNGVASH, DC MINI, SOMERLEE", "Busan DJ: LEORICO, DC MINI, DEVON, SOMERLEE, SOE, DYDGML0208", "Panoroom DJ: YVNGVASH, CY BOY"]
+      - ["Poster: debh (Ulsan), SOMERLEE (Busan)", "Skate Video: JINHYEONGJUN", "Skate Photo: gbsound__hsu"]
+      - ["Local Support: Awesome Q Skatepark, Frei Roasters, SLOFE, RUDIMENT, Boomer Shop, Badcuke, Stable Skateboards"]
 
 ko:
   tags: [로컬 이벤트]
@@ -30,11 +41,18 @@ ko:
   subtitle: 215-SST 초청 울산 · 부산 스트릿 컬처 프로젝트
   meta:
     유형: 로컬 이벤트
-    역할: 총괄 디렉터
+    역할: 총괄 디렉터, DJ
     기간: 2026.11
+    장소: 어썸큐 스케이트 파크 (울산), 클럽 나수브 · 파노룸 (부산)
   description: |
-    USB는 215-SST(김한 · BOJVCK)를 울산과 부산으로 초청한 하루짜리 스트릿 컬처 프로젝트입니다.
+    USB는 서울의 퍼포먼스 팀 215-SST(김한 · BOJVCK)를 울산과 부산으로 초청한 하루짜리 스트릿 컬처 프로젝트입니다. 낮 행사와 밤 행사의 이름은 머리글자가 모두 USB가 되도록 지었습니다.
 
-    낮에는 울산 어썸큐 스케이트 파크에서 **Ulsan Skateboard Basement**로 플리마켓, 'Cash for Anything' 트릭 대결, DJ 공연을 열었고, 밤에는 부산 클럽 나수브에서 **Underground Scene Burrowing**으로 이어졌습니다.
+    울산에는 실내 스케이트 파크가 한 곳뿐이고, 부산 · 울산의 언더그라운드 DJ 씬은 점점 작아지고 있습니다. 서울 팀이 내려오는 날을 계기로 두 도시의 스케이터와 DJ들이 한자리에 모이는 자리를 만들고자 했습니다.
+
+    낮에는 울산 어썸큐 스케이트 파크 지하 1 · 2층에서 **Ulsan Skateboard Basement**를 열었습니다. 지하 2층에서는 DJ 공연과 함께 자유 스케이팅, 누구나 나와 원하는 트릭을 보여 주고 즉석에서 경품을 받는 'Cash for Anything', 215-SST 라이브가 이어졌습니다. 지하 1층은 음료를 마시며 티셔츠 · 데크 태깅과 스티커 바밍을 하는 휴식 공간으로 꾸몄고, 플리마켓도 함께 열었습니다. 로컬 스케이터들은 이날을 위해 새 박스를 직접 만들었습니다.
+
+    밤에는 부산 클럽 나수브에서 **Underground Scene Burrowing**으로 이어져, 215-SST와 울산 · 부산 · 경남의 로컬 DJ 6명이 새벽 4시까지 공연했고, 같은 건물 1층 바 파노룸에서도 DJ 2명이 함께했습니다.
+
+    총괄 디렉터로서 기획, 아티스트 섭외, 두 공간 대관, 포스터 디렉션, 홍보, 현장 운영, 정산까지 맡았고, 울산과 부산 두 곳에서 DJ로도 공연했습니다.
 
     2026년 11월 7일 · 울산 13:00–17:00 / 부산 22:00–04:00

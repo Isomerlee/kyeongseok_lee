@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import { flushSync } from 'react-dom';
 
 // 화면 고정 문구 (메뉴 · 버튼). 글 내용은 content/ 의 yaml 에서 ko: 로 번역한다.
 const UI = {
@@ -13,6 +14,7 @@ const UI = {
     all: 'All Work',
     darkMode: 'Dark mode',
     lightMode: 'Light mode',
+    contact: 'Contact',
   },
   ko: {
     profile: 'Profile',
@@ -25,6 +27,7 @@ const UI = {
     all: 'All Work',
     darkMode: '다크 모드',
     lightMode: '라이트 모드',
+    contact: '연락처',
   },
 };
 
@@ -52,13 +55,33 @@ export const LanguageProvider = ({ children }) => {
     document.documentElement.lang = lang;
   }, [lang]);
 
+  // 한/영 전환 애니메이션 (11/22): 지원 브라우저는 화면 전체를 블러 크로스페이드 (index.css "한/영 전환")
+  // 미지원 브라우저는 새 화면만 블러에서 선명하게. 움직임 줄이기 설정이면 바로 바꾼다
   const setLang = (next) => {
-    setLangState(next);
+    if (next === lang) return;
     try {
       window.localStorage.setItem(STORAGE_KEY, next);
     } catch {
       // 저장이 막혀 있어도 전환은 동작
     }
+    const root = document.documentElement;
+    const apply = () => {
+      root.lang = next; // :root[lang="ko"] 글자 규칙이 새 화면에 바로 반영되게
+      flushSync(() => setLangState(next));
+    };
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      apply();
+      return;
+    }
+    if (document.startViewTransition) {
+      root.classList.add('lang-switching');
+      const transition = document.startViewTransition(apply);
+      transition.finished.finally(() => root.classList.remove('lang-switching'));
+      return;
+    }
+    root.classList.add('lang-fading');
+    apply();
+    window.setTimeout(() => root.classList.remove('lang-fading'), 500);
   };
 
   const t = (key) => UI[lang][key] || UI.en[key] || key;

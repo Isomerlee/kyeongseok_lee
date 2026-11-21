@@ -1,12 +1,13 @@
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import ProjectCard from '../components/ProjectCard';
-import { getCategories, getTimeline } from '../content';
+import WorkTimeline from '../components/WorkTimeline';
+import { getCategories } from '../content';
 import { useLang } from '../i18n';
 
 // 상단 바 메뉴가 정한다: #/projects (All Work) · #/projects?filter=design · #/projects?filter=planning
-// All Work = 디자인 · 기획 섞어서 최신순, 작은 카드 6열
-// 카테고리 = 그 카테고리만, 큰 카드 3열
+// All Work = 가로 연표 (components/WorkTimeline.jsx, 11/22 — 전엔 작은 카드 6열)
+// 카테고리 = 그 카테고리만, 큰 카드 4열 (넓은 화면)
 const Home = () => {
   const { lang } = useLang();
   const [params] = useSearchParams();
@@ -16,11 +17,7 @@ const Home = () => {
   if (!category) {
     return (
       <div className="projects-page">
-        <div className="projects-grid projects-grid--dense">
-          {getTimeline(lang).map((project) => (
-            <ProjectCard key={project.id} project={project} dense />
-          ))}
-        </div>
+        <WorkTimeline />
       </div>
     );
   }

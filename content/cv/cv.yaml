@@ -1,15 +1,16 @@
 name: KYEONGSEOK LEE
 landing_name: Kyeongseok Lee   # 첫 페이지 가운데 이름
 email: lks020305@gmail.com
-phone: 82+ 1072593050
+phone: +82 10-7259-3050
 instagram: https://www.instagram.com/isomerlee/
 linkedin: https://www.linkedin.com/in/kyeongseok-lee-84745b369/
 # public/ 폴더 안의 파일. 다운로드 버튼에 연결됨
 portfolio_pdf: portfolio.pdf
 
 sections:
-  - title: Research Topics
-    text: Computational Interactive Art, Data Visualization, HCI in Creative Expression
+  # 11/22: 대학원용 Research Topics 를 빼고 짧은 소개로 바꿈 (학력은 아래 Education 에 있으니 소개엔 안 씀)
+  - title: About
+    text: I work across user research, service planning, and prototypes I build with vibe coding and test in the field. I also plan and run performances and events in my local scene.
 
   - title: Education
     items:
@@ -80,8 +81,8 @@ ko:
   landing_name: 이경석
   phone: 010-7259-3050
   sections:
-    - title: 연구 관심사
-      text: 컴퓨테이셔널 인터랙티브 아트, 데이터 시각화, 창작 표현 속 HCI
+    - title: 소개
+      text: 사용자 리서치에서 서비스 기획, 바이브 코딩으로 만든 프로토타입의 현장 테스트까지 해 왔고, 지역에서 공연과 행사를 기획 · 운영합니다.
 
     - title: 학력
       items:

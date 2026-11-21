@@ -6,6 +6,7 @@ start: '2026-09'
 ongoing: true      # 진행 중 → 끝 날짜 대신 Present / 현재
 tags: [Work Project, NEWWAYS]
 order: 1
+hidden: true       # 사진이 없어 목록에서 숨김 (11/22). 11/28 컨퍼런스 사진 넣으면 이 줄 지우기
 hero_text: Main Project Image
 
 meta:
@@ -13,13 +14,25 @@ meta:
   Role: Partner PM (Event)
   Period: Sep 2026 - Dec 2026
 
+# 사실 근거: PROJ_뉴웨이즈/리부트남구_프로젝트덱_분석_경석.md, 4_OT/OT 큐시트_최종.md, 2_미팅 자료/1117 · 1118 (11/22 정리)
+# 컨퍼런스(11/28)가 끝나면 "마트의 상품처럼 진열하고 … 자리입니다" 문단을 실제 결과로 고치기
 description: |
-  Reboot Nam-gu is NEWWAYS' project to make Nam-gu, Ulsan a neighborhood young people want to stay in. It flips the usual direction of local politics: instead of politicians making promises to voters, residents define the problems of their neighborhood and propose solutions that district council members turn into ordinances — a **"reverse ordinance."**
+  Reboot Nam-gu is NEWWAYS' project to make Nam-gu, Ulsan a neighborhood young people want to stay in. It flips the usual direction of local politics: instead of politicians making promises to voters, residents define the problems of their neighborhood and propose solutions that district council members turn into ordinances — a **"reverse ordinance."** The issues are the everyday conditions that decide whether young people stay: transportation, culture, jobs, and local business.
 
-  As Event PM, I plan and run the offline events where resident supporters ("Super Chamgyeon-dan") meet the six members of the Nam-gu Council, from the orientation to the final conference at the Nam-gu Office auditorium. The stage itself is designed to show the reversal: residents propose, council members take notes.
+  Young residents in their 20s and 30s join as supporters called "Chamgyeon-dan" and work with all six members of the Nam-gu Council from October to December.
 
-blocks:
-  - gallery: photo
+  As Partner PM for events, I run the project's two offline events: proposing the mood and spatial layout, coordinating venues, catering, and production vendors, managing the event budget, and leading on-site operations.
+
+  **Supporters' Kick-off** · Oct 17, 2026 · BCD Café, Ulsan
+  The supporters and the six council members met for the first time. After the council members' presentations and Q&A, the teams began their work.
+
+  **Final Conference "Ulsan Nam-gu Politics Mart"** · Nov 28, 2026 · Nam-gu Office Auditorium
+  Each team's policy proposals are displayed like products in a market and presented directly to the council members. I laid out the reception, policy booths, and team tables along a single aisle, and arranged the stage so the reversal is visible: residents propose, council members take notes.
+
+blocks: []
+# 사진이 생기면 위 줄을 지우고 아래 두 줄의 # 를 빼기 (images/에 photo1.jpg … , reboot-namgu_thumbnail.jpg)
+# blocks:
+#   - gallery: photo
 
 ko:
   tags: [실무 프로젝트, 뉴웨이즈]
@@ -30,6 +43,14 @@ ko:
     역할: 파트너 PM (이벤트)
     기간: 2026.09 - 2026.12
   description: |
-    리부트 남구는 울산 남구를 청년이 계속 살고 싶은 동네로 만들기 위한 뉴웨이즈의 프로젝트입니다. 정치인이 공약하고 유권자가 고르는 익숙한 구도를 뒤집어, 주민이 동네의 문제를 정의하고 해법을 제안하면 구의원이 이를 조례로 만드는 **'역조례'** 방식으로 진행합니다.
+    리부트 남구는 울산 남구를 청년이 계속 살고 싶은 동네로 만들기 위한 뉴웨이즈의 프로젝트입니다. 정치인이 공약하고 유권자가 고르는 익숙한 구도를 뒤집어, 주민이 동네의 문제를 정의하고 해법을 제안하면 구의원이 이를 조례로 만드는 **'역조례'** 방식으로 진행합니다. 다루는 문제는 교통 · 문화 · 일자리 · 상권처럼 청년이 지역에 남을지를 가르는 생활 조건입니다.
 
-    이벤트 PM으로서 주민 서포터즈 '슈퍼참견단'과 남구의회 의원 6명이 만나는 오프라인 행사를 OT부터 남구청 대강당 최종 컨퍼런스까지 기획하고 운영합니다. 무대 구성부터 '주민이 제안하고 의원이 받아 적는' 역전된 구도가 보이도록 설계했습니다.
+    2030 청년들이 서포터즈 '참견단'으로 모여, 10월부터 12월까지 남구의회 의원 6명과 함께 정책 제안을 만들어 갑니다.
+
+    파트너 PM(이벤트)으로서 프로젝트의 오프라인 행사 두 개를 맡아, 무드와 공간 구성 제안부터 장소 · 케이터링 · 제작물 업체 조율, 행사 예산 관리, 현장 운영까지 진행합니다.
+
+    **참견단 발대식** · 2026년 10월 17일 · 울산 중구 BCD 카페
+    참견단과 의원 6명이 처음 만나는 자리로, 의원들의 발표와 질의응답 뒤 조별 활동을 시작했습니다.
+
+    **최종 컨퍼런스 '울산 남구 폴리틱스 마트'** · 2026년 11월 28일 · 울산 남구청 대강당
+    조별로 만든 정책을 마트의 상품처럼 진열하고 의원들에게 직접 제안하는 자리입니다. 리셉션, 정책 부스, 조별 테이블을 한 줄 통로로 잇는 공간을 짰고, 무대는 '주민이 제안하고 의원이 받아 적는' 역전된 구도가 보이도록 구성했습니다.

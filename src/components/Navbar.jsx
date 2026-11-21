@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useLang, LANGS } from '../i18n';
 import { useTheme } from '../theme';
@@ -56,6 +56,41 @@ const NavLinks = ({ t, lang }) => {
   ));
 };
 
+// 가운데 메뉴 밑줄: 누르면 활성 메뉴 아래로 미끄러져 옮겨 간다 (index.css .nav-indicator)
+// 첫 페이지처럼 활성 메뉴가 없으면 제자리에서 사라지고, 다시 생길 때는 미끄러지지 않고 그 자리에 나타난다
+const useNavIndicator = (navRef, activeKey, lang) => {
+  const [pos, setPos] = useState({ x: 0, w: 0, visible: false, jump: true });
+  const [ready, setReady] = useState(false);
+
+  useLayoutEffect(() => {
+    const nav = navRef.current;
+    if (!nav) return undefined;
+    const measure = () => {
+      const el = nav.querySelector('.nav-link.active');
+      if (!el) {
+        setPos((p) => ({ ...p, visible: false }));
+        return;
+      }
+      setPos((p) => ({ x: el.offsetLeft, w: el.offsetWidth, visible: true, jump: !p.visible }));
+    };
+    measure();
+    document.fonts?.ready.then(measure); // 글꼴이 늦게 들어오면 글자 폭이 바뀌니 다시 잰다
+    window.addEventListener('resize', measure);
+    return () => window.removeEventListener('resize', measure);
+  }, [navRef, activeKey, lang]);
+
+  // 처음 위치는 애니메이션 없이 잡고, 그다음부터 움직인다
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setReady(true));
+    return () => cancelAnimationFrame(id);
+  }, []);
+
+  let className = 'nav-indicator';
+  if (ready) className += pos.jump ? ' nav-indicator--fade' : ' nav-indicator--slide';
+  const style = { transform: `translateX(${pos.x}px)`, width: `${pos.w}px`, opacity: pos.visible ? 1 : 0 };
+  return { className, style };
+};
+
 const Controls = ({ lang, setLang, theme, toggleTheme, t }) => (
   <div className="nav-controls">
     <div className="lang-toggle" role="group" aria-label="Language">
@@ -91,6 +126,8 @@ const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+  const navRef = useRef(null);
+  const indicator = useNavIndicator(navRef, useActiveKey(lang), lang);
 
   // 페이지를 옮기면 모바일 메뉴 닫기
   useEffect(() => {
@@ -114,8 +151,9 @@ const Navbar = () => {
           <NavLink to="/">{lang === 'ko' ? '이경석' : 'Kyeongseok Lee'}</NavLink>
         </div>
 
-        <nav className="nav-center" aria-label="Main">
+        <nav className="nav-center" aria-label="Main" ref={navRef}>
           <NavLinks t={t} lang={lang} />
+          <span className={indicator.className} style={indicator.style} aria-hidden="true" />
         </nav>
 
         <div className="nav-right">
