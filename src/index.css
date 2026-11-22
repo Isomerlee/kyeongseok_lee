@@ -14,6 +14,8 @@
   --accent-color: #1a1a1a;
   --secondary-text: #1a1a1a9e;   /* muted */
   --inactive: #1a1a1a57;         /* 비활성 메뉴 */
+  --on-photo-text: #ffffff;      /* 사진 위 글씨 (라이트 · 다크 공통, 첫 페이지 캡션) */
+  --on-photo-shade: #00000099;   /* 사진 위 글씨 뒤 어두운 띠 */
   color-scheme: light;
 }
 
@@ -621,7 +623,7 @@ li { margin-bottom: 0.5rem; }
 }
 
 /* Profile (src/pages/Profile.jsx, 내용은 content/cv/cv.yaml)
-   데스크톱: 맨 위 Contact 줄, 아래 섹션마다 [섹션 이름 | 기간 | 내용] 3단 — 날짜와 이름이 가까이 붙어 읽기 쉽게.
+   데스크톱: 맨 위 Contact 줄, 아래 섹션마다 [섹션 이름 | 내용 | 기간] 3단 — 이름을 먼저 읽고 기간은 오른쪽 끝에 (11/22 사용자 요청).
    이름은 상단 바에 있어서 페이지엔 크게 쓰지 않는다 (11/22 사용자 결정) */
 .profile-page {
   display: flex;
@@ -723,10 +725,11 @@ li { margin-bottom: 0.5rem; }
   line-height: 1.6;
 }
 
-/* 항목: 왼쪽 기간, 오른쪽 이름 · 역할 · 설명 */
+/* 항목: 왼쪽 이름 · 역할 · 설명, 오른쪽 끝에 기간 (11/22 기간을 내용 뒤로 옮김)
+   기간은 줄바꿈 없이 한 줄 — 기간 칸 폭은 글자 길이만큼(auto) (11/22 사용자 요청) */
 .cv-item {
   display: grid;
-  grid-template-columns: 12.5rem minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 0.2rem 1.5rem;
 }
 
@@ -735,6 +738,8 @@ li { margin-bottom: 0.5rem; }
   line-height: 1.75;
   color: var(--secondary-text);
   font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
 }
 
 .cv-item-title {
@@ -762,7 +767,7 @@ li { margin-bottom: 0.5rem; }
   font-style: normal;
 }
 
-/* 태블릿: 섹션 이름을 위로 올리고 [기간 | 내용] 2단 */
+/* 태블릿: 섹션 이름을 위로 올리고 [내용 | 기간] 2단 */
 @media (max-width: 900px) {
   .cv-section {
     grid-template-columns: minmax(0, 1fr);
@@ -887,7 +892,7 @@ li { margin-bottom: 0.5rem; }
     padding: 1rem;
   }
 
-  /* Profile: 항목은 기간 → 이름 → 역할 순으로 한 줄 */
+  /* Profile: 항목은 이름 → 역할 → 기간 순으로 한 줄 */
   .profile-contact {
     font-size: 0.8rem;
     gap: 0.35rem 1rem;
@@ -904,6 +909,7 @@ li { margin-bottom: 0.5rem; }
   .cv-item-date {
     font-size: 0.75rem;
     line-height: 1.4;
+    text-align: left;
   }
 
   .cv-item-title {
@@ -947,20 +953,137 @@ html.is-landing main {
   min-height: 0;
 }
 
+/* 첫 페이지 (Landing.jsx, 11/22): 프로젝트 썸네일 한 줄이 화면 세로 가운데에서 왼쪽으로 흐름
+   큰 이름은 뺌 (11/22 사용자 결정 — .landing-name 은 지금 안 씀). 줄 높이 = 화면 높이 44% 와 폭 55% 중 작은 값, 사진은 16:9 */
 .landing {
   flex: 1;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  gap: clamp(1rem, 4vh, 2.5rem);
+  min-width: 0;  /* 흐르는 줄 전체 길이(수만 px)만큼 넓어지지 않게 */
+  min-height: 0;
+  margin: 0 -2rem; /* 줄은 화면 끝에서 끝까지 (main 좌우 여백 상쇄) */
   text-align: center;
 }
 
 .landing-name {
+  flex: none;
   margin: 0;
-  font-size: clamp(3rem, 9vw, 8rem);
+  padding: 0 1rem;
+  font-size: clamp(2.75rem, 8vw, 7rem);
   font-weight: 500;
   line-height: 1;
   letter-spacing: -0.05em;
+}
+
+.landing-row {
+  --landing-gap: clamp(0.5rem, 1.4vh, 1rem);
+  flex: none;
+  height: min(44vh, 55vw);
+  overflow: hidden;
+}
+
+.landing-track {
+  display: flex;
+  width: max-content;
+  height: 100%;
+  animation: landing-flow var(--landing-duration, 180s) linear infinite;
+}
+
+/* 마우스를 올린 줄은 멈춤 */
+.landing-row:hover .landing-track {
+  animation-play-state: paused;
+}
+
+@keyframes landing-flow {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* 사진 사이 간격은 margin 으로 (gap 을 쓰면 묶음 두 개 길이가 안 맞아 -50% 에서 튐) */
+.landing-item {
+  position: relative;
+  flex: none;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  margin-right: var(--landing-gap);
+  overflow: hidden;
+  background-color: var(--hover-bg);
+  color: inherit;
+}
+
+.landing-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease, filter 0.35s ease;
+}
+
+/* 기간 · 제목: 마우스를 올리면 사진 아래쪽에 나타남 (사진이 어두워지는 띠 위) */
+.landing-caption {
+  position: absolute;
+  inset: auto 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  padding: 2.5rem 0.9rem 0.75rem;
+  text-align: left;
+  color: var(--on-photo-text);
+  background: linear-gradient(to top, var(--on-photo-shade), transparent);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.landing-caption-period {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  font-variant-numeric: tabular-nums;
+}
+
+.landing-caption-title {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+@media (hover: hover) {
+  .landing-item:hover .landing-caption,
+  .landing-item:focus-visible .landing-caption {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .landing-item:hover img {
+    transform: scale(1.04);
+  }
+
+  /* 한 사진에 마우스를 올리면 나머지는 흑백으로 흐리게 (연표와 같은 방식) */
+  .landing:has(.landing-item:hover) .landing-item:not(:hover) img {
+    opacity: 0.35;
+    filter: grayscale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .landing {
+    margin: 0 -1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-track {
+    animation: none;
+  }
 }
 
 
@@ -993,10 +1116,17 @@ html.theme-fading *::after {
   padding-bottom: 3rem;
 }
 
-/* 맨 위 카테고리 이름: 스크롤해도 상단 바 아래에 붙어 있음 */
+/* 맨 위 카테고리 이름: 처음부터 상단 바 바로 아래에 붙어 있어서 스크롤해도 자리가 안 바뀐다 (11/22 사용자 요청)
+   전엔 위 여백(main 1.5rem + .projects-page 1rem)만큼 아래에 있다가 스크롤하면 올라가 붙었음
+   → All Work 에서만 그 여백을 없애 처음 자리 = 붙는 자리 */
+.projects-page--timeline {
+  padding-top: 0;
+  margin-top: -1.5rem; /* main 위 여백 상쇄 (모바일은 아래 768px 에서 1rem) */
+}
+
 .timeline-head {
   position: sticky;
-  top: 4.5rem;
+  top: calc(4.5rem + 1px); /* 상단 바 높이 + 아래 선 */
   z-index: 5;
   display: grid;
   grid-template-columns: minmax(0, 1fr) var(--tl-axis) minmax(0, 1fr);
@@ -1281,13 +1411,80 @@ html.theme-fading *::after {
   }
 }
 
+/* 2열 지그재그 (11/22 사용자 요청) — 마우스가 있고 화면이 1280px 이상일 때만
+   워크마다 [바깥 열 | 축 가까운 열] 2열. 축 위 점 간격은 모두 같다 (사진 높이 × STEP, 11/22 사용자 결정)
+   열은 WorkTimeline.jsx place2col 이 고른다 (같은 열 사진 · 바깥 열 가로선이 안 부딪히게, 되면 지그재그)
+   → 그해 둘째 줄부터 --tl-shift (사진 높이 단위, 음수, .work-timeline 에 JS 가 넣음) 만큼 앞 줄 아래 끝에서 올라붙는다
+   1280px 보다 좁으면 워크마다 1열 (위 기본 배치) */
+@media (hover: hover) and (min-width: 1280px) {
+  .work-timeline {
+    --tl-w: clamp(170px, 13vw, 230px);
+    --tl-col-gap: 1rem;   /* 두 열 사이 */
+    --tl-outer: calc(var(--tl-w) + var(--tl-col-gap)); /* 바깥 열이 축에서 더 떨어지는 만큼 */
+  }
+
+  .timeline-card {
+    width: var(--tl-w);
+  }
+
+  /* 연도 위아래 · 그해 첫 줄 여백도 줄임 */
+  .timeline-year {
+    margin: 1.75rem 0 1rem !important;
+  }
+
+  .timeline-year:first-child {
+    margin-top: 0.5rem !important;
+  }
+
+  .timeline-item {
+    margin-top: 1rem !important;
+  }
+
+  /* 사진 높이 = 폭 × 9/16 */
+  .timeline-item--follow {
+    margin-top: calc(var(--tl-w) * 9 / 16 * var(--tl-shift, -0.5)) !important;
+  }
+
+  .timeline-item--left.timeline-item--outer .timeline-card {
+    margin-right: calc(var(--tl-gap) + var(--tl-outer));
+  }
+
+  .timeline-item--right.timeline-item--outer .timeline-card {
+    margin-left: calc(var(--tl-gap) + var(--tl-outer));
+  }
+
+  .timeline-item--outer .timeline-stem {
+    width: calc(var(--tl-gap) + var(--tl-outer) + var(--tl-axis) / 2);
+  }
+
+  /* 설명: 축 가까운 열 사진의 설명은 바깥 열 위로 나오므로 배경을 깔고,
+     바깥 열 사진의 설명이 화면 밖으로 나가지 않게 폭을 화면 여백에 맞춘다 */
+  .timeline-caption {
+    max-width: min(17rem, 50vw - 2rem - var(--tl-axis) / 2 - var(--tl-gap) - var(--tl-outer) - var(--tl-w) - 2.25rem);
+    padding: 0.35rem 0.5rem;
+    background-color: var(--bg-color);
+  }
+
+  .timeline-item--left .timeline-caption {
+    right: calc(100% + 0.75rem);
+  }
+
+  .timeline-item--right .timeline-caption {
+    left: calc(100% + 0.75rem);
+  }
+}
+
 @media (max-width: 820px) {
   .timeline-head {
-    top: 3.75rem; /* 모바일 상단 바 높이 */
+    top: calc(3.75rem + 1px); /* 모바일 상단 바 높이 + 아래 선 */
   }
 }
 
 @media (max-width: 768px) {
+  .projects-page--timeline {
+    margin-top: -1rem; /* 모바일 main 위 여백 상쇄 */
+  }
+
   .work-timeline {
     --tl-axis: 1.5rem;
     --tl-gap: 0.6rem;

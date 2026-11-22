@@ -12,8 +12,8 @@ const DownloadIcon = () => (
 
 // 내용은 content/cv/cv.yaml 에서 고친다.
 // 레이아웃 (index.css "Profile"):
-//   데스크톱 — 맨 위 Contact 줄(메일 · 전화 · 링크 · 포트폴리오 PDF), 아래 섹션마다 [섹션 이름 | 기간 | 이름 · 역할 · 설명] 3단
-//   태블릿 — 섹션 이름이 위로 올라가고 [기간 | 내용] 2단 / 모바일 — 한 줄로 쌓임
+//   데스크톱 — 맨 위 Contact 줄(메일 · 전화 · 링크 · 포트폴리오 PDF), 아래 섹션마다 [섹션 이름 | 이름 · 역할 · 설명 | 기간(오른쪽 정렬)] 3단
+//   태블릿 — 섹션 이름이 위로 올라가고 [내용 | 기간] 2단 / 모바일 — 내용 아래에 기간이 쌓임 (11/22 기간을 내용 뒤로 옮김)
 // 항목 값: title(필수) · date · role · desc(선택, 한 줄 설명)
 const Profile = () => {
   const { lang, t } = useLang();
@@ -62,12 +62,12 @@ const Profile = () => {
               {section.text && <p className="cv-section-text">{section.text}</p>}
               {(section.items || []).map((item, i) => (
                 <div className="cv-item" key={i}>
-                  <span className="cv-item-date">{item.date ? String(item.date) : ''}</span>
                   <div className="cv-item-main">
                     <span className="cv-item-title">{item.title}</span>
                     {item.role && <p className="cv-item-role">{item.role}</p>}
                     {item.desc && <p className="cv-item-desc">{item.desc}</p>}
                   </div>
+                  <span className="cv-item-date">{item.date ? String(item.date) : ''}</span>
                 </div>
               ))}
             </div>

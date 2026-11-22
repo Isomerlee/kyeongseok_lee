@@ -6,7 +6,7 @@ import { getCategories } from '../content';
 import { useLang } from '../i18n';
 
 // 상단 바 메뉴가 정한다: #/projects (All Work) · #/projects?filter=design · #/projects?filter=planning
-// All Work = 가로 연표 (components/WorkTimeline.jsx, 11/22 — 전엔 작은 카드 6열)
+// All Work = 세로 연표 (components/WorkTimeline.jsx, 11/22 — 전엔 작은 카드 6열), 맨 위 여백 없음(.projects-page--timeline)
 // 카테고리 = 그 카테고리만, 큰 카드 4열 (넓은 화면)
 const Home = () => {
   const { lang } = useLang();
@@ -16,7 +16,7 @@ const Home = () => {
 
   if (!category) {
     return (
-      <div className="projects-page">
+      <div className="projects-page projects-page--timeline">
         <WorkTimeline />
       </div>
     );
