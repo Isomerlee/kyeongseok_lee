@@ -28,6 +28,8 @@ start: '2026-03'
 tags: [Course Project, LG Electronics Collaboration]
 order: 3
 hero_text: Main Project Image
+# 카드에 마우스를 올리면 뜨는 설명 (11/25 사용자 요청: 문제만 말고 무엇을 했는지까지, 짧게. 오음 길이 정도)
+summary: "First-time users of LG's Lightwave Oven hesitated at the dial and barely used automatic cooking. Our team turned the whole oven glass into a transparent display, paired with a single dial and AI cooking support, so the cooking process could be read. 36 survey respondents preferred it on all 11 premium-experience attributes."
 
 meta:
   Type: LG Electronics X UNIST (Team Project)
@@ -185,6 +187,7 @@ blocks:
     divider: true
 
 ko:
+  summary: "광파오븐을 처음 쓰는 사람들은 다이얼 앞에서 망설이고 자동 조리는 거의 쓰지 않았습니다. 조리 과정을 읽을 수 있게 오븐 유리 전체를 투명 디스플레이로 바꾸고 다이얼 하나와 AI 요리 기능으로 정리했고, 36명 설문에서 프리미엄 경험 속성 11개 모두 우리 디자인이 더 선택됐습니다."
   tags: [수업 프로젝트, LG전자 산학]
   title: 광파오븐 리디자인
   subtitle: LG 오브제컬렉션 광파오븐 리디자인
@@ -205,6 +208,8 @@ start: '2026-04'
 tags: [Course Project]
 order: 2
 hero_text: Main Project Image / Prototype Demo
+# 카드에 마우스를 올리면 뜨는 설명 (11/25 사용자 요청: 문제만 말고 무엇을 했는지까지, 짧게. 오음 길이 정도)
+summary: "Many Korean twenty-somethings avoid the news because it feels exhausting and extreme. Interviews with 8 people revealed four news personas, and NAVATAR gives each one its own way to navigate articles, built as an LLM-powered web prototype and tested with 23 people in an A/B test."
 
 meta:
   Type: Course Project
@@ -364,6 +369,7 @@ blocks:
       caption: "모듈 스택, 접힌 카드와 효율주의자형, 전략가형 도구"
 
 ko:
+  summary: "한국 20대 상당수는 피곤하고 극단적인 의견이 싫어 뉴스를 일부러 피합니다. 8명 인터뷰로 뉴스 소비 퍼소나 4종을 찾고, 퍼소나마다 맞는 기사 탐색 도구를 주는 웹 프로토타입을 LLM으로 만들어 23명 A/B 테스트로 확인했습니다."
   tags: [수업 프로젝트]
   title: NAVATAR
   subtitle: 20대를 위한 뉴스 소비 퍼소나
@@ -460,6 +466,8 @@ start: '2026-06'
 tags: [Research, Publication]
 order: 1
 hero_text: Main Project Image
+# 카드에 마우스를 올리면 뜨는 설명 (11/25 사용자 요청: 문제만 말고 무엇을 했는지까지, 짧게. 오음 길이 정도)
+summary: "In Ulsan, where the median bus headway is 41 minutes, missing one transfer can mean a 30-minute wait. U-BUS is a transit assistant web app that follows the trip and suggests an earlier stop, a detour, or a café to wait in. Interviews with 7 riders and a 3-person field pilot showed when and how it should step in."
 
 meta:
   Type: Research Project (2026 KSDS Undergraduate Design Conference, Poster)
@@ -645,6 +653,7 @@ blocks:
         label: Poster
 
 ko:
+  summary: "배차간격 중앙값이 41분인 울산에서는 환승 하나를 놓치면 30분 넘게 기다려야 합니다. 이동을 실시간으로 따라가며 조기 하차, 우회 경로, 근처 카페를 먼저 제안하는 교통 비서 웹앱을 만들고, 7명 인터뷰와 3명 실사용 파일럿으로 언제, 어떻게 개입해야 하는지 찾았습니다."
   tags: [연구, 논문 발표]
   title: U-BUS
   subtitle: 지방도시 대중교통 환승 부담 완화를 위한 선제적 넛지 기반 교통 비서 에이전트
